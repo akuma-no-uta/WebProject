@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi nhanh tuyen dung</title>
+    <link rel="stylesheet" href="chi_tiet_tuyen_dung.css">
+</head>
+<body style="background-color: #fbf6dc;">
+        <H3 style="font-size: 28px; margin-left: 45%;">CHI NHÁNH TUYỂN DỤNG</H3>
+    <div class="coatainer" style="margin-left: 20%; margin-top: 50px;">
+        <ul>
+            <h3>Yêu cầu công việc</h3>
+            <li>Chăm chỉ</li>
+            <li>Đẹp trai</li>
+            <li>Ham học hỏi</li>
+            <li>Biết lắng nghe</li>
+            <li>Trên 18 tuổi</li>
+        </ul>
+        <ul>
+            <h3>Mô tả công việc</h3>
+            <li>Chịu trách nhiệm vệ sinh</li>
+            <li>Chủ động chăm sóc khách hàng</li>
+            <li>Đào tạo về thương hiệu và các chuyên môn cần thiết cho nhân viên</li>
+            <li>Tác phong/ thái độ phục vụ khách hàng tốt</li>
+        </ul>
+        <ul>
+            <h3>Thời gian</h3>
+            <li> 8 tiếng/ngày và 6 ngày/tuần</li>
+        </ul>
+        <ul>
+            <h3>Quyền lợi</h3>
+            <li>Thu nhập từ 5-7 triệu/tháng</li>
+            <li>Thưởng theo các ngày lễ</li>
+            <li>Có phụ cấp + thưởng theo doanh thu</li>
+        </ul>
+        <hr style="border: 1px solid #000; margin-right: 30%;">
+    </div>
+    <form method="post" action="http://web-tdtu.herokuapp.com/lab01/register.php">
+        <div class="content">
+            <div class="form-group">
+                <label for="name">Tên</label>
+                    <input class="form-control" type="text" id="Name" placeholder="Họ và Tên">
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input  class="form-control" id="Email"  type="Email" placeholder="Email">
+                <div class="input-error">Email address is not valid</div>
+            </div>
+            <div class="form-group">
+                <label for="birthday">Năm sinh</label>
+                <input class="form-control" type="date" id="Birthday">
+            </div>
+            <h2 style="text-align: center;">Nộp CV tại đây</h2>
+            <div id="dropArea">Kéo tệp vào đây hoặc nhấn để chọn tệp</div>
+            <input type="file" id="fileInput" style="display:none;">
+            <div class="form-group">
+                    <button type="submit">Register</button>
+                    <button type="reset">Reset</button>
+            </div>
+        </div>
+    </form>
+    <script>
+        const dropArea = document.getElementById("dropArea");
+        const fileInput = document.getElementById("fileInput");
+
+        // Khi nhấn vào vùng thả file
+        dropArea.addEventListener("click", () => {
+            fileInput.click();
+        });
+
+        // Khi kéo tệp vào vùng thả
+        dropArea.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            dropArea.classList.add("hover");
+        });
+
+        dropArea.addEventListener("dragleave", () => {
+            dropArea.classList.remove("hover");
+        });
+
+        // Khi thả tệp vào vùng
+        dropArea.addEventListener("drop", (e) => {
+            e.preventDefault();
+            dropArea.classList.remove("hover");
+            const files = e.dataTransfer.files;
+            handleFiles(files);
+        });
+
+        // Xử lý tệp được chọn
+        fileInput.addEventListener("change", (e) => {
+            const files = e.target.files;
+            handleFiles(files);
+        });
+
+        function handleFiles(files) {
+            alert(`Bạn đã chọn ${files.length} tệp.`);
+        }
+    </script>
+</body>
+</html>

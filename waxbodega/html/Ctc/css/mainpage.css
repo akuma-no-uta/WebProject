@@ -1,0 +1,511 @@
+<style>
+    .body{
+        font-family: "Londrina Solid", sans-serif;}
+
+    header{
+      position: relative;
+    display: flex;
+    gap: 50px;
+    
+    font-family: "Londrina Solid", sans-serif;
+
+    }
+    .header-banner{
+      background-color: #f3b53b;
+      width:100%;
+      height: 130px;     
+      
+      position: relative;
+    align-items: center;
+    display: flex;
+    font-family: "Londrina Solid", sans-serif;
+    }
+    .header-heading{
+      display: flex;
+  margin-top: 20px;
+  font-family: "Londrina Solid", sans-serif;  
+  width:300px;
+    height:50px;
+    text-decoration: none;
+    word-break: break-word;
+    align-items:center;
+    margin-left:30px;
+    position: relative;
+    display: inline-block;
+}
+.header-container {
+  font-size: 10px;
+  display: flex;
+  justify-content: flex-end; /* Đẩy toàn bộ nội dung về bên phải */
+  align-items: center;
+  flex-wrap: nowrap;
+  font-family: "Londrina Solid", sans-serif;
+  padding: 10px;
+}
+
+
+.button-banner {
+  position: relative; /* Hoặc absolute nếu cần */
+  margin-left: auto; /* Đẩy toàn bộ sang bên phải */
+  color:hsla(195.6,92.59259259%,21.17647059%,1);
+  padding: .2rem .8rem;
+  border-radius: 2rem;
+ top:10px;
+ text-decoration: none;
+ font-family: "Londrina Solid", sans-serif;
+  gap: 20px;
+  font-size: 20px;
+
+}
+   .a{
+    margin:30px;
+    font-family: "Londrina Solid", sans-serif;
+   }
+   .header__awning {
+    display: block !important;
+    width: 100%;
+    height: 20px;
+    position:relative;
+    left: 0;
+    top:0px;
+    background-image: url(//waxbodega.com/cdn/shop/t/5/assets/awning_path.png?v=1689108…);
+}
+.circle-card {
+    width: 150px;
+    height: 150px;
+    font-family: "Londrina Solid", sans-serif;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.circle-card img {
+    width: 60px;
+    font-family: "Londrina Solid", sans-serif;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.circle-card h3 {
+    margin: 5px 0;
+    font-family: "Londrina Solid", sans-serif;
+    font-size: 16px;
+}
+
+.circle-card p {
+    margin: 0;
+    font-family: "Londrina Solid", sans-serif;
+    font-size: 12px;
+    color: gray;
+}
+.body{
+  background-color: #fbf6dc;
+  font-family: "Londrina Solid", sans-serif;
+}
+.footer{
+ background-color: hsla(123, 41%, 49%, 1);
+ width: 100%;
+ height: 100%;
+ font-family: "Londrina Solid", sans-serif;
+}
+
+.footer-menu{
+    font-family: "Londrina Solid", sans-serif;
+
+}
+.task-bar{
+    font-family: "Londrina Solid", sans-serif;
+  
+  
+}
+.table-footer{
+  background-color: hsla(123, 41%, 49%, 1);
+  width:  100%;
+  font-family: "Londrina Solid", sans-serif;
+  height: 30%;
+  padding:50px;
+  text-align: center;
+}
+.header-icon{
+  margin-left: auto;
+    align-items: center;
+    height: 2rem;
+    width: 2rem;
+    font-family: "Londrina Solid", sans-serif;
+    cursor: pointer;
+    color: rgb(var(--color-link));
+    background-color: transparent;
+  }
+  .title h2 {
+    font-family: BurfordExtrudeC, NeueHaasGroteskTextPro55Roman, Roboto, Helvetica Neue, Helvetica, Fira Sans, Droid Sans, sans-serif;
+    line-height: 1;
+    padding-top: .25em;
+    font-family: "Londrina Solid", sans-serif;
+    padding-bottom: .25em;
+    color: #3c3c3c;
+    font-size: 4rem;
+}
+.slider {
+    width: 100%;
+    margin: auto;
+    top: -9px;
+    font-family: "Londrina Solid", sans-serif;
+}
+.slider-video {
+  height: 100%;
+width: 100%;
+font-family: "Londrina Solid", sans-serif;
+}
+.slick-slide img {
+    width: 500px;
+    font-family: "Londrina Solid", sans-serif;
+    height:500 px;
+}    
+.l-wrapper {
+    display: flex;
+    max-width: 1100px;
+    font-family: "Londrina Solid", sans-serif;
+    margin: auto;
+    align-items: center;
+    gap:100px;
+    justify-content: space-between;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    font-family: "Londrina Solid", sans-serif;
+    border-radius: 10px;
+}
+
+.content-container {
+    max-width: 500px;
+    font-family: "Londrina Solid", sans-serif;
+    color: #3c3c3c;
+}
+
+footer {
+    background-color: #3da44c; /* Màu nền xanh */
+    color: white;
+    padding: 40px 20px;
+    font-family: "Londrina Solid", sans-serif;
+}
+
+.footer-container {
+    font-family: "Londrina Solid", sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-section {
+    width: 30%;
+    font-family: "Londrina Solid", sans-serif;
+    min-width: 200px;
+    margin-bottom: 20px;
+}
+
+.footer-section h3 {
+    color: #fcd32c; /* Màu vàng */
+    font-size: 18px;
+    font-family: "Londrina Solid", sans-serif;
+    margin-bottom: 10px;
+}
+
+.footer-section p {
+    font-size: 16px;
+    margin: 5px 0;
+    font-family: "Londrina Solid", sans-serif;
+}
+
+.map-container {
+    font-family: "Londrina Solid", sans-serif;
+    width: 100%;
+    height: 150px;
+}
+
+.map-container iframe {
+    width: 100%;
+    font-family: "Londrina Solid", sans-serif;
+    height: 100%;
+    border: 0;
+}
+
+a {
+    color: white;
+    font-family: "Londrina Solid", sans-serif;
+    text-decoration: underline;
+}
+
+a:hover {
+    font-family: "Londrina Solid", sans-serif;
+    color: #fcd32c;
+}
+
+
+.hidden-section{
+    opacity:0;
+    transform:translateY(50px);
+    transition:all 1s ease-in-out;
+}
+.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+.content-container h2 {
+    font-family: "Londrina Solid", sans-serif;
+    font-size: 2.5rem;
+    color: #3c3c3c;
+    margin-bottom: 10px;
+}
+
+.subheader {
+    font-family: "Londrina Solid", sans-serif;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #7b5d44;
+    display: flex;
+    align-items: center;
+}
+
+.subheader img {
+    font-family: "Londrina Solid", sans-serif;
+    margin-left: 10px;
+}
+
+
+.content-container p {
+    font-size: 1rem;
+    font-family: "Londrina Solid", sans-serif;
+    line-height: 1.5;
+    color: #555;
+}
+
+.button a {
+    font-family: "Londrina Solid", sans-serif;
+    display: inline-block;
+    background-color: #e86229;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.button a:hover {
+    font-family: "Londrina Solid", sans-serif;
+    background-color: #d1501a;
+}
+.row {
+    font-family: "Londrina Solid", sans-serif;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.banner {
+    font-family: "Londrina Solid", sans-serif;
+    background-color: #f3b53b;
+    justify-content:center;
+    max-width:80%;
+    
+  
+    
+    clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 0% 100%);
+}
+.banner-right {
+    font-family: "Londrina Solid", sans-serif;
+    justify-content: flex-end;
+    background-color: #f3b53b;
+    clip-path: polygon(5% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+.banner-content {
+    font-family: "Londrina Solid", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px;
+}
+
+.banner img {
+    font-family: "Londrina Solid", sans-serif;
+    max-width: 120px;
+    padding: 10px;
+}
+
+.banner-text {
+    font-family: "Londrina Solid", sans-serif;
+    flex: 1;
+    text-align: left;
+    padding: 10px;
+}
+
+.banner h2 {
+    font-family: "Londrina Solid", sans-serif;
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.banner p {
+    font-family: "Londrina Solid", sans-serif;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.cta {
+    font-family: "Londrina Solid", sans-serif;
+    padding: 10px;
+}
+
+.cta a {
+    font-family: "Londrina Solid", sans-serif;
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    border: 2px solid black;
+}
+
+.cta a:hover {
+    font-family: "Londrina Solid", sans-serif;
+    background-color: black;
+    color: white;
+}
+body {
+    font-family: "Londrina Solid", sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
+    color: #e6007e;
+    font-size: 28px;
+    font-family: "Londrina Solid", sans-serif;
+    margin: 20px 0;
+}
+
+/* Card container */
+.card-listing {
+    font-family: "Londrina Solid", sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    font-family: "Londrina Solid", sans-serif;
+    width: 300px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    font-family: "Londrina Solid", sans-serif;
+    transform: translateY(-5px);
+}
+
+.card__media {
+    font-family: "Londrina Solid", sans-serif;
+    position: relative;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    transition: filter 0.3s ease-in-out;
+}
+
+/* Darken image on hover */
+.card:hover .card__media {
+    font-family: "Londrina Solid", sans-serif;
+    filter: brightness(80%);
+}
+
+.card__heading {
+    font-size: 18px;
+    font-family: "Londrina Solid", sans-serif;
+    color: #e6007e;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+}
+
+.card span {
+    font-family: "Londrina Solid", sans-serif;
+    display: block;
+    text-align: center;
+    color: #666;
+    padding-bottom: 15px;
+    font-size: 14px;
+    text-decoration: none;
+}
+.clipped-box {
+    font-family: "Londrina Solid", sans-serif;
+    width: 50%;
+    height: 300px;
+    background-color:  #88f8e2;
+    clip-path: polygon(0 0, calc(100% - 25px) 24px, 100% calc(100% - 38px), 0% 100%);
+    margin-left:400px;
+
+}
+.logo-container{
+    position:relative;
+}
+.logo-job{
+    height:80px;
+    bottom: 20px; /* Điều chỉnh vị trí theo ý muốn */
+    left: 20px; 
+    bottom:750px;
+
+    position: absolute;
+}
+
+  </style>
+  <style>
+    #jumbotron.home-hero {
+      background-image: url(https://s36131.pcdn.co/wp-content/uploads/2025/03/12.99-Mesquite-Fire-Chicken-Fajitas_Homepage-Desktop_780x900_B.jpg.webp);
+      background-size: cover;
+      background-position: bottom;
+    }
+
+    body.home #jumbotron .hero-overlay .hero-content p {
+      color: #c0df16;
+    }
+
+    body.home #jumbotron .hero-overlay .hero-content p.hero-body {
+      color: #ffffff;
+    }
+
+    @media (min-width: 767.98px) {
+      #jumbotron.home-hero {
+        background-image: url(https://s36131.pcdn.co/wp-content/uploads/2025/03/12.99-Mesquite-Fire-Chicken-Fajitas_Homepage-Desktop_3840x1360_B-scaled.jpg.webp);
+        background-position: center;
+      }
+    }
