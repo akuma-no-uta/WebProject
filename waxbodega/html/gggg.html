@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bloody Valentine - Only Shallow</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #123;
+            color: white;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        #intro {
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            animation: slideIn 2s forwards;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeInButton 1s 2s forwards;
+        }
+
+        input {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 1rem;
+            width: 300px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInButton {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        #videoContainer {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: black;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #videoContainer iframe {
+            width: 50%;
+            height: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="intro">
+        <h1>Welcome to My Music Video</h1>
+        <button id="startBtn">Start</button>
+        <button id="removeBtn">Remove</button>
+    </div>
+
+    <div id="videoContainer">
+        <iframe   width="179" height="350" src="https://www.youtube.com/embed/JzTjgLrqi2g" title="kurayamisaka - theme (kimi wo omotte iru) /cinema paradiso (live)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+        </iframe>
+
+        <!-- Thêm ô nhập link và nút đổi video -->
+        <input type="text" id="videoUrl" placeholder="Enter YouTube URL">
+        <button id="changeBtn">Change Video</button>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const introElement = document.getElementById('intro');
+            const startButton = document.getElementById('startBtn');
+            const removeButton = document.getElementById('removeBtn');
+            const videoContainer = document.getElementById('videoContainer');
+            const videoPlayer = document.getElementById('videoPlayer');
+            const videoUrlInput = document.getElementById('videoUrl');
+            const changeButton = document.getElementById('changeBtn');
+
+            // Khi nhấn nút "Start", hiển thị video
+            startButton.addEventListener('click', () => {
+                introElement.style.opacity = '0';
+                setTimeout(() => {
+                    introElement.style.display = 'none';
+                    startMainContent();
+                }, 1000);
+            });
+
+            // Khi nhấn "Remove", xóa nút Start
+            removeButton.addEventListener('click', () => {
+                if (startButton) {
+                    startButton.remove();
+                }
+            });
+
+            // Hàm hiển thị video
+            function startMainContent() {
+                videoContainer.style.display = 'flex';
+            }
+
+            // Khi nhấn "Change Video", cập nhật video mới
+            changeButton.addEventListener('click', () => {
+                let inputUrl = videoUrlInput.value.trim();
+
+                if (inputUrl) {
+                    let videoId = extractVideoID(inputUrl);
+                    if (videoId) {
+                        videoPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                    } else {
+                        alert("Invalid YouTube URL. Please enter a valid link!");
+                    }
+                }
+            });
+
+            function extractVideoID(url) {
+                let regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+                let match = url.match(regex);
+                return match ? match[1] : null;
+            }
+        });
+    </script>
+</body>
+</html>
