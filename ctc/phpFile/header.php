@@ -1,6 +1,6 @@
 <header class="header-banner"  >   
-<h1 class="header-heading "><a href="/" class="header-heading-link link link--text focus-inset"><div class="header-heading-logo-wrapper">
-  <svg viewBox="0 0 577 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <h1 class="header-heading "><a href="/" class="header-heading-link link link--text focus-inset"><div class="header-heading-logo-wrapper">
+        <div ><svg viewBox="0 0 577 79" xmlns="http://www.w3.org/2000/svg">
 <path d="M51.4933 30.6094C51.508 30.5245 51.524 30.4386 51.5387 30.3516C52.9707 22.31 54.3827 14.2578 55.8 6.17824C53.4693 6.21358 53.4093 6.47144 52.9213 9.25118C52.0187 14.4064 51.1053 19.56 50.1973 24.7136C50.376 25.5288 50.5573 26.3621 50.736 27.1704L51.4933 30.6094Z" fill="#385DB2"></path>
 <path d="M41.9413 77.9673C45.9067 77.936 49.872 78.0141 53.8333 77.8906C54.4213 77.8725 55.152 77.0974 55.5107 76.4906C55.7973 76.0078 55.856 75.3854 55.928 74.7772C54.9453 74.7876 53.996 74.7902 53.128 74.7902L49.5653 74.7865C48.7667 74.7865 47.9693 74.7876 47.1307 74.7944C44.2293 74.7944 43.6507 72.4178 43.404 71.4037L43.36 71.2225C42.0187 65.8308 40.6587 60.4438 39.3 55.0558L37.6973 48.7094L37.1947 50.6173C36.6027 52.8657 36.004 55.1626 35.4053 57.4506C36.9533 63.5897 38.5067 69.7277 40.0347 75.8725C40.3027 76.9464 40.46 77.9793 41.9413 77.9673Z" fill="#385DB2"></path>
 <path d="M24.6666 28.1564C24.7346 28.772 24.7893 29.3386 24.84 29.8761L25.284 28.1548C26.9333 21.7709 28.6146 15.2032 30.2093 8.67304C28.824 8.77357 28.056 9.4725 27.6266 11.2641C26.552 15.746 25.4227 20.2136 24.2827 24.6797C24.3173 24.9949 24.3533 25.3204 24.388 25.6354L24.6666 28.1564Z" fill="#385DB2"></path>
@@ -38,41 +38,45 @@
 <path d="M327.68 49.7682C327.013 52.2006 325.932 54.6548 324.487 56.7084C322.535 59.4829 319.879 60.8474 317.228 60.8474C314.397 60.8474 311.573 59.2928 309.612 56.2406C307.127 52.3698 306.109 47.9646 305.565 43.4897C304.881 37.8569 304.801 28.534 307.155 21.9064C307.701 19.711 309.001 17.5313 310.471 15.7709C312.241 13.646 314.676 12.6001 317.139 12.6001C319.524 12.6001 321.936 13.5818 323.8 15.5141C326.105 17.9073 327.256 20.9126 328.02 24.0506C330.111 32.6417 330.017 41.2564 327.68 49.7682ZM343.737 36.798C343.635 34.875 343.611 32.9428 343.413 31.0288C342.56 22.7422 339.779 15.173 334.527 8.66265C329.901 2.92825 324.208 0.156384 317.691 0.156384C315.539 0.156384 313.297 0.458378 310.973 1.05584C304.948 2.60531 300.823 6.80584 297.619 11.9532C290.875 22.7876 289.528 34.5496 291.792 46.8813C293.047 53.7173 295.564 60.0444 299.98 65.4933C304.468 71.0261 310.383 73.737 316.909 73.737C319.201 73.737 321.569 73.4021 323.976 72.737C330.216 71.0157 334.375 66.561 337.515 61.1121C341.847 53.5974 343.665 45.423 343.737 36.798Z" fill="#DF3625"></path>
 <path d="M519.853 44.2058V38.3412C519.853 35.1444 520.439 34.6236 517.347 34.6236L511.4 34.625C511.311 34.6225 511.251 34.6001 511.159 34.6001C511.152 34.6001 511.147 34.6001 511.14 34.6001C510.411 34.6236 509.679 34.6173 508.947 34.625L500.608 34.6261L500.609 34.6302C499.124 34.6288 498.376 34.6236 497.439 34.6236C496.767 34.6236 495.999 34.6261 494.789 34.634C491.887 34.6521 491.879 34.6693 491.857 37.7006C491.843 39.7354 491.831 41.772 491.861 43.8084C491.893 46.1808 491.912 46.4673 493.752 46.4673C493.989 46.4673 494.256 46.4636 494.557 46.4569C496.617 46.4193 496.625 46.2824 498.011 46.2824C498.281 46.2824 498.605 46.2876 499.009 46.3006C499.648 46.3204 500.692 46.9714 500.827 47.513C501.732 51.1365 500.505 58.5116 495.609 60.5521C494.376 61.0652 493.075 61.3048 491.768 61.3048C487.851 61.3048 483.907 59.1417 481.731 55.7329C480.54 53.8682 479.615 51.7381 479.032 49.6026C477.06 42.363 476.928 34.9688 478.237 27.6288C478.791 24.5236 479.841 21.3605 481.355 18.6026C483.515 14.6678 487.099 12.6094 491.033 12.6094C492.931 12.6094 494.908 13.087 496.848 14.0636C498.269 14.7797 499.621 15.7006 500.855 16.7121C501.796 17.4845 503.383 19.6564 504.607 19.6564C504.805 19.6564 504.992 19.6001 505.167 19.4714C507.296 17.6834 509.953 15.948 511.777 13.7042C512.952 12.6329 512.761 11.3736 511.656 10.0078C510.495 8.57038 508.957 7.14438 508.288 6.57397C503.471 2.47398 497.128 0.164108 490.801 0.162643C483.611 0.162643 476.44 3.14331 471.533 9.86464C466.235 17.1236 463.736 25.2293 463.509 34.1512C463.255 44.1849 464.692 53.7944 470.175 62.4646C473.647 67.9542 478.356 71.863 484.824 73.0793C486.76 73.4438 488.768 73.5897 490.769 73.5897C491.773 73.5897 492.775 73.5532 493.764 73.4897C502.636 72.9193 508.856 68.5089 511.961 60.073C513.397 56.1756 513.817 51.1381 513.845 46.2433L518.687 46.2146C519.973 46.2146 519.853 45.3048 519.853 44.2058Z" fill="#DF3625"></path>
 </svg>
-
+        </div>
 </h1>
 
-</a><nav class="header-item-container">
-<a class = "button-banner" href="">Booking</a>
-<a class = "button-banner" href="">Menu</a>
-<a class="button-banner" href="">News</a>
-<a class="button-banner" href = "">Careers</a>
-<a class="button-banner" href = "">About Us</a>
+</a>
+<div class="menu-container">
+    <div class="menu-logo">
+      <button class="menu-toggle">&#9776;</button>
+    </div>
+  
+<nav class="header-item-container">
+
+  <a class = "button-banner" href="">Booking</a>
+  <a class = "button-banner" href="">Menu</a>
+  <a class="button-banner" href="">News</a>
+  <a class="button-banner" href = "">Careers</a>
+  <a class="button-banner" href = "">About Us</a>
 </nav>
 
-
 <div>
-<div class="header__icons header__icons--localization header-localization" style="gap:50px; margin-bottom:-10px;margin-left:200px">
-  <div class="desktop-localization-wrapper"></div>
+    <div class="header__icons header-icns localization header-localization" style="gap:50px; margin-bottom:-10px;margin-left:200px">
 
-  <!-- Biểu tượng Login -->
-  <a href="/account/login" class="header__icon header__icon--account link focus-inset small-hide">
-      <svg style="width:30px;height:30px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-account" fill="none" viewBox="0 0 18 19">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M6 4.5a3 3 0 116 0 3 3 0 01-6 0zm3-4a4 4 0 100 8 4 4 0 000-8zm5.58 12.15c1.12.82 1.83 2.24 1.91 4.85H1.51c.08-2.6.79-4.03 1.9-4.85C4.66 11.75 6.5 11.5 9 11.5s4.35.26 5.58 1.15zM9 10.5c-2.5 0-4.65.24-6.17 1.35C1.27 12.98.5 14.93.5 18v.5h17V18c0-3.07-.77-5.02-2.33-6.15-1.52-1.1-3.67-1.35-6.17-1.35z" fill="currentColor">
-          </path>
-      </svg>
-      <span class="visually-hidden">Log in</span>
-  </a>
+        <!-- Biểu tượng Login -->
+        <a href="/account/login" class="header-icon-1 header__icon header__icon--account link focus-inset small-hide">
+            <svg style="width:30px;height:30px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-account" fill="none" viewBox="0 0 18 19">
+                <path fill-rule="" clip-rule="evenodd" d="M6 4.5a3 3 0 116 0 3 3 0 01-6 0zm3-4a4 4 0 100 8 4 4 0 000-8zm5.58 12.15c1.12.82 1.83 2.24 1.91 4.85H1.51c.08-2.6.79-4.03 1.9-4.85C4.66 11.75 6.5 11.5 9 11.5s4.35.26 5.58 1.15zM9 10.5c-2.5 0-4.65.24-6.17 1.35C1.27 12.98.5 14.93.5 18v.5h17V18c0-3.07-.77-5.02-2.33-6.15-1.52-1.1-3.67-1.35-6.17-1.35z" fill="currentColor">
+                </path>
+            </svg>
+            <span class="visually-hidden">Log in</span>
+        </a>
 
-  <!-- Biểu tượng Cart -->
-  <a href="/cart" style="width:65px; height:65px; margin-bottom:-5px" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-      <svg class="icon icon-cart-empty" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
-          <path d="m15.75 11.8h-3.16l-.77 11.6a5 5 0 0 0 4.99 5.34h7.38a5 5 0 0 0 4.99-5.33l-.78-11.61zm0 1h-2.22l-.71 10.67a4 4 0 0 0 3.99 4.27h7.38a4 4 0 0 0 4-4.27l-.72-10.67h-2.22v.63a4.75 4.75 0 1 1 -9.5 0zm8.5 0h-7.5v.63a3.75 3.75 0 1 0 7.5 0z" fill="currentColor" fill-rule="evenodd"></path>
-      </svg>
-      <span class="visually-hidden">Cart</span>
-  </a>
+        <!-- Biểu tượng Cart -->
+        <a href="/cart" style="width:65px; height:65px; margin-bottom:-5px" class="header__icon header-icon-2 header__icon--cart link focus-inset" id="cart-icon-bubble">
+            <svg class="icon icon-cart-empty" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+                <path d="m15.75 11.8h-3.16l-.77 11.6a5 5 0 0 0 4.99 5.34h7.38a5 5 0 0 0 4.99-5.33l-.78-11.61zm0 1h-2.22l-.71 10.67a4 4 0 0 0 3.99 4.27h7.38a4 4 0 0 0 4-4.27l-.72-10.67h-2.22v.63a4.75 4.75 0 1 1 -9.5 0zm8.5 0h-7.5v.63a3.75 3.75 0 1 0 7.5 0z" fill="currentColor" fill-rule="evenodd"></path>
+            </svg>
+            <span class="visually-hidden">Cart</span>
+        </a>
 
+    </div>
 </div>
-</div>
-
-</header>
-    <div class="header__awning-top"  style="z-index: 10000;"></div>
+  
+    </header>
