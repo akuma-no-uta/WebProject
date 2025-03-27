@@ -46,7 +46,16 @@
         min-width: 150px;
         min-width:150px;
     }
-    
+    @media screen and (max-width:540px){
+        .header-heading{
+            bottom:30px;
+        }
+        .menu-toggle{
+            margin-left:130px;
+            margin-top:-20px;
+        }
+
+    }
     .header-heading svg {
         max-width: 100%;  /* Đảm bảo SVG không vượt quá chiều rộng của phần tử chứa */
         height: auto;     /* Đảm bảo tỷ lệ khung hình của SVG không bị thay đổi */
@@ -75,25 +84,32 @@
         padding: 10px;
     }
     
-    /* Button Banner */
     .button-banner {
         flex-grow: 1;
         position: relative; /* Hoặc absolute nếu cần */
         margin-left: auto; /* Đẩy toàn bộ sang bên phải */
         color: hsla(195.6, 92.59259259%, 21.17647059%, 1);
         padding: 0.2rem 0.8rem;
+        top:30px;
         border-radius: 2rem;
-        top: 10px;
+        right:500px;
         text-decoration: none;
         font-family: "Londrina Solid", sans-serif;
-        gap: 20px;
+        gap: 2rem;
         font-size: 20px;
         display: flex;
         justify-content: center;
         align-items: flex-start;
     }
-    
-    /* Media Queries for Responsiveness */
+    .navbar{
+        width:100%;
+        height:60px;
+        max-width:1200px;
+        margin:0 auto;
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+    }
     @media (max-width: 1024px) {
         .header {
             gap: 20px; /* Giảm khoảng cách giữa các phần tử trong header */
@@ -161,7 +177,7 @@ background-image: url(../PicAndVid/img/awning_path.png);
 }
 .header__awning-top{
 position: fixed; /* Cố định awning cùng header */
-top: 130px; /* Ngay dưới header-banner */
+top: 125px; /* Ngay dưới header-banner */
 left: 0;
 width: 100%;
 height: 20px;
@@ -219,34 +235,47 @@ font-family: "Londrina Solid", sans-serif;
 
 }
 
-.header-icon-1{
-    margin-right: 3vw;;
-}
 @media (max-width:345){
     .header-icon-2{
         }
 }
-
+.header-icon-1{
+    margin-top:-23px;
+}
 .header-icon-2{
 font-family: "Londrina Solid", sans-serif;
 cursor: pointer;
+margin-top:-23px;
+
 }
 .header-item-container{
+
     display: flex;
     gap: 3vw;
     flex-direction: row; /* Xếp các item theo hàng ngang */
 
+
+}
+@media screen and (max-width:1025){
+    .header-item-container{
+        left:400px;
+    }
+    
 }
 .menu-container {
+    display:flex;
   position: relative;
+  left:40rem;
+  bottom:2rem;
 }
 
-/* Định dạng menu mặc định */
 .header-item-container {
     display: flex;
-    gap: 3vw;
+    position:relative;
+    margin-left: 50px;
+    gap: 5px;
     flex-direction: row; /* Xếp các item theo hàng ngang */
-  gap: 20px;
+
   transition: max-height 0.3s ease-in-out;
 }
 
@@ -262,15 +291,27 @@ cursor: pointer;
   font-size: 24px;
   background: none;
   border: none;
-  right:70vw;
   cursor: pointer;
   top:15px;
   position: absolute;
 
 }
-
-/* Khi màn hình nhỏ hơn 768px */
-@media screen and (max-width: 768px) {
+@media screen and (max-width:376px){
+    .header-item-container {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      }
+   .menu-toggle{
+    margin-right:-35vw;
+    margin-top:-2vw;
+   }
+    
+}
+@media screen and (max-width: 769px) {
   .header-item-container {
     display: none;
     flex-direction: column;
@@ -289,6 +330,32 @@ cursor: pointer;
   .header-item-container.show {
     display: flex;
   }
+}
+.navbar .menu-toggle-btn{
+    color:black;
+    font-size: 1.5rem;
+    cursor:pointer;
+    display:none
+}
+@media (max-width:992px){
+    .header-item-container{
+        display:none
+    }
+    .menu-toggle-btn{
+        display:block;
+    }
+  
+}
+li{
+    list-style:none;
+}
+a{
+    text-decoration:none;
+    color:#fff;
+    font-size:1rem;
+}
+a:hover{
+    color:orange
 }
 .title h2 {
 font-family: BurfordExtrudeC, NeueHaasGroteskTextPro55Roman, Roboto, Helvetica Neue, Helvetica, Fira Sans, Droid Sans, sans-serif;
@@ -425,6 +492,32 @@ margin-top: 15px;
 font-family: "Londrina Solid", sans-serif;
 background-color: #d1501a;
 }
+.popup-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 1000;
+  }
+  .popup-box button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .popup-box button:hover {
+    background-color: #0056b3;
+  }
 .row {
 font-family: "Londrina Solid", sans-serif;
 display: -ms-flexbox;
@@ -444,6 +537,32 @@ max-width:80%;
 
 clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 0% 100%);
 }
+.button-job{
+    font-family: "Londrina Solid", sans-serif;
+    display: inline-block;
+    background-color: #e86229;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-left:45vw;
+    }
+    
+    .button-job:hover {
+    font-family: "Londrina Solid", sans-serif;
+    background-color: #d1501a;
+    }
+    .row {
+    font-family: "Londrina Solid", sans-serif;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    }
 .banner-right {
 position: fixed;
 right: -100%; /* Ẩn hoàn toàn bên phải */
