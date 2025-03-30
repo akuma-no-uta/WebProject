@@ -453,6 +453,12 @@ main .recent_order a{
     margin-bottom: 1rem;
 }
 
+.right .recent_updates .update .profile-photo img {
+    margin-left: 10px;  
+    margin-right: 10px; 
+    padding: 5px;
+}
+
 /* phan tich doanh thu*/
 
 .right .sales_analytics{
