@@ -4,7 +4,9 @@
 }
 .body{
     font-family: "Londrina Solid", sans-serif;}
-
+.visually-hidden{
+    display:none;
+}
     header {
         position: fixed;  /* Giữ header cố định */
         top: 0;
@@ -50,17 +52,14 @@
         .header-heading{
             bottom:30px;
         }
-        .menu-toggle{
-            margin-left:130px;
-            margin-top:-20px;
-        }
+       
 
     }
     .header-heading svg {
-        max-width: 100%;  /* Đảm bảo SVG không vượt quá chiều rộng của phần tử chứa */
-        height: auto;     /* Đảm bảo tỷ lệ khung hình của SVG không bị thay đổi */
-        width: auto;      /* SVG có thể co giãn theo chiều rộng */
-        max-height: 50px; /* Giới hạn chiều cao của SVG */
+        max-width: 100%;  
+        height: auto;     
+        width: auto;     
+        max-height: 50px; 
     }
     @media (max-width:768px){
 .header-heading{
@@ -86,8 +85,8 @@
     
     .button-banner {
         flex-grow: 1;
-        position: relative; /* Hoặc absolute nếu cần */
-        margin-left: auto; /* Đẩy toàn bộ sang bên phải */
+        position: relative; 
+        margin-left: auto; 
         color: hsla(195.6, 92.59259259%, 21.17647059%, 1);
         padding: 0.2rem 0.8rem;
         top:30px;
@@ -112,14 +111,14 @@
     }
     @media (max-width: 1024px) {
         .header {
-            gap: 20px; /* Giảm khoảng cách giữa các phần tử trong header */
-            padding: 10px; /* Đảm bảo padding hợp lý */
+            gap: 20px; 
+            padding: 10px; 
         }
     
         .header-heading {
-            width: auto; /* Cho phép tiêu đề co lại */
-            margin-left: 10px; /* Căn chỉnh lại margin */
-            font-size: 20px; /* Chỉnh font size cho tiêu đề */
+            width: auto;
+            margin-left: 10px; 
+            font-size: 20px;
         }
     
         .header-container {
@@ -134,10 +133,9 @@
         }
     }
     
-    /* Media Query for Small Screens (Mobile) */
     @media (max-width: 768px) {
         .header {
-            flex-direction: column; /* Đổi layout của header sang chiều dọc */
+            flex-direction: column; 
             align-items: center; /* Căn giữa nội dung */
             gap: 10px; /* Giảm khoảng cách */
             padding: 15px 10px; /* Điều chỉnh padding cho header */
@@ -156,10 +154,10 @@
         }
     
         .button-banner {
-            font-size: 14px; /* Giảm kích thước chữ cho button */
-            padding: 0.3rem 0.6rem; /* Điều chỉnh lại padding cho button */
-            width: 100%; /* Đặt button chiếm toàn bộ chiều rộng */
-            text-align: center; /* Căn giữa text trong button */
+            font-size: 14px; 
+            padding: 0.3rem 0.6rem;
+            width: 100%; 
+            text-align: center;
         }
     }
     
@@ -235,9 +233,8 @@ font-family: "Londrina Solid", sans-serif;
 
 }
 
-@media (max-width:345){
-    .header-icon-2{
-        }
+@media (max-width:345px){
+  
 }
 .header-icon-1{
     margin-top:-23px;
@@ -248,19 +245,66 @@ cursor: pointer;
 margin-top:-23px;
 
 }
-.header-item-container{
+.header-item-container ul li a{
+    position:relative;
+    float:center;
 
-    display: flex;
+
+    display: block;
     gap: 3vw;
-    flex-direction: row; /* Xếp các item theo hàng ngang */
+    flex-direction: row;
+
 
 
 }
-@media screen and (max-width:1025){
+#menu-bar{
+    display: none;
+}
+header label{
+    position: relative;
+    font-size:20px;
+    color:hsla(195.6, 92.59259259%, 21.17647059%, 1);
+    cursor:pointer;
+     display:none;
+    margin-left:30vw;
+}
+@media  (max-width:991px){
     .header-item-container{
-        left:400px;
+
     }
+    header label{
+
+        display:initial;}
+    header .navbar .label{
+        
+        position:absolute;
+        left:0;
+        right:0;
+        border-top:1px solid rgba(0,0,0.1);
+
+    }
+}
+
     
+
+@media  (max-width:800px){
+ header label{
+    display:flex;
+    position: relative;
+    font-size:20px;
+    color:hsla(195.6, 92.59259259%, 21.17647059%, 1);
+    cursor:pointer;
+    left:10vw;
+    top:0vw; }
+}
+
+.header-icon-2{
+   right:150px;
+   position:relative; 
+}
+.header-icon-1{
+ right:130px;
+ position:relative;
 }
 .menu-container {
     display:flex;
@@ -268,7 +312,9 @@ margin-top:-23px;
   left:40rem;
   bottom:2rem;
 }
-
+#menu-bar:checked ~.navbar{
+    display:initial;
+}
 .header-item-container {
     display: flex;
     position:relative;
@@ -358,7 +404,6 @@ a:hover{
     color:orange
 }
 .title h2 {
-font-family: BurfordExtrudeC, NeueHaasGroteskTextPro55Roman, Roboto, Helvetica Neue, Helvetica, Fira Sans, Droid Sans, sans-serif;
 line-height: 1;
 padding-top: .25em;
 font-family: "Londrina Solid", sans-serif;
@@ -579,16 +624,16 @@ box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .banner-right.show {
-right: 10px; /* Hiển thị trên màn hình */
-transform: translateY(-50%) skewX(0); /* Trở lại bình thường */
+right: 10px;
+transform: translateY(-50%) skewX(0); 
 }
 @media (max-width: 768px) {
     .banner-right-mob {
         position: fixed;
-        right: -100%; /* Ẩn hoàn toàn bên phải */
+        right: -100%; 
         size:5%;
         top: 60%;
-        transform: translateY(-50%) skewX(-10deg); /* Tạo hiệu ứng nghiêng như hình thang */
+        transform: translateY(-50%) skewX(-10deg); 
         width: 70vw;
         height:50vw;
         transition: right 1s cubic-bezier(0.25, 1.5, 0.5, 1), transform 1s cubic-bezier(0.25, 1.5, 0.5, 1);
@@ -673,7 +718,6 @@ font-family: "Londrina Solid", sans-serif;
 margin: 20px 0;
 }
 
-/* Card container */
 .card-listing {
 font-family: "Londrina Solid", sans-serif;
 display: flex;
@@ -790,7 +834,7 @@ height: auto;
 
 @media (max-width: 768px) {
 .body {
-    max-width: 200px; /* Giảm kích thước trên mobile */
+    max-width: 200px; 
 }
 }
 .clipped-box {
@@ -917,13 +961,12 @@ position: absolute;
 }
 
 @media (max-width: 480px) {
-    /* Khi màn hình nhỏ hơn 480px */
     .footer__container {
-        padding-inline: 3vw; /* Giảm padding thêm nữa */
+        padding-inline: 3vw; 
     }
 
     .footer__top {
-        padding: 3vw; /* Giảm padding thêm nữa */
+        padding: 3vw; 
     }
     .collab-logo-container {
         display: flex;
@@ -983,3 +1026,7 @@ position: absolute;
 #searchLocationSubmit:hover {
     font-family: "Londrina Solid", sans-serif;
     background-color: #d1501a;}
+    @media (min-width: 500px) and (max-width: 700px) {
+    }    .header-heading{
+        margin-top:5px;
+    }
