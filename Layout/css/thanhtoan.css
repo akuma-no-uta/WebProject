@@ -1,0 +1,21 @@
+.custom-input {
+    background-color: #fff6ee; /* Màu nền giống ảnh */
+    border: 1px solid orange;  /* Viền màu cam */
+    border-radius: 8px;        /* Bo góc */
+    padding: 5px;
+  }
+
+  .custom-input .form-control {
+    background-color: #fff6ee; 
+    border: none;              
+    box-shadow: none;          
+  }
+
+  .custom-input .input-group-text {
+    background-color: #fff6ee; /* Màu nền */
+    border: none;              
+  }
+
+  .col-lg-4 .p-5 img{
+    width: 100px;
+  }
