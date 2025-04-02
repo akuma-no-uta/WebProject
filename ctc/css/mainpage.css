@@ -563,7 +563,7 @@ background-color: #d1501a;
   .popup-box button:hover {
     background-color: #0056b3;
   }
-.row {
+/*.row {
 font-family: "Londrina Solid", sans-serif;
 display: -ms-flexbox;
 display: flex;
@@ -571,7 +571,7 @@ display: flex;
 flex-wrap: wrap;
 margin-right: -15px;
 margin-left: -15px;
-}
+}*/
 .banner {
 font-family: "Londrina Solid", sans-serif;
 background-color: #f3b53b;
@@ -599,7 +599,7 @@ clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 0% 100%);
     font-family: "Londrina Solid", sans-serif;
     background-color: #d1501a;
     }
-    .row {
+    /*.row {
     font-family: "Londrina Solid", sans-serif;
     display: -ms-flexbox;
     display: flex;
@@ -607,7 +607,7 @@ clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 0% 100%);
     flex-wrap: wrap;
     margin-right: -15px;
     margin-left: -15px;
-    }
+    }*/
 .banner-right {
 position: fixed;
 right: -100%; /* Ẩn hoàn toàn bên phải */
@@ -703,12 +703,12 @@ font-family: "Londrina Solid", sans-serif;
 background-color: black;
 color: white;
 }
-body {
+/*body {
 font-family: "Londrina Solid", sans-serif;
 background-color: #f4f4f4;
 margin: 0;
 padding: 0;
-}
+}*/ 
 
 h2 {
 text-align: center;
@@ -718,16 +718,16 @@ font-family: "Londrina Solid", sans-serif;
 margin: 20px 0;
 }
 
-.card-listing {
+/*.card-listing {
 font-family: "Londrina Solid", sans-serif;
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
 gap: 20px;
 padding: 20px;
-}
+}*/
 
-.card {
+/*.card {
 font-family: "Londri na Solid", sans-serif;
 width: 300px;
 background: #fff;
@@ -735,7 +735,7 @@ border-radius: 8px;
 overflow: hidden;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 transition: transform 0.3s ease-in-out;
-}
+}*/
 .image-thumbnail{
 object-fit: cover
 }
@@ -771,10 +771,10 @@ opacity: 1;
 transform: translateX(0); /* Trả về vị trí cũ */
 }
 
-.card:hover {
+/*.card:hover {
 font-family: "Londrina Solid", sans-serif;
 transform: translateY(-5px);
-}
+}*/
 
 .card__media {
 font-family: "Londrina Solid", sans-serif;
@@ -888,13 +888,13 @@ position: absolute;
 }
 
 /* Cấu trúc hàng .row */
-.row {
+/*.row {
     gap: 5vw; /* Giảm khoảng cách giữa các cột theo vw */
-    display: flex;
+ /*   display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-}
+} */
 
 /* Cột .col-3 */
 .col-3 {
