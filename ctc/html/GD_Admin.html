@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&family=Material+Symbols+Sharp&display=swap">
-    <link rel="stylesheet" href="../css/Admin.css" class="hr">
+    <link rel="stylesheet" href="../CSS/Admin.css" class="hr">
 </head>
 <body>
     <div class="container">
@@ -16,7 +16,7 @@
                 <div class="logo">
                     <h2>W<span class="danger">abage</span></h2>
                 </div>
-                <div class="close">
+                <div class="close" id="close_btn">
                     <span class="material-symbols-outlined">close</span>
                 </div>
             </div>
@@ -24,39 +24,27 @@
               <!--end top-->
             <div class="sidebar">
 
-                <a href="#">
-                    <span class="material-symbols-outlined"> grid_view</span>
-                    <h3>Bảng Quản Trị</h3>
-                </a>
-                <a href="#">
-                    <span class="material-symbols-outlined"> person_outline</span>
+                <a href="#" onclick="window.location.href='Nguoidung.html'">
+                    <span class="material-symbols-outlined"> account_circle</span>
                     <h3>Khách Hàng</h3>
                 </a>
+                
                 <a href="#">
-                    <span class="material-symbols-outlined"> insights</span>
-                    <h3>Biểu Đò</h3>
+                    <span class="material-symbols-outlined"> Person </span>
+                    <h3>Nhân Sự</h3>
                 </a>
+
                 <a href="#">
                     <span class="material-symbols-outlined"> mail_outline</span>
                     <h3>Hộp Thư</h3>
                     <span class="msg_count">10 </span>
                 </a>
+
                 <a href="#">
-                    <span class="material-symbols-outlined"> Person </span>
-                    <h3>Nhân Sự</h3>
+                    <span class="material-symbols-outlined"> Paid </span>
+                    <h3>Chi Tiêu</h3>
                 </a>
-                <a href="#">
-                    <span class="material-symbols-outlined"> event</span>
-                    <h3>Lịch</h3>
-                </a>
-                <a href="#">
-                    <span class="material-symbols-outlined">analytics</span>
-                    <h3>Phân Tích</h3>
-                </a>
-                <a href="#">
-                    <span class="material-symbols-outlined"> report </span>
-                    <h3>Báo Cáo</h3>
-                </a>
+               
                 <a href="#">
                     <span class="material-symbols-outlined">settings</span>
                     <h3>Cài Đặt</h3>
@@ -113,6 +101,7 @@
                     </div>
                     <small>Tháng 11</small>
                 </div>
+
                 <!--end khoan chi-->
 
                 <!--start Loi nhuan-->
@@ -188,6 +177,9 @@
                 </table>
             </div>
 
+            <div class="show">
+                <span>Hiện danh sách chi tiết</span>
+            </div>
         </main>
         <!--main section end-->
 
@@ -306,7 +298,7 @@
             </div>
             <div class="item add_products">
                 <div>
-                    <span class="material-symbols-outlined">add</span>
+                    <span class="material-symbols-outlined">Add</span>
                 </div>
             </div>
             <!--end Phan tich doanh thu-->
@@ -315,5 +307,7 @@
         </div>
         <!--right section end-->
     </div>
+
+    <script src="../JS/Admin.js"></script>
 </body>
 </html>
