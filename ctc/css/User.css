@@ -62,7 +62,7 @@ body{
     display: grid;
     width: 96%;
     gap:1.8rem;
-    grid-template-columns: 14rem auto 14rem;
+    grid-template-columns: 14rem auto;
     margin: 0 auto;
 }
 a{
@@ -93,6 +93,8 @@ small{
     height: 2.8rem;
     border-radius: 50%;
     overflow: hidden;
+    margin-left: -20px;
+
 }
 .text-muted{
     color:var(--clr-info-dark);
@@ -211,193 +213,105 @@ aside .sidebar a span.msg_count{
     border-radius: var(--border-radius-1);
 }
 
-/*Main*/
+/*top-bar*/
 
-main{
-    margin-top: 1.4rem;
-    width:auto
-}
-main input{
-    background-color: transparent;
-    border: 0;
-    outline: 0;
-    color:var(--clr-dark);
-}
-
-main .date{
-    display:inline-block;
-    background-color: var(--clr-white);
-    border-radius: var(--border-radius-1);
-    margin-top: 1rem;
-    padding:0.5rem 1.6rem;
-}
-
-main .insights{
-    display:grid;
-    grid-template-columns: repeat(3,1fr);
-    gap:1.6rem;
-}
-
-main .insights>div{
-    background-color: var(--clr-white);
-    padding: var(--card-padding);
-    border-radius: var(--card-border-radius);
-    margin-top: 1rem;
-    box-shadow: var(--box-shadow);
-    transition: all .3s ease;;
-}
-
-main .insights>div:hover{
-    box-shadow: none;
-}
-
-main .insights>div span{
-    background:coral;
-    padding:0.5rem;
-    border-radius: 50%;
-    color: var(--clr-white);
-    font-size: 2rem;
-}
-
-main .insights>div.expenses span{
-    background:var(--clr-danger) ;
-}
-
-main .insights>div.income span{
-    background:var(--clr-success) ;
-}
-
-main .insights>div .middle{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-main .insights>div .middle h1{
-    font-size: 1.6rem;
-}
-
-main h1{
-    color: var(--clr-dark)
-}
-
-main .insights h1{
-    color:var(--clr-dark);
-}
-
-main .insights h3{
-    color: var(--clr-dark);
-}
-
-main .insights p{
-    color:var(--clr-dark);
-}
-
-
-main .insights .progress{
-    position: relative;
-    height: 68px;
-    width:68px;
-    border-radius: 50px;
-}
-
-main .insights svg{
-    height: 150px;
-    height: 150px;
-    position: absolute;
-    top:0;
-}
-
-main .insights svg circle{
-    fill: none;
-    stroke:var(--clr-primary);
-    transform: rotate(270,80,80);
-    stroke-width: 5;
-}
-
-main .insights .sales svg circle{
-    stroke-dashoffset: 10;
-    stroke-dasharray: 150;
-}
-
-main .insights .expenses svg circle{
-    stroke-dashoffset: 0;
-    stroke-dasharray: 150;
-}
-
-main .insights .income svg circle{
-    stroke: var(--clr-success);
-}
-
-main .insights .progress .number{
-    color:var(--clr-dark);
-    position: absolute;
-    top: 5%;
-    left: 5%;
-    height: 100%;
+.user{
     width: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--clr-white);
+    z-index: 1000; 
+    padding: 1rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-
 }
 
-main .recent_order{
+.user {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
     margin-top: 2rem;
 }
 
-main .recent_order h2{
-    color:var(--clr-dark);
+/* Căn tiêu đề và ô tìm kiếm cùng hàng */
+.user_header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem; 
+    margin-right: 1rem;
 }
 
-main .recent_order table{
-    background-color: var(--clr-white);
-    width: 100%;
-    border-radius: var(--card-border-radius) ;
-    padding: var(--card-padding);
-    text-align: center;
-    box-shadow: var(--box-shadow);
-    transition: all .3s ease;
-    color:var(--clr-dark);
-}
-
-main .recent_order table:hover{
-    box-shadow: none;
-}
-
-main table tbody tr{
-    height:3.8rem;
-    border-bottom: 1px solid var(--clr-white);
-    color: var(--clr-dark-variant);
-}
-
-main table tbody td{
-    height:3.8rem;
-    border-bottom: 1px solid var(--clr-dark);
-}
-
-main table tbody tr:last-child{
-    border:none;
-}
-
-main .recent_order a{
-    text-align: center;
-    display: block;
-    margin: 1rem;
-}
-
-main .show{
-    margin-top: 1rem;
-    text-align: center;
-    cursor: pointer;
-    transition: all .3s ease in;
-}
-
-main .show :hover{
-    color: var(--clr-primary);
-    padding: 0.5rem 1rem;
+/* Định dạng ô tìm kiếm */
+.user_search {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--clr-info-light);
+    padding: 0.5rem;
     border-radius: var(--border-radius-1);
 }
+
+.user_search input {
+    border: none;
+    outline: none;
+    margin-left: 0.5rem;
+    font-size: 1rem;
+    width: 200px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: var(--clr-light);
+    font-weight: bold;
+}
+
+tbody tr:hover {
+    background: var(--clr-info-light);
+    cursor: pointer;
+}
+
+.user .user_header .user_cn {
+    background-color: var(--clr-white);
+    display: flex;
+    justify-content: space-between;
+    height: 1.6rem;
+    width: 4.2rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+}
+
+.user .user_header .user_cn span{
+    font-size: 1.2rem;
+    width: 50%;
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.user .user_header .user_cn span.active{
+    background-color: var(--clr-primary);
+    color:#fff;
+}
+
 
 /*right*/
 
@@ -411,7 +325,7 @@ main .show :hover{
 
 .right .top{
     display: flex;
-    justify-content: start;
+    justify-content: right;
     gap: 2rem;
 }
 
@@ -457,94 +371,6 @@ main .show :hover{
 .right .item h3{
     color: var(--clr-dark);
 }
-
-/*recent ud*/
-
-.right .recent_updates{
-    margin-top: 1.6rem ;
-}
-
-.right .recent_updates .updates{
-    background-color: var(--clr-white);
-    padding: var var(--card-padding);
-    border-radius: var(--card-border-radius);
-    box-shadow: var(--box-shadow);
-    transition:  all .3s ease;
-    
-}
-
-.right .recent_updates .updates:hover{
-    box-shadow: none;
-}
-
-.right .recent_updates .update{
-    display: grid;
-    grid-template-columns: 2.6rem auto;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-.right .recent_updates .update .profile-photo img {
-    margin-left: 10px;  
-    margin-right: 10px; 
-    padding: 5px;
-}
-
-/* phan tich doanh thu*/
-
-.right .sales_analytics{
-    margin-top:1rem;
-}
-.right .sales_analytics .item{
-    background-color: var(--clr-white);
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-    gap :1;
-    margin: 10px 0;
-    width: 100%;
-    margin-bottom: 0.8rem;
-    padding: 1.4rem var(--card-padding);
-    border-radius: var(--border-radius-3);
-    box-shadow: var(--box-shadow);
-}
-
-.right .sales_analytics .item:hover{
-    box-shadow: none;
-}
-
-.right .sales_analytics .item .icon{
-    background: coral;
-    padding: 0.6rem;
-    color: var(--clr-white);
-    border-radius: 50%;
-    height:  50px;
-    width: 50px;
-    line-height:  50px;
-    align-items: center;
-}
-
-.right .sales_analytics .item:nth-child(3) .icon{
-    background-color: var(--clr-success);
-}
-.right .sales_analytics .item:nth-child(4) .icon{
-    background-color: var(--clr-danger);
-}
-
-.add_products div{
-    display: flex;
-    height: 60px;
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    border: 2px  dashed var(--clr-primary);
-    color:var(--clr-primary);
-    margin-bottom: 40px;
-}
-
-
 
 
 a.active-link {
