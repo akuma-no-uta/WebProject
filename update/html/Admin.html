@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&family=Material+Symbols+Sharp&display=swap">
+    <link rel="stylesheet" href="../CSS/Admin.css" class="hr">
+</head>
+<body>
+    
+    <div class="container">
+        <!--aside start-->
+        <aside>
+            <!--start top-->
+            <div class="top">
+                <div class="logo">
+                    <a href="Admin.html"><h2>W<span class="danger">abage</span></h2></a>
+                </div>
+                <div class="close" id="close_btn">
+                    <span class="material-symbols-outlined">close</span>
+                </div>
+            </div>
+
+              <!--end top-->
+              <!--end top-->
+            <div class="sidebar">
+
+                <a href="tailieu.html" onclick="window.location.href='tailieu.html'">
+                    <span class="material-symbols-outlined"> account_circle</span>
+                    <h3>Tài liệu</h3>
+                </a>
+                
+                <a href="thongtin.html">
+                    <span class="material-symbols-outlined"> Person </span>
+                    <h3>Thông tin</h3>
+                </a>
+
+                <a href="hopthu.html">
+                    <span class="material-symbols-outlined"> mail_outline</span>
+                    <h3>Liên hệ</h3>
+                </a>
+
+                <a href="lichday.html">
+                    <span class="material-symbols-outlined"> Paid </span>
+                    <h3>Lịch dạy</h3>
+                </a>
+               
+                <a href="duan.html">
+                    <span class="material-symbols-outlined">trophy</span>
+                    <h3>Dự án</h3>
+                </a>
+                <a href="hoidap.html">
+                    <span class="material-symbols-outlined"> logout</span>
+                    <h3>Đăng Xuất</h3>
+                </a>
+        </div>
+        </aside>
+        <!--aside end-->
+
+        <!--main section start-->
+        <main>
+            <h1>Dash Board</h1>
+            <div class="date">
+                <input type="date">
+            </div>
+
+            <div class="insights">
+                <!--start doanh so ban hang-->
+                <div class="sales">
+                    <span class="material-symbols-outlined">trending_up</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Tổng Doanh Thu</h3>
+                            <h1>$30,000</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="40" cy="40" r="30"></circle>
+                            </svg>
+                            <div class="number">80%</div>
+                        </div>
+                    </div>
+                    <small>Tháng 11</small>
+                </div>
+                <!--end doanh so ban hang-->
+
+                <!--start Khoan chi-->
+                <div class="expenses">
+                    <span class="material-symbols-outlined">Local_mall</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Tổng Chi Tiêu</h3>
+                            <h1>$30,000</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="40" cy="40" r="30"></circle>
+                            </svg>
+                            <div class="number">80%</div>
+                        </div>
+                    </div>
+                    <small>Tháng 11</small>
+                </div>
+
+                <!--end khoan chi-->
+
+                <!--start Loi nhuan-->
+                <div class="income">
+                    <span class="material-symbols-outlined">attach_money</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Lợi Nhuận</h3>
+                            <h1>$30,000</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="40" cy="40" r="30"></circle>
+                            </svg>
+                            <div class="number">80%</div>
+                        </div>
+                    </div>
+                    <small>Tháng 11</small>
+                </div>
+                <!--end Loi nhuan-->
+
+
+            </div>
+
+            <!--Hoa don theo thu tu-->
+            <div class="recent_order">
+                <h1>Lịch đặt bàn</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tên khách hàng</th>
+                            <th>Mã đặt bàn</th>
+                            <th>Hình thức thanh toán</th>
+                            <th>Tổng hóa đơn</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>Khoa</td>
+                            <td>01234</td>
+                            <td>QR</td>
+                            <td class="warning">Gia</td>
+                            <td class="primary">Chi tiet</td>
+                        </tr>
+
+                        <tr>
+                            <td>Khoa</td>
+                            <td>01234</td>
+                            <td>QR</td>
+                            <td class="warning">Gia</td>
+                            <td class="primary">Chi tiet</td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Khoa</td>
+                            <td>01234</td>
+                            <td>QR</td>
+                            <td class="warning">Gia</td>
+                            <td class="primary">Chi tiet</td>
+                        </tr>
+
+                        <tr>
+                            <td>Khoa</td>
+                            <td>01234</td>
+                            <td>QR</td>
+                            <td class="warning">Gia</td>
+                            <td class="primary">Chi tiet</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="show">
+                <span>Hiện danh sách chi tiết</span>
+            </div>
+        </main>
+        <!--main section end-->
+
+        <!--right section start-->
+        <div class="right">
+            <div class="top">
+
+                <button id="menu_bar">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+
+                <div class="theme-toggler">
+                    <span class="material-symbols-outlined active">light_mode</span>
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </div>
+
+                <div class="profile">
+                    <div class="info">
+                        <p><b>Khoa</b></p>
+                        <p>Admin</p>
+                        <small class="text-muted"></small>
+                    </div>
+                     <div class="profile-photo">
+                        <img src="../img/antony_admin.jpg" alt="">
+                     </div>
+                </div>
+
+            </div>
+            <!--end top-->
+
+            <!--start cap nhat-->
+            <div class="recent_updates">
+                <h2>Cập nhật gần đây</h2>
+                <div class="updates">
+                <div class="update">
+                    <div class="profile-photo">
+                        <img src="../img/kylan2.jpg" alt="">
+                    </div>
+                    <div class="message">
+                        <p><b>Mr Khoa</b> đã trao <b>Kylian Haalandowski</b> giải thưởng quả bóng cười</p>
+                    </div>
+                </div>
+
+                <div class="update">
+                    <div class="profile-photo">
+                        <img src="../img/lionel3.jpg" alt="">
+                    </div>
+                    <div class="message">
+                        <p><b>Mr Khoa</b> đã trao <b>Lionel Ronaldo</b> WC với 2 bồn rửa mặt</p>
+                    </div>
+                </div>
+
+                <div class="update">
+                    <div class="profile-photo">
+                        <img src="../img/ánhicula.jpg" alt="">
+                    </div>
+                    <div class="message">
+                        <p><b>Mr Khoa</b> và <b>Anh Sicula</b> rửa mặt với chai nước 10k $ lúc 6h30</p>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+
+            <!--end cap nhat-->
+
+            <!--Start Phan tich doanh thu-->
+            <div class="sales_analytics">
+                <h2>Đánh giá lợi nhuận</h2>
+
+
+                <div class="item online">
+                    <div class="icon">
+                        <span class="material-symbols-outlined" > shopping_cart</span>
+                    </div>
+                    <div class="right_text">
+                        <div class="info">
+                            <h3>Đặt hàng online</h3>
+                            <small class="text-muted">2 tieng</small>
+                        </div>
+                        <h5 class="danger">-17%</h5>
+                        <h3>3890</h3>
+                    </div>
+                </div>
+
+                <div class="item online">
+                    <div class="icon">
+                        <span class="material-symbols-outlined" > shopping_cart</span>
+                    </div>
+                    <div class="right_text">
+                        <div class="info">
+                            <h3>Đặt hàng online</h3>
+                            <small class="text-muted">2 tieng</small>
+                        </div>
+                        <h5 class="danger">-17%</h5>
+                        <h3>3890</h3>
+                    </div>
+                </div>
+
+                <div class="item online">
+                    <div class="icon">
+                        <span class="material-symbols-outlined" > shopping_cart</span>
+                    </div>
+                    <div class="right_text">
+                        <div class="info">
+                            <h3>Đặt hàng online</h3>
+                            <small class="text-muted">2 tieng</small>
+                        </div>
+                        <h5 class="danger">-17%</h5>
+                        <h3>3890</h3>
+                    </div>
+                </div>
+
+
+                
+            </div>
+            <div class="item add_products">
+                <div>
+                    <span class="material-symbols-outlined">Add</span>
+                </div>
+            </div>
+            <!--end Phan tich doanh thu-->
+
+
+        </div>
+        <!--right section end-->
+    </div>
+
+    <script src="../JS/Admin.js"></script>
+</body>
+</html>
