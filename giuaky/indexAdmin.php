@@ -1,5 +1,7 @@
 <?php
 include("phpFile/headerAdmin.php");
+include("adminDAO\pdo.php");
+
 
 if (isset($_GET['act'])) {
     $act = $_GET['act'];

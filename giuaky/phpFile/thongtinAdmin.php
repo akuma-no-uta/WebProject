@@ -141,21 +141,20 @@
 
         
         <div class="hero-buttons">
-            <button class="btn btn-primary">Hire me</button>
             <button class="btn btn-dark-outlined">
-                <a href="./assets/my resume/my resume.pdf" download>Download CV</a>
+                <a href="../img/screen-shot-2023-02-28-at-00.01.51.png" download>Download CV</a>
             </button>
         </div>
     </div>
 
-    <div class="image">
-        <img src="../img/your-image.jpg" alt="Sudharsan-portfolio">
+    <div class="image" >
+        <img src="../img/vaclavsnasel.jpg" alt="Sudharsan-portfolio">
     </div>
 </section>
 
 <section class="about-section" id="about">
-    <div class="image">
-        <img src="layout\PicAndVid\img\-xIWRT1N_400x400.jpg" alt="Sudharsan-portfolio">
+    <div class="image" >
+        <img src="../img/1516228133024.jpg" alt="Sudharsan-portfolio" style="width: 350px; ">
     </div>
 
     <div class="content">

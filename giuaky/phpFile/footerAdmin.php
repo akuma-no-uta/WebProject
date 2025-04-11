@@ -1,7 +1,6 @@
 </div>
             <div class="item add_products">
                 <div>
-                    <span class="material-symbols-outlined">Add</span>
                 </div>
                 
             </div>

@@ -516,3 +516,42 @@ tbody tr:hover {
         left: 1rem;
     }
 }
+.schedule-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px;
+    table-layout: fixed;
+    text-align: center;
+}
+
+.schedule-table th, .schedule-table td {
+    padding: 12px;
+    vertical-align: top;
+    background: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+}
+
+.schedule-table th {
+    background-color: #007bff;
+    color:white;
+    font-weight: 600;
+}
+
+.day-cell {
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+}
+
+.schedule-table td {
+    width: 14%;
+}

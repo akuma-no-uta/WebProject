@@ -52,55 +52,33 @@
     }
     main .insights{
     display:grid;
-    grid-template-columns: repeat(3,1fr);
-    gap:1.6rem;
+    grid-template-columns: repeat(3,1fr); 
 }
 </style>
+<?php
+require_once 'adminDAO//pdo.php'; // đổi lại đường dẫn nếu cần
+
+$hoanThanh = pdo_query_value("SELECT COUNT(*) FROM duan WHERE trangthai = 'Đã hoàn thành'");
+$chuaHoanThanh = pdo_query_value("SELECT COUNT(*) FROM duan WHERE trangthai = 'Chưa hoàn thành'");
+$tongDuAn = pdo_query_value("SELECT COUNT(*) FROM duan");
+$duAnList = pdo_query("SELECT Ten, trangthai FROM duan");
+?>
 <div class="user">
 
 <div class="slider-wrapper">
-    <div class="slider-container" id="slider">
-      <div class="slide-item">
-        <img src="https://educrm.vn/uploads/phan-mem-quan-ly-3.png" alt="Dự án 1">
-        <div class="project-name">Hệ thống Quản lý Sinh viên</div>
-        <p>Dự án cần thêm nhân sự</p>
-        <a href="">Chi tiết dự án</a>
-      </div>
-      <div class="slide-item">
-        <img src="https://educrm.vn/uploads/phan-mem-quan-ly.jpg" alt="Dự án 2">
-        <div class="project-name">Ứng dụng Chat nội bộ</div>
-        <p>Dự án cần thêm nhân sự</p>
-        <a href="">Chi tiết dự án</a>
-      </div>
-      <div class="slide-item">
-        <img src="https://websitehoctructuyen.com/wp-content/uploads/2020/10/phan-mem-quan-ly-hoc-sinh.jpg" alt="Dự án 3">
-        <div class="project-name">Trang web Tuyển dụng</div>
-        <p>Dự án cần thêm nhân sự</p>
-        <a href="">Chi tiết dự án</a>
-      </div>
-      <div class="slide-item">
-        <img src="https://littlevoices.littlelives.com/hubfs/su-dung-phan-mem-quan-ly-hoc-sinh.jpeg" alt="Dự án 4">
-        <div class="project-name">Ứng dụng nhắn tin</div>
-        <p>Dự án cần thêm nhân sự</p>
-        <a href="">Chi tiết dự án</a>
-      </div>
-      <div class="slide-item">
-        <img src="https://toantuoitho.vn/wp-content/uploads/2021/05/phan-mem-quan-ly-hoc-sinh.png" alt="Dự án 5">
-        <div class="project-name">App kiểm soát nông trại</div>
-        <p>Dự án cần thêm nhân sự</p>
-        <a href="">Chi tiết dự án</a>
-      </div>
-      <div class="slide-item">
-        <img src="https://toantuoitho.vn/wp-content/uploads/2021/05/quan-ly-hoc-sinh.png" alt="Dự án 6">
-        <div class="project-name">Người máy hỗ trợ người khuyết tật</div>
-        <p>Dự án cần thêm nhân sự</p>
-        <a href="">Chi tiết dự án</a>
-      </div>
+<div class="slider-container" id="slider">
+<?php foreach ($duAnList as $duAn): ?>
+    <div class="slide-item">
+      <img src="https://educrm.vn/uploads/phan-mem-quan-ly-3.png" alt="<?= $duAn['Ten'] ?>">
+      <div class="project-name"><?= $duAn['Ten'] ?></div>
+      <p><?= $duAn['trangthai'] ?></p>
     </div>
-    
-  </div>
-  <main>
-    <h1>Dash Board</h1>
+  <?php endforeach; ?>
+</div>
+
+    </div>
+    <main>
+    <h1>TRẠNG THÁI</h1>
 
     <div class="insights">
         <!--start doanh so ban hang-->
@@ -108,15 +86,11 @@
           <span class="material-symbols-outlined">folder_off</span>
             <div class="middle">
                 <div class="left">
-                    <h3>Dự án chưa làm</h3>
-                    <h1>1</h1>
+                <h3>Dự án Chưa Hoàn Thành</h3>
+<h1><?= $chuaHoanThanh ?></h1>
+
                 </div>
-                <div class="progress">
-                    <svg>
-                        <circle cx="40" cy="40" r="30"></circle>
-                    </svg>
-                    <div class="number">80%</div>
-                </div>
+               
             </div>
             <small>Tháng 11</small>
         </div>
@@ -127,15 +101,10 @@
           <span class="material-symbols-outlined">folder_eye</span>
             <div class="middle">
                 <div class="left">
-                    <h3>Dự án đang làm</h3>
-                    <h1>2</h1>
+                <h3>Dự Án Hoàn Thành</h3>
+                <h1><?= $hoanThanh ?></h1>
                 </div>
-                <div class="progress">
-                    <svg>
-                        <circle cx="40" cy="40" r="30"></circle>
-                    </svg>
-                    <div class="number">50%</div>
-                </div>
+               
             </div>
             <small>Tháng 11</small>
         </div>
@@ -147,15 +116,11 @@
           <span class="material-symbols-outlined">folder_check_2</span>
             <div class="middle">
                 <div class="left">
-                    <h3>Dự án đã làm  </h3>
-                    <h1>10</h1>
+                <h3>Tổng Dự Án </h3>
+<h1><?= $tongDuAn ?></h1>
+
                 </div>
-                <div class="progress">
-                    <svg>
-                        <circle cx="40" cy="40" r="30"></circle>
-                    </svg>
-                    <div class="number">100%</div>
-                </div>
+               
             </div>
             <small>Tháng 11</small>
         </div>
@@ -164,8 +129,23 @@
 
     </div>
 </main>
+  </div>
+ 
 </div>    
 </div>
+<script>
+document.getElementById('weekSelect').addEventListener('change', function() {
+    const selectedWeek = this.value.replace('week', '');
+
+    fetch(`get_schedule.php?week=${selectedWeek}`)
+        .then(response => response.text())
+        .then(data => {
+            const tbody = document.querySelector('table tbody');
+            tbody.innerHTML = data;
+        })
+        .catch(error => console.error('Lỗi khi tải thời khóa biểu:', error));
+});
+</script>
 
     <script src="../JS/Admin.js"></script>
     <script>

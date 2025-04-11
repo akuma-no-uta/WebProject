@@ -34,72 +34,70 @@
 
              
             <div style="margin: 20px 0;">
-    <!-- Select tuần -->
-    <label for="weekSelect"><strong>Chọn tuần trong tháng:</strong></label>
-    <select id="weekSelect" name="weekSelect">
-        <option value="week1">Tuần 1</option>
-        <option value="week2">Tuần 2</option>
-        <option value="week3">Tuần 3</option>
-        <option value="week4">Tuần 4</option>
+            <?php
+require_once 'adminDAO/pdo.php';
+
+$tuan = isset($_GET['tuan']) ? (int)$_GET['tuan'] : 1;
+
+$sql = "
+    SELECT tkb.*, mh.ten_monhoc, l.ten_lop 
+    FROM thoikhoabieu tkb
+    JOIN monhoc mh ON tkb.monhoc_id = mh.id
+    JOIN lop l ON tkb.lop_id = l.id
+    WHERE tkb.tuan_id = ?
+ORDER BY FIELD(tkb.thu, 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy', 'Chủ Nhật')
+";
+$data = pdo_query($sql, $tuan);
+
+// Nhóm theo thứ
+$schedule = [];
+foreach ($data as $row) {
+    $thu = $row['thu'];
+    if (!isset($schedule[$thu])) $schedule[$thu] = [];
+    $schedule[$thu][] = $row;
+}
+
+// Danh sách thứ cố định để đảm bảo thứ nào cũng có cột
+$ds_thu = ['Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy', 'Chủ Nhật'];
+?>
+
+<form method="get">
+    <label>Chọn tuần:</label>
+    <select name="tuan" onchange="this.form.submit()">
+        <?php for ($i = 1; $i <= 5; $i++): ?>
+            <option value="<?= $i ?>" <?= ($tuan == $i ? 'selected' : '') ?>>Tuần <?= $i ?></option>
+        <?php endfor; ?>
     </select>
-</div>
+</form>
 
-<h2>🗓️ Thời khóa biểu tuần này</h2>
-<table border="1" cellpadding="10" cellspacing="0">
-    <thead>
-        <tr>
-            <th>Thứ</th>
-            <th>Thời gian</th>
-            <th>Môn học</th>
-            <th>Phòng</th>
-            <th>Lớp</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td rowspan="2">Thứ 2</td>
-            <td>08:00 - 10:00</td>
-            <td>Cơ sở dữ liệu</td>
-            <td>PM101</td>
-            <td>K19CNTT</td>
-        </tr>
-        <tr>
-            <td>13:00 - 15:00</td>
-            <td>Toán rời rạc</td>
-            <td>PM102</td>
-            <td>K19CNTT</td>
-        </tr>
-        <tr>
-            <td>Thứ 3</td>
-            <td>13:30 - 15:30</td>
-            <td>Lập trình Web</td>
-            <td>P204</td>
-            <td>K20CNTT</td>
-        </tr>
-        <tr>
-            <td>Thứ 5</td>
-            <td>08:00 - 10:00</td>
-            <td>Học máy</td>
-            <td>PM305</td>
-            <td>K21AI</td>
-        </tr>
-    </tbody>
-</table>
-
-<!-- PHẦN TIN NHẮN MỚI -->
-<section style="margin-top: 40px;">
-    <h3>📬 Tin nhắn mới nhận</h3>
-    <div style="max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
-        <div style="margin-bottom: 15px;">
-            <strong>Sinh viên A:</strong> <br> Em xin nghỉ buổi học thứ 5 tuần này ạ.
-        </div>
-        <div style="margin-bottom: 15px;">
-            <strong>Sinh viên B:</strong> <br> Em đã nộp bài tập vào LMS, thầy kiểm tra giúp em nhé.
-        </div>
-        <div>
-            <strong>Trợ lý Khoa:</strong> <br> Thầy cập nhật điểm danh môn Web giúp em nhé.
-        </div>
+<section class="schedule-section">
+    <div class="schedule-container">
+        <h2>Thời khóa biểu - Tuần <?= $tuan ?></h2>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <?php foreach ($ds_thu as $t): ?>
+                        <th><?= $t ?></th>
+                    <?php endforeach; ?>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <?php foreach ($ds_thu as $t): ?>
+                        <td>
+                            <?php if (isset($schedule[$t])): ?>
+                                <?php foreach ($schedule[$t] as $item): ?>
+                                    <div class="day-cell">
+                                        <span><?= $item['ten_monhoc'] ?> <?= $item['ten_lop'] ?></span><br>
+                                        <span><?= date('H:i', strtotime($item['gio_batdau'])) ?> - <?= date('H:i', strtotime($item['gio_ketthuc'])) ?></span><br>
+                                        <span>Phòng: <?= $item['phong'] ?></span>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </td>
+                    <?php endforeach; ?>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </section>
-
-            </main>
