@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&family=Material+Symbols+Sharp&display=swap">
+    <link rel="stylesheet" href="GV.css" class="hr">
+</head>
+<body>
+    <div class="container">
+        <!--aside start-->
+        <aside>
+            <!--start top-->
+            <div class="top">
+                <div class="logo">
+                    <h2>T<span class="red">D</span>T</h2>
+                </div>
+                <div class="close" id="close_btn">
+                    <span class="material-symbols-outlined">close</span>
+                </div>
+            </div>
+
+              <!--end top-->
+            <div class="sidebar">
+
+                <a href="#" onclick="window.location.href='Nguoidung.html'">
+                    <span class="material-symbols-outlined"> account_circle</span>
+                    <h3>Khách Hàng</h3>
+                </a>
+                
+                <a href="#" class ="active">
+                    <span class="material-symbols-outlined"> Person </span>
+                    <h3>thong tin</h3>
+                </a>
+
+                <a href="#">
+                    <span class="material-symbols-outlined"> mail_outline</span>
+                    <h3>Hộp Thư</h3>
+                    <span class="msg_count">10 </span>
+                </a>
+
+                <a href="#">
+                    <span class="material-symbols-outlined"> Paid </span>
+                    <h3>Chi Tiêu</h3>
+                </a>
+               
+                <a href="#">
+                    <span class="material-symbols-outlined">settings</span>
+                    <h3>Cài Đặt</h3>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-outlined"> logout</span>
+                    <h3>Đăng Xuất</h3>
+                </a>
+        </div>
+        </aside>
+        <!--aside end-->
+
+
+        <!--right section start-->
+        <div class="right">
+            <div class="top">
+
+                <button id="menu_bar">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+
+                <div class="theme-toggler">
+                    <span class="material-symbols-outlined active">light_mode</span>
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </div>
+
+                <div class="profile">
+                    <div class="info">
+                        <p><b>Khoa</b></p>
+                        <p>Giang vien</p>
+                        <small class="text-muted"></small>
+                    </div>
+                     <div class="profile-photo">
+                        <img src="../img/antony_admin.jpg" alt="">
+                     </div>
+                </div>
+
+            </div>
+            <!--end top-->
+            <div class="ttgv">
+                <div class="ttgv_head">
+                    <div class="tt_title"><h1>TTGV</h1></div>
+                    <div class="close" id="close_ttgv">
+                        <span class="material-symbols-outlined">close</span>
+                    </div>
+                </div>
+                
+                <p><strong>Họ và tên:</strong> Nguyen Dang Khoa</p>
+                <p><strong>CCCD:</strong> 1245827</p>
+                <p><strong>Ngày tháng năm sinh:</strong> 29/2/2005</p>
+                <p><strong>Giới tính:</strong> Nam</p>
+                <p><strong>Địa chỉ:</strong> TPHCM</p>
+                <p><strong>SĐT:</strong> 9187729281</p>
+                <p><strong>Chức vụ:</strong> Giảng viên</p>
+                <button class="thaydoitt">Thay doi</button>
+                
+            </div>
+        </div>
+        <!--right section end-->
+        
+    </div>
+
+    <script src="../JS/Admin.js"></script>
+</body>
+</html>
