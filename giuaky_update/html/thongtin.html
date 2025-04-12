@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thong tin</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&family=Material+Symbols+Sharp&display=swap">
+    <link rel="stylesheet" href="../css/User.css">
+    <link rel="stylesheet" href="../css/Admin.css">
+
+</head>
+<style>
+.hero-section, .about-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 5%;
+    flex-wrap: wrap;
+    gap: 50px;
+    background-color: #f9f9f9;
+}
+
+/* === Responsive Columns === */
+.hero-section .content,
+.about-section .content {
+    flex: 1 1 50%;
+    min-width: 300px;
+}
+
+.hero-section .image,
+.about-section .image {
+    flex: 1 1 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-section .image img,
+.about-section .image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+}
+
+/* === Text Style === */
+.hero-section h4,
+.about-section h4 {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.hero-section h2,
+.about-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero-section span,
+.about-section span {
+    color: #007bff;
+}
+
+.hero-section p,
+.about-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* === Buttons === */
+.hero-buttons,
+.about-section .btn {
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-dark-outlined {
+    background-color: transparent;
+    color: #007bff;
+    border: 2px solid #007bff;
+    margin-left: 10px;
+}
+
+.btn-dark-outlined:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-dark-outlined a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.social-icons {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    margin-top: 20px;
+    padding-left: 0;
+}
+
+.social-icons a {
+    font-size: 1.4rem;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #007bff;
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+    .hero-section, .about-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .btn-dark-outlined {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+</style>
+<body>
+
+    <div class="container">
+        <aside>
+            <!--start top-->
+            <div class="top">
+                <div class="logo">
+                    <a href="Admin.html"><img src="https://tdtu.edu.vn/sites/www/files/logo-dh_0.png" alt="Trang chủ" fetchpriority="high"></a>
+                </div>
+                <div class="close" id="close_btn">
+                    <span class="material-symbols-outlined">close</span>
+                </div>
+            </div>
+
+              <!--end top-->
+            <div class="sidebar">
+
+                <a href="tailieu.html" onclick="window.location.href='tailieu.html'">
+                    <span class="material-symbols-outlined"> account_circle</span>
+                    <h3>Tài liệu</h3>
+                </a>
+                
+                <a href="thongtin.html" class="active">
+                    <span class="material-symbols-outlined" > Person </span>
+                    <h3>Thông tin</h3>
+                </a>
+
+                <a href="hopthu.html">
+                    <span class="material-symbols-outlined"> mail_outline</span>
+                    <h3>Liên hệ</h3>
+                </a>
+
+                <a href="lichday.html">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                    <h3>Lịch dạy</h3>
+                </a>
+               
+                <a href="duan.html">
+                    <span class="material-symbols-outlined">trophy</span>
+                    <h3>Dự án</h3>
+                </a>
+                <a href="hoidap.html">
+                    <span class="material-symbols-outlined"> logout</span>
+                    <h3>Đăng Xuất</h3>
+                </a>
+        </div>
+        </aside>
+
+        <div class="top-bar">
+            <div class="right">
+                <div class="top">
+                    <button id="menu_bar">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+
+                    <div class="theme-toggler">
+                        <span class="material-symbols-outlined active">light_mode</span>
+                        <span class="material-symbols-outlined">dark_mode</span>
+                    </div>
+
+                    <div class="profile">
+                        <div class="info">
+                            <p><b>Khoa</b></p>
+                            <p>Admin</p>
+                            <small class="text-muted"></small>
+                        </div>
+                        <div class="profile-photo">
+                            <img src="../img/antony_admin.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="user">
+
+                <section class="hero-section" id="home">
+                    <div class="content">
+                        <h4 title="Hello, How are you?">Hi, There!</h4>
+                        <h2>I'm <span>Sudharsan</span></h2>
+                        <p>I am a Web Developer skilled in Frontend Technologies, such as HTML,
+                            CSS, and JavaScript. I'm passionate about blending design aesthetics with functionality.</p>
+                
+                        
+                        <div class="hero-buttons">
+                            <button class="btn btn-dark-outlined">
+                                <a href="./assets/my resume/my resume.pdf" download>Download CV</a>
+                            </button>
+                        </div>
+                    </div>
+                
+                    <div class="image">
+                        <img src="../img/your-image.jpg" alt="Sudharsan-portfolio">
+                    </div>
+                </section>
+        
+                <section class="about-section" id="about">
+                    <div class="image">
+                        <img src="layout\PicAndVid\img\-xIWRT1N_400x400.jpg" alt="Sudharsan-portfolio">
+                    </div>
+                
+                    <div class="content">
+                        <h4>About Me</h4>
+                        <h2>I am UI Designer & <br><span>Web Developer</span></h2>
+                        <p>Hello there! I'm Sudharsan, a first-year student at Anna University,
+                            majoring in Computer Science. I'm passionate about leveraging technology to solve real-world problems and
+                            building projects that matter.</p>
+                
+                        <button class="btn btn-primary" >
+                            <a href="https://github.com/danielace1" target="_blank" style="">Know More</a>
+                        </button>
+                    </div>
+                </section>
+        
+            </div>
+            
+        </div>
+
+        
+    </div>
+    <script src="../JS/Admin.js"></script>
+</body>
+</html>

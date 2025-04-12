@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Tài Liệu</title>
+    <link rel="stylesheet" href="../css/add_user.css">
+</head>
+<body>
+
+    <h1 style="margin-left:620px">Đăng Tài Liệu</h1>
+    <form action="#" method="post" enctype="multipart/form-data">
+        <label for="title">Tên Tài Liệu:</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="author">Người Viết:</label>
+        <input type="text" id="author" name="author" required>
+
+        <label for="date">Ngày Đăng:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="description">Mô Tả:</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+
+        <label for="file">Chọn File:</label>
+        <input type="file" id="file" name="file" required>
+
+        <button type="submit">Đăng Tài Liệu</button>
+    </form>
+
+</body>
+</html>
