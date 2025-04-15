@@ -1,33 +1,145 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thêm Người Dùng</title>
-    <link rel="stylesheet" href="../css/add_user.css">
-   
+    <title>Khách Hàng</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&family=Material+Symbols+Sharp&display=swap">
+    <link rel="stylesheet" href="../CSS/add_user.css">
 </head>
+
 <body>
 
-    <h2>Thêm Người Dùng</h2>
-    <form action="#" method="post">
-        <label for="id">ID:</label>
-        <input type="text" id="id" name="id" required>
+    <div class="container">
+        <!--aside start-->
+        <aside>
+            <!--start top-->
+            <div class="top">
+                <div class="logo">
+                    <h2>W<span class="danger">abage</span></h2>
+                </div>
+                <div class="close" id="close_btn">
+                    <span class="material-symbols-outlined">close</span>
+                </div>
+            </div>
+    
+            <!--end top-->
+            <div class="sidebar">
+                <a href="#" class="active" onclick="window.location.href='Nguoidung.html'">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <h3>Khách Hàng</h3>
+                </a>
+                
+                <a href="#">
+                    <span class="material-symbols-outlined">Person</span>
+                    <h3>Nhân Sự</h3>
+                </a>
 
-        <label for="name">Tên:</label>
-        <input type="text" id="name" name="name" required>
+                <a href="#">
+                    <span class="material-symbols-outlined">mail_outline</span>
+                    <h3>Hộp Thư</h3>
+                    <span class="msg_count">10 </span>
+                </a>
 
-        <label for="year">Năm Sinh:</label>
-        <input type="number" id="year" name="year" required>
+                <a href="#">
+                    <span class="material-symbols-outlined">Paid</span>
+                    <h3>Chi Tiêu</h3>
+                </a>
+               
+                <a href="#">
+                    <span class="material-symbols-outlined">settings</span>
+                    <h3>Cài Đặt</h3>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-outlined">logout</span>
+                    <h3>Đăng Xuất</h3>
+                </a>
+            </div>
+        </aside>
+        <!--aside end-->
 
-        <label for="phone">Số Điện Thoại:</label>
-        <input type="tel" id="phone" name="phone" required>
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="right">
+                <div class="top">
+                    <button id="menu_bar">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
 
-        <label for="address">Địa Chỉ:</label>
-        <textarea id="address" name="address" rows="4" required></textarea>
+                    <div class="theme-toggler">
+                        <span class="material-symbols-outlined active">light_mode</span>
+                        <span class="material-symbols-outlined">dark_mode</span>
+                    </div>
 
-        <button type="submit">Thêm Người Dùng</button>
-    </form>
+                    <div class="profile">
+                        <div class="info">
+                            <p><b>Khoa</b></p>
+                            <p>Admin</p>
+                            <small class="text-muted"></small>
+                        </div>
+                        <div class="profile-photo">
+                            <img src="../img/antony_admin.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add_user_main">
+                <!--add_user start-->
+                <div class="add_user">
+                    <h1>Them KH</h1>
+                    <div class="ID">
+                        <h3>ID:</h3>
+                        <input type="text" placeholder="ID" id="ID" required>
+                    </div>
+    
+                    <div class="ten">
+                        <h3>Ten</h3>
+                        <input type="text" placeholder="Tên" id="name" required>
+                    </div>
+    
+                    <div class="nam_sinh">
+                        <h3>Nam</h3>
+                        <input type="date" placeholder="Nam sinh" id="nam" required>
+                    </div>
+    
+                    <div class="SDT">
+                        <h3>SDT</h3>
+                        <input type="number" placeholder="SDT" id="sdt" required>
+                    </div>
+    
+    
+                    <div class="dia_chi">
+                        <h3>Dia Chi</h3>
+                        <input type="text" placeholder="Dia chi" id="diachi" required>
+                    </div>
+    
+                   <button class="xacNhan"> Xac nhan </button>
+    
+                 </div>
+                <!--adduser end-->
 
+                <!--pic start-->
+                 <div class="pf_pic_set">
+                    <div class="pic">
+                        <span class="material-symbols-outlined">Face</span>
+                    </div>
+    
+                    <div class="edit">
+                        edit
+                    </div>
+    
+    
+                    <div class="xacnhanpic">
+                        Xac Nhan
+                    </div>
+    
+    
+                 </div>   
+                <!--pic end-->
+            </div>
+
+        
+    </div>
+    <script src="../JS/Admin.js"></script>
 </body>
 </html>

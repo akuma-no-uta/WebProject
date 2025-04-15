@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khách Hàng</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&family=Material+Symbols+Sharp&display=swap">
-    <link rel="stylesheet" href="../css/User.css">
-    <link rel="stylesheet" href="../css/Admin.css">
-
+    <link rel="stylesheet" href="../CSS/User.css">
 </head>
 
 <body>
 
     <div class="container">
+        <!--aside start-->
         <aside>
-            <a href ="Admin.html">
+            <!--start top-->
             <div class="top">
                 <div class="logo">
                     <h2>W<span class="danger">abage</span></h2>
@@ -23,21 +22,22 @@
                     <span class="material-symbols-outlined">close</span>
                 </div>
             </div>
-            </a>
+    
+            <!--end top-->
             <div class="sidebar">
-                <a href="Nguoidung.html" class="active">
+                <a href="#" class="active" onclick="window.location.href='GD_Admin.html'"> 
                     <span class="material-symbols-outlined">account_circle</span>
                     <h3>Khách Hàng</h3>
                 </a>
                 
-                <a href="nhansu.html">
+                <a href="#">
                     <span class="material-symbols-outlined">Person</span>
                     <h3>Nhân Sự</h3>
                 </a>
 
-                <a href="dat_ban.html">
+                <a href="#">
                     <span class="material-symbols-outlined">mail_outline</span>
-                    <h3>Đặt bàn</h3>
+                    <h3>Hộp Thư</h3>
                     <span class="msg_count">10 </span>
                 </a>
 
@@ -56,7 +56,9 @@
                 </a>
             </div>
         </aside>
+        <!--aside end-->
 
+        <!-- Top Bar -->
         <div class="top-bar">
             <div class="right">
                 <div class="top">
@@ -83,6 +85,7 @@
             </div>
 
             <div class="user">
+                <!-- Tiêu đề và ô tìm kiếm -->
                 <div class="user_header">
                     <span>Danh sách khách hàng</span>
                     <div class="user_search">
@@ -95,12 +98,13 @@
                         <span class="material-symbols-outlined">add</span>
                     </a>
                         <span class="material-symbols-outlined">remove</span>
-                        <a href="remove_user.html">
+                        <a href="GD_Admin.html">
                         <span class="material-symbols-outlined">close</span>
                     </a>
                     </div>
                 </div>
             
+                <!-- Bảng khách hàng -->
                 <table>
                     <thead>
                         <tr>
@@ -109,8 +113,7 @@
                             <th>Year</th>
                             <th>Phone Number</th>
                             <th>Address</th>
-                            <th>Email</th>
-
+                         
                         </tr>
                     </thead>
                     <tbody>
@@ -163,6 +166,7 @@
             </div>
             
         </div>
+          <!-- Top Bar End -->
 
         
     </div>
