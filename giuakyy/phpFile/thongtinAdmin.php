@@ -1,3 +1,39 @@
+
+<?php
+ob_start();
+require_once 'adminDAO/pdo.php';
+
+$data = pdo_query_one("SELECT * FROM thongtin WHERE id = 1");
+$is_editing = isset($_GET['edit']) && $_GET['edit'] == 1;
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $sql = "UPDATE thongtin SET 
+        hero_title = ?, 
+        hero_subtitle = ?, 
+        hero_description = ?, 
+        hero_image_url = ?, 
+        about_title = ?, 
+        about_subtitle = ?, 
+        about_description = ?, 
+        about_image_url = ?
+        WHERE id = 1";
+
+    pdo_execute($sql,
+        $_POST['hero_title'],
+        $_POST['hero_subtitle'],
+        $_POST['hero_description'],
+        $_POST['hero_image_url'],
+        $_POST['about_title'],
+        $_POST['about_subtitle'],
+        $_POST['about_description'],
+        $_POST['about_image_url']
+    );
+
+    header("Location: indexAdmin.php?act=thongtinAdmin");
+    exit;
+}
+ob_end_flush();
+?>
 <style>
 /* Container chính của form */
 .edit-form {
@@ -145,41 +181,6 @@ form > a:hover {
     font-size: 22px;
 }
 </style>
-<?php
-require_once 'adminDAO/pdo.php';
-
-$data = pdo_query_one("SELECT * FROM thongtin WHERE id = 1");
-$is_editing = isset($_GET['edit']) && $_GET['edit'] == 1;
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Cập nhật thông tin
-    $sql = "UPDATE thongtin SET 
-        hero_title = ?, 
-        hero_subtitle = ?, 
-        hero_description = ?, 
-        hero_image_url = ?, 
-        about_title = ?, 
-        about_subtitle = ?, 
-        about_description = ?, 
-        about_image_url = ?
-        WHERE id = 1";
-
-    pdo_execute($sql,
-        $_POST['hero_title'],
-        $_POST['hero_subtitle'],
-        $_POST['hero_description'],
-        $_POST['hero_image_url'],
-        $_POST['about_title'],
-        $_POST['about_subtitle'],
-        $_POST['about_description'],
-        $_POST['about_image_url']
-    );
-
-    header("Location: indexAdmin.php?act=thongtinAdmin");
-    exit;
-}
-?>
-
 <div class="user">
     <?php if (!$is_editing): ?>
         <a href="indexAdmin.php?act=thongtinAdmin&edit=1">
@@ -225,14 +226,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <!-- About Section -->
         <section class="about-section" id="about">
-            <div class="image">
-                <?php if ($is_editing): ?>
-                    <label>Link ảnh About:</label>
-                    <input type="text" name="about_image_url" value="<?= htmlspecialchars($data['about_image_url']) ?>"><br>
-                <?php else: ?>
-                    <img src="<?= htmlspecialchars($data['about_image_url']) ?>" alt="Ảnh About" style="width: 350px;">
-                <?php endif; ?>
-            </div>
+        <div class="image">
+    <?php if ($is_editing): ?>
+        <div class="drop-zone" id="about-drop-zone">
+            Kéo & thả ảnh vào đây hoặc click để chọn
+            <input type="file" id="about-image-input" name="about_image_file" hidden>
+        </div>
+        <img id="about-preview" src="<?= htmlspecialchars($data['about_image_url']) ?>" alt="About Image">
+        <input type="hidden" name="about_image_url" id="about-image-url" value="<?= htmlspecialchars($data['about_image_url']) ?>">
+    <?php else: ?>
+        <img src="<?= htmlspecialchars($data['about_image_url']) ?>" alt="Ảnh About" style="width: 350px;">
+    <?php endif; ?>
+</div>
+
 
             <div class="content">
                 <?php if ($is_editing): ?>
@@ -297,4 +303,42 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             reader.readAsDataURL(file);
         }
     }
+const aboutDropZone = document.getElementById('about-drop-zone');
+const aboutFileInput = document.getElementById('about-image-input');
+const aboutPreview = document.getElementById('about-preview');
+const aboutImageUrlInput = document.getElementById('about-image-url');
+
+aboutDropZone.addEventListener('click', () => aboutFileInput.click());
+
+aboutDropZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    aboutDropZone.classList.add('dragover');
+});
+
+aboutDropZone.addEventListener('dragleave', () => {
+    aboutDropZone.classList.remove('dragover');
+});
+
+aboutDropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    aboutDropZone.classList.remove('dragover');
+    const file = e.dataTransfer.files[0];
+    handleAboutFile(file);
+});
+
+aboutFileInput.addEventListener('change', () => {
+    const file = aboutFileInput.files[0];
+    handleAboutFile(file);
+});
+
+function handleAboutFile(file) {
+    if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            aboutPreview.src = e.target.result;
+            aboutImageUrlInput.value = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+}
 </script>

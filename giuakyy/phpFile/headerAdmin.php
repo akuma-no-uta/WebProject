@@ -41,7 +41,8 @@
 
                 <a href="indexAdmin.php?act=lienheAdmin">
                     <span class="material-symbols-outlined"> mail_outline</span>
-                    <h3>Liên hệ</h3>
+                    <h3>Đánh giá
+                    </h3>
                 </a>
 
                 <a href="indexAdmin.php?act=lichday">

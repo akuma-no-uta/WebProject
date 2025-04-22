@@ -6,28 +6,22 @@ if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
         case 'them_lichday':
-            // Kiểm tra xem có phải form POST để thêm lịch dạy không
             if ($_SERVER["REQUEST_METHOD"] === "POST") {
-                // Lấy dữ liệu từ form
                 $ngay = $_POST['ngay'];
                 $monhoc_id = $_POST['monhoc_id'] ?? null;
                 $lop_id = $_POST['lop_id'] ?? null;
                 $phong = $_POST['phong'];
                 $gio_batdau = $_POST['gio_batdau'];
                 $gio_ketthuc = $_POST['gio_ketthuc'];
-            
-                // Kiểm tra dữ liệu bắt buộc
                 if (!$monhoc_id || !$lop_id) {
                     echo "Thiếu thông tin môn học hoặc lớp học.";
                     exit;
                 }
             
-                // Xử lý ngày -> tuần và thứ
                 $timestamp = mktime(0, 0, 0, 4, (int)$ngay, 2025);
                 $thu = date('w', $timestamp); // 0 = Chủ Nhật
                 $tuan = ceil(((int)$ngay + date('w', mktime(0,0,0,4,1,2025)) - 1) / 7);
             
-                // Chèn vào bảng thời khóa biểu
                 $sql = "INSERT INTO thoikhoabieu (tuan_id, thu, monhoc_id, lop_id, phong, gio_batdau, gio_ketthuc)
                         VALUES (?, ?, ?, ?, ?, ?, ?)";
                 pdo_execute($sql, $tuan, $thu, $monhoc_id, $lop_id, $phong, $gio_batdau, $gio_ketthuc);
@@ -40,7 +34,22 @@ if (isset($_GET['act'])) {
 
             include('phpFile/them_lichday.php');
             break;
-
+            case 'xoa_lichday':
+                if (isset($_GET['id'])) {
+                    $id = intval($_GET['id']);
+                    pdo_execute("DELETE FROM thoikhoabieu WHERE id = ?", $id);
+                }
+                header("Location: indexAdmin.php?act=lichday");
+                exit();
+                break;
+                case 'deleteDuan':
+                    if (isset($_GET['id'])) {
+                        $id = intval($_GET['id']);
+                        pdo_execute("DELETE FROM duan WHERE id = ?", $id);
+                    }
+                    header("Location: indexAdmin.php?act=duan");
+                    exit();
+                    break;
         case 'tailieuAdmin':
             include('phpFile/tailieuAdmin.php');
             break;
@@ -68,13 +77,33 @@ if (isset($_GET['act'])) {
         case 'duan':
             include('phpFile/duan.php');
             break;
-        
+            case 'add_delete_duan':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ten_du_an'], $_POST['trang_thai'])) {
+                    $ten = trim($_POST['ten_du_an']);
+                    $trangthai = trim($_POST['trang_thai']);
+                    $mota = trim($_POST['mo_ta'] ?? '');
+            
+                    if (empty($ten) || empty($trangthai)) {
+                        echo "<script>alert('Vui lòng nhập đầy đủ thông tin.'); window.history.back();</script>";
+                        exit;
+                    }
+            
+                    try {
+                        pdo_execute("INSERT INTO duan (ten, TrangThai, MoTa) VALUES (?, ?, ?)", $ten, $trangthai, $mota);
+                        echo "<script>alert('Thêm dự án thành công.'); window.location.href='indexAdmin.php?act=duan';</script>";
+                        exit;
+                    } catch (Exception $e) {
+                        echo "<script>alert('Lỗi khi thêm dự án: " . addslashes($e->getMessage()) . "'); window.history.back();</script>";
+                        exit;
+                    }
+                }
+                break;
         default:
             include('phpFile/mainpageAdmin.php');
             break;
     }
 } else {
-    include("phpFile/mainpageAdmin.php");
+    include("phpFile/msainpageAdmin.php");
 }
 
 include("phpFile/footerAdmin.php");

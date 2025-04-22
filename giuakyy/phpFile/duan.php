@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ten_du_an'], $_POST['
 
     try {
         pdo_execute("INSERT INTO duan (ten, TrangThai, MoTa) VALUES (?, ?, ?)", $ten, $trangthai, $mota);
-        echo "<script>alert('Thêm dự án thành công.'); window.location.href='indexAdmin.php?act=dua';</script>";
+        echo "<script>alert('Thêm dự án thành công.'); window.location.href='indexAdmin.php?act=duan';</script>";
         exit;
     } catch (Exception $e) {
         echo "<script>alert('Lỗi khi thêm dự án: " . addslashes($e->getMessage()) . "'); window.history.back();</script>";
@@ -85,7 +85,41 @@ if (isset($_GET['act']) && $_GET['act'] === 'deleteDuan' && isset($_GET['id'])) 
       height: 180px;
       object-fit: cover;
     }
-  
+    .slider-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.slider-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.slider-btn.left {
+  left: 10px;
+}
+
+.slider-btn.right {
+  right: 10px;
+  top: 230px;
+}
+
+.slider-wrapper {
+  position: relative;
+}
+
     .project-name {
       padding: 15px;
       font-weight: bold;
@@ -180,6 +214,50 @@ if (isset($_GET['act']) && $_GET['act'] === 'deleteDuan' && isset($_GET['id'])) 
       from { transform: scale(0.9); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
     }
+    .slider-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+    max-width: 1000px;
+    position: relative; /* Chắc chắn rằng nó bao gồm các phần tử con */
+}
+
+.slide-item {
+    flex: 0 0 300px;
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Đảm bảo các phần tử con được phân bố */
+}
+
+.delete-form {
+    margin-top: auto; /* Đẩy nút xóa xuống dưới */
+    padding: 10px 0;
+    text-align: center;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
 </style>
 
 <?php
@@ -202,7 +280,7 @@ $duAnList = pdo_query("SELECT id, ten, MoTa, trangthai FROM duan");
             <div class="popup-content">
                 <span class="close-btn" onclick="closePopup()">&times;</span>
                 <h2>Thêm Dự Án Mới</h2>
-                <form action="indexAdmin.php?act=add_delete_duan.php" method="POST">
+                <form action="indexAdmin.php?act=add_delete_duan" method="POST">
                 <input type="text" name="ten_du_an" placeholder="Tên dự án" required>
                     <textarea name="mo_ta" placeholder="Mô tả dự án"></textarea>
                     <select name="trang_thai" required>
@@ -214,30 +292,48 @@ $duAnList = pdo_query("SELECT id, ten, MoTa, trangthai FROM duan");
             </div>
         </div>
         
-        <button class="tailieu_edit">
-            <span class="material-symbols-outlined">remove</span>
-        </button>
-        
+     
         <button class="tailieu_edit">
             <span class="material-symbols-outlined">edit</span>
         </button>
     </div>
     
     <div class="slider-wrapper">
-        <div class="slider-container" id="slider">
-            <?php foreach ($duAnList as $duAn): ?>
-                <div class="slide-item">
-                  
-                    <img src="https://educrm.vn/uploads/phan-mem-quan-ly-3.png" alt="<?= $duAn['ten'] ?>">
-                    <div class="project-name">
-                        <?= $duAn['id'] ?>. <?= $duAn['ten'] ?>
-                    </div>
-                    <p><?= $duAn['trangthai'] ?></p>
-                    <p class="project-description"><?= $duAn['MoTa'] ?></p>
+    <!-- Nút trái -->
+    <button class="slider-btn left" onclick="scrollSlider('left')">
+        &#10094;
+    </button>
+
+    <!-- Slider chính -->
+    <div class="slider-container" id="slider">
+        <?php foreach ($duAnList as $duAn): ?>
+            <div class="slide-item">
+                <img src="https://educrm.vn/uploads/phan-mem-quan-ly-3.png" alt="<?= $duAn['ten'] ?>">
+                <div class="project-name">
+                    <?= $duAn['id'] ?>. <?= $duAn['ten'] ?>
                 </div>
-            <?php endforeach; ?>
-        </div>
+                <p><?= $duAn['trangthai'] ?></p>
+                <p class="project-description"><?= $duAn['MoTa'] ?></p>
+
+                <!-- Nút xóa -->
+                <form action="indexAdmin.php" method="GET" onsubmit="return confirm('Bạn có chắc muốn xóa dự án này?');" class="delete-form">
+                <input type="hidden" name="act" value="deleteDuan">
+                <input type="hidden" name="id" value="<?= $duAn['id'] ?>">
+                <button type="submit" class="delete-btn">
+                    Xóa
+                </button>
+</form>
+
+            </div>
+        <?php endforeach; ?>
     </div>
+
+    <!-- Nút phải -->
+    <button class="slider-btn right" onclick="scrollSlider('right')">
+        &#10095;
+    </button>
+</div>
+
     
     <main>
         <h1>TRẠNG THÁI</h1>
@@ -314,4 +410,15 @@ $duAnList = pdo_query("SELECT id, ten, MoTa, trangthai FROM duan");
     function closePopup() {
         document.getElementById("popupForm").style.display = "none";
     }
+    function scrollSlider(direction) {
+    const slider = document.getElementById('slider');
+    const scrollAmount = 320;
+
+    if (direction === 'left') {
+        slider.scrollLeft -= scrollAmount;
+    } else {
+        slider.scrollLeft += scrollAmount;
+    }
+}
+
 </script>

@@ -1,79 +1,88 @@
-
-            <!--end top-->
-
-            <!--start cap nhat-->
-          
-
-            <!--end cap nhat-->
-
-            <!--Start Phan tich doanh thu-->
-           
-
-            <div style="margin: 20px 0;">
-            <?php
+<?php
 require_once 'adminDAO/pdo.php';
 
-$tuan = isset($_GET['tuan']) ? (int)$_GET['tuan'] : 1;
+// Xử lý khi người dùng gửi bài viết
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $tieude = trim($_POST['tieude']);
+    $noidung = trim($_POST['noidung']);
+    $nguoitao = 'Giáo viên A'; // Sau này có thể thay bằng session đăng nhập
 
-$sql = "
-    SELECT tkb.*, mh.ten_monhoc, l.ten_lop 
-    FROM thoikhoabieu tkb
-    JOIN monhoc mh ON tkb.monhoc_id = mh.id
-    JOIN lop l ON tkb.lop_id = l.id
-    WHERE tkb.tuan_id = ?
-ORDER BY FIELD(tkb.thu, 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy', 'Chủ Nhật')
-";
-$data = pdo_query($sql, $tuan);
-
-// Nhóm theo thứ
-$schedule = [];
-foreach ($data as $row) {
-    $thu = $row['thu'];
-    if (!isset($schedule[$thu])) $schedule[$thu] = [];
-    $schedule[$thu][] = $row;
+    if ($tieude !== '' && $noidung !== '') {
+        $sql_insert = "INSERT INTO baidang (tieude, noidung, nguoitao) VALUES (?, ?, ?)";
+        pdo_execute($sql_insert, $tieude, $noidung, $nguoitao);
+        header("Location: " . $_SERVER['PHP_SELF']); // Tránh submit lại khi reload
+        exit;
+    }
 }
 
-// Danh sách thứ cố định để đảm bảo thứ nào cũng có cột
-$ds_thu = ['Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy', 'Chủ Nhật'];
+$sql = "SELECT * FROM baidang ORDER BY ngaydang DESC";
+$posts = pdo_query($sql);
 ?>
 
-<form method="get">
-    <label>Chọn tuần:</label>
-    <select name="tuan" onchange="this.form.submit()">
-        <?php for ($i = 1; $i <= 4; $i++): ?>
-            <option value="<?= $i ?>" <?= ($tuan == $i ? 'selected' : '') ?>>Tuần <?= $i ?></option>
-        <?php endfor; ?>
-    </select>
-</form>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bảng Tin Lớp Học</title>
+    <style>
+      
+        .post-form, .post {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .post-form input, .post-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .post-form button {
+            padding: 10px 20px;
+            background-color: #0284c7;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .post-form button:hover{
+            background-color:blue;
+        }
+        .post h3 {
+            margin-top: 0;
+        }
+        .post small {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
 
-<section class="schedule-section">
-    <div class="schedule-container">
-        <h2>Thời khóa biểu - Tuần <?= $tuan ?></h2>
-        <table class="schedule-table">
-            <thead>
-                <tr>
-                    <?php foreach ($ds_thu as $t): ?>
-                        <th><?= $t ?></th>
-                    <?php endforeach; ?>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <?php foreach ($ds_thu as $t): ?>
-                        <td>
-                            <?php if (isset($schedule[$t])): ?>
-                                <?php foreach ($schedule[$t] as $item): ?>
-                                    <div class="day-cell">
-                                        <span><?= $item['ten_monhoc'] ?> <?= $item['ten_lop'] ?></span><br>
-                                        <span><?= date('H:i', strtotime($item['gio_batdau'])) ?> - <?= date('H:i', strtotime($item['gio_ketthuc'])) ?></span><br>
-                                        <span>Phòng: <?= $item['phong'] ?></span>
-                                    </div>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        </td>
-                    <?php endforeach; ?>
-                </tr>
-            </tbody>
-        </table>
+<h2>Bảng Tin Lớp Học</h2>
+
+<div class="post-form">
+    <form method="POST">
+        <label>Tiêu đề:</label>
+        <input type="text" name="tieude" placeholder="Nhập tiêu đề bài viết" required>
+
+        <label>Nội dung:</label>
+        <textarea name="noidung" placeholder="Nhập nội dung bài viết..." rows="5" required></textarea>
+
+        <button type="submit">Đăng bài</button>
+    </form>
+</div>
+
+<?php foreach ($posts as $post): ?>
+    <div class="post">
+        <h3><?= htmlspecialchars($post['tieude']) ?></h3>
+        <p><?= nl2br(htmlspecialchars($post['noidung'])) ?></p>
+        <small>Đăng bởi: <?= htmlspecialchars($post['nguoitao']) ?> | <?= date('d/m/Y H:i', strtotime($post['ngaydang'])) ?></small>
     </div>
-</section>
+<?php endforeach; ?>
+
+</body>
+</html>

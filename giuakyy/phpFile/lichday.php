@@ -282,26 +282,7 @@ $thu = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Th�
             <input type="hidden" name="ngay" id="selected-day">
             
             <!-- Thêm trường chọn thứ -->
-            <label>Thứ:</label>
-            <select name="thu" class="form-control" required>
-                <option value="">-- Chọn thứ --</option>
-                <option value="0">Chủ Nhật</option>
-                <option value="1">Thứ Hai</option>
-                <option value="2">Thứ Ba</option>
-                <option value="3">Thứ Tư</option>
-                <option value="4">Thứ Năm</option>
-                <option value="5">Thứ Sáu</option>
-                <option value="6">Thứ Bảy</option>
-            </select>
-            
-            <label>Tuần:</label>
-            <select name="tuan_id" class="form-control" required>
-                <option value="1">Tuần 1</option>
-                <option value="2">Tuần 2</option>
-                <option value="3">Tuần 3</option>
-                <option value="4">Tuần 4</option>
-                <option value="5">Tuần 5</option>
-            </select>
+
             
             <label>Môn học:</label>
             <select name="monhoc_id" class="form-control" required>
@@ -340,7 +321,6 @@ $thu = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Th�
 <div class="user">
     <section class="schedule-section">
         <div class="schedule-container">
-            <h2>Thời khóa biểu tháng 4/2025</h2>
             <table class="schedule-table">
                 <thead>
                 <tr>
@@ -355,36 +335,56 @@ $day = 1;
 $totalDays = 30;
 $tuan = 1;
 
-while ($day <= $totalDays) {
-    echo "<tr>";
-    for ($i = 0; $i < 7; $i++) {
-        echo "<td>";
-        if ($tuan == 1 && $i < $startWeekday) {
-            echo ""; // Các ô trống trước ngày 1
-        } elseif ($day <= $totalDays) {
-            echo "<div class='day-cell' onclick=\"openModal($day)\">$day</div>";
+$firstDayTimestamp = mktime(0, 0, 0, 4, 1, 2025);
+$totalDays = date('t', $firstDayTimestamp); // Số ngày trong tháng 4
+$startWeekday = date('w', $firstDayTimestamp); // Thứ bắt đầu (0 = Chủ Nhật)
 
-            $thuTrongTuan = $thu[$i];
-
-            if (!empty($schedule[$tuan][$thuTrongTuan])) {
-                echo "<div style='margin-top: 8px;'>";
-                foreach ($schedule[$tuan][$thuTrongTuan] as $row) {
-                    echo "<div style='background:#e9f3ff; border-left: 4px solid #007bff; margin-bottom:6px; padding:6px; border-radius:6px; text-align:left; font-size:0.9em;'>";
-                    echo "<strong>{$row['ten_monhoc']}</strong> ({$row['ten_lop']})<br>";
-                    echo "Phòng: {$row['phong']}<br>";
-                    echo "Giờ: {$row['gio_batdau']} - {$row['gio_ketthuc']}";
-                    echo "</div>";
-                }
-                echo "</div>";
-            }
-
-            $day++;
-        }
-        echo "</td>";
-    }
-    echo "</tr>";
-    $tuan++;
+echo "<tr>";
+// In ra các ô trống nếu ngày 1 không phải Chủ Nhật
+for ($i = 0; $i < $startWeekday; $i++) {
+    echo "<td></td>";
 }
+
+for ($day = 1; $day <= $totalDays; $day++) {
+    $currentTimestamp = mktime(0, 0, 0, 4, $day, 2025);
+    $weekday = date('w', $currentTimestamp); // Thứ của ngày hiện tại
+    $tuan = ceil(($day + $startWeekday - 1) / 7); // Tính tuần dựa trên ngày
+
+    echo "<td>";
+    echo "<div class='day-cell' onclick=\"openModal($day)\">$day</div>";
+
+    $thuTrongTuan = $thu[$weekday];
+
+    if (!empty($schedule[$tuan][$thuTrongTuan])) {
+        echo "<div style='margin-top: 8px;'>";
+        foreach ($schedule[$tuan][$thuTrongTuan] as $row) {
+            echo "<div style='background:#e9f3ff; border-left: 4px solid #007bff; margin-bottom:6px; padding:6px; border-radius:6px; text-align:left; font-size:0.9em; position: relative;'>";
+            echo "<strong>{$row['ten_monhoc']}</strong> ({$row['ten_lop']})<br>";
+            echo "Phòng: {$row['phong']}<br>";
+            echo "Giờ: {$row['gio_batdau']} - {$row['gio_ketthuc']}";
+            echo "<a href='indexAdmin.php?act=xoa_lichday&id={$row['id']}' onclick=\"return confirm('Bạn có chắc muốn xóa lịch dạy này?')\" style='position:absolute; top:6px; right:8px; color:#d00; font-weight:bold; text-decoration:none;'>×</a>";
+            echo "</div>";
+        }
+        echo "</div>";
+    }
+
+    echo "</td>";
+
+    // Nếu là thứ Bảy thì xuống dòng
+    if ($weekday == 6 && $day != $totalDays) {
+        echo "</tr><tr>";
+    }
+}
+
+// In thêm ô trống nếu kết thúc không phải thứ Bảy
+$endWeekday = date('w', mktime(0, 0, 0, 4, $totalDays, 2025));
+if ($endWeekday != 6) {
+    for ($i = $endWeekday + 1; $i <= 6; $i++) {
+        echo "<td></td>";
+    }
+}
+echo "</tr>";
+
 ?>
 </tbody>
             </table>
@@ -394,6 +394,7 @@ while ($day <= $totalDays) {
 
 </body>
 <script>
+    
     function openModal(ngay) {
         document.getElementById("selected-day").value = ngay;
         document.getElementById("addScheduleModal").style.display = "flex"; // dùng flex để canh giữa
