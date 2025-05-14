@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&family=Material+Symbols+Sharp&display=swap">
+    <link rel="stylesheet" href="../CSS/Admin.css" class="hr">
+</head>
+<body>
+    
+    <div class="container">
+        <!--aside start-->
+        <aside>
+            <!--start top-->
+            <div class="top">
+                <div class="logo">
+                    <a href="Admin.html"><img src="https://tdtu.edu.vn/sites/www/files/logo-dh_0.png" alt="Trang chủ" fetchpriority="high"></a>
+                </div>
+                <div class="close" id="close_btn">
+                    <span class="material-symbols-outlined">close</span>
+                </div>
+            </div>
+
+              <!--end top-->
+              <!--end top-->
+            <div class="sidebar">
+
+                <a href="tailieu.html" onclick="window.location.href='tailieu.html'">
+                    <span class="material-symbols-outlined"> account_circle</span>
+                    <h3>Tài liệu</h3>
+                </a>
+                
+                <a href="thongtin.html">
+                    <span class="material-symbols-outlined"> Person </span>
+                    <h3>Thông tin</h3>
+                </a>
+
+                <a href="hopthu.html">
+                    <span class="material-symbols-outlined"> mail_outline</span>
+                    <h3>Liên hệ</h3>
+                </a>
+
+                <a href="lichday.html">
+                    <span class="material-symbols-outlined"> Paid </span>
+                    <h3>Lịch dạy</h3>
+                </a>
+               
+                <a href="duan.html">
+                    <span class="material-symbols-outlined">trophy</span>
+                    <h3>Dự án</h3>
+                </a>
+                <a href="hoidap.html">
+                    <span class="material-symbols-outlined"> logout</span>
+                    <h3>Đăng Xuất</h3>
+                </a>
+        </div>
+        </aside>
+        <!--aside end-->
+
+        <!--main section start-->
+       
+        <!--main section end-->
+
+        <!--right section start-->
+        <div class="right">
+            <div class="top">
+
+                <button id="menu_bar">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+
+                <div class="theme-toggler">
+                    <span class="material-symbols-outlined active">light_mode</span>
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </div>
+
+                <div class="profile">
+                    <div class="info">
+                        <p><b>Khoa</b></p>
+                        <p>Admin</p>
+                        <small class="text-muted"></small>
+                    </div>
+                     <div class="profile-photo">
+                        <img src="../img/antony_admin.jpg" alt="">
+                     </div>
+                </div>
+
+            </div>
+            <!--end top-->
+
+            <!--start cap nhat-->
+          
+
+            <!--end cap nhat-->
+
+            <!--Start Phan tich doanh thu-->
+           
+
+             
+            <main>
+                <form method="get">
+                    <label>Chọn tuần:</label>
+                    <select name="tuan">
+                      <option value="1" selected>Tuần 1</option>
+                      <option value="2">Tuần 2</option>
+                      <option value="3">Tuần 3</option>
+                      <option value="4">Tuần 4</option>
+                    </select>
+                  </form>
+                
+                  <div class="schedule-container">
+                    <h2>Thời khóa biểu - Tuần 1</h2>
+                    <table class="schedule-table">
+                      <thead>
+                        <tr>
+                          <th>Thứ Hai</th>
+                          <th>Thứ Ba</th>
+                          <th>Thứ Tư</th>
+                          <th>Thứ Năm</th>
+                          <th>Thứ Sáu</th>
+                          <th>Thứ Bảy</th>
+                          <th>Chủ Nhật</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <!-- Thứ Hai -->
+                          <td>
+                            <div class="day-cell">
+                              <span>Lập trình C TDTU1</span><br>
+                              <span>07:30 - 09:00</span><br>
+                              <span>Phòng: A101</span>
+                            </div>
+                            <div class="day-cell">
+                              <span>Lập trình C TDTU3</span><br>
+                              <span>09:10 - 10:40</span><br>
+                              <span>Phòng: C301</span>
+                            </div>
+                          </td>
+                
+                          <!-- Thứ Ba -->
+                          <td>
+                            <div class="day-cell">
+                              <span>Cơ sở dữ liệu TDTU4</span><br>
+                              <span>07:30 - 09:00</span><br>
+                              <span>Phòng: D401</span>
+                            </div>
+                            <div class="day-cell">
+                              <span>Cơ sở dữ liệu TDTU1</span><br>
+                              <span>09:10 - 10:40</span><br>
+                              <span>Phòng: A101</span>
+                            </div>
+                          </td>
+                
+                          <!-- Thứ Tư -->
+                          <td>
+                            <div class="day-cell">
+                              <span>Cấu trúc dữ liệu & Giải thuật TDTU2</span><br>
+                              <span>07:30 - 09:00</span><br>
+                              <span>Phòng: B201</span>
+                            </div>
+                            <div class="day-cell">
+                              <span>Cấu trúc dữ liệu & Giải thuật TDTU4</span><br>
+                              <span>09:10 - 10:40</span><br>
+                              <span>Phòng: D401</span>
+                            </div>
+                          </td>
+                
+                          <!-- Thứ Năm -->
+                          <td>
+                            <div class="day-cell">
+                              <span>Thiết kế Web TDTU1</span><br>
+                              <span>07:30 - 09:00</span><br>
+                              <span>Phòng: E501</span>
+                            </div>
+                            <div class="day-cell">
+                              <span>Thiết kế Web TDTU2</span><br>
+                              <span>09:10 - 10:40</span><br>
+                              <span>Phòng: B201</span>
+                            </div>
+                          </td>
+                
+                          <!-- Thứ Sáu -->
+                          <td>
+                            <div class="day-cell">
+                              <span>Mạng máy tính TDTU3</span><br>
+                              <span>07:30 - 09:00</span><br>
+                              <span>Phòng: C301</span>
+                            </div>
+                            <div class="day-cell">
+                              <span>Mạng máy tính TDTU1</span><br>
+                              <span>09:10 - 10:40</span><br>
+                              <span>Phòng: E501</span>
+                            </div>
+                          </td>
+                
+                          <!-- Thứ Bảy -->
+                          <td></td>
+                
+                          <!-- Chủ Nhật -->
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+            </main>
+                
+            </div>
+            <div class="item add_products">
+                <div>
+                    <span class="material-symbols-outlined">Add</span>
+                </div>
+                
+            </div>
+            <!--end Phan tich doanh thu-->
+         
+            <!--main section end-->
+            
+            <!--right section start-->
+           
+            
+                <!--start messages-->
+            
+        </div>
+        <!--right section end-->
+    </div>
+
+    <script src="../JS/Admin.js"></script>
+</body>
+</html>
