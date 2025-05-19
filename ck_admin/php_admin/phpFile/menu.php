@@ -1,13 +1,13 @@
 <?php
 require_once("adminDAO/pdo.php");
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ten_mon'], $_POST['phan_loai'], $_POST['gia'])) {
+// Thêm món
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ten_mon'], $_POST['phan_loai'], $_POST['gia']) && empty($_POST['id'])) {
     $ten = trim($_POST['ten_mon']);
     $mo_ta = trim($_POST['mo_ta'] ?? '');
     $gia = trim($_POST['gia']);
-    $phan_loai = intval($_POST['phan_loai']); // Category ID
+    $phan_loai = intval($_POST['phan_loai']);
 
-    // Kiểm tra nếu có ảnh được tải lên
     $imageData = null;
     if (isset($_FILES['hinh_anh']) && $_FILES['hinh_anh']['error'] === UPLOAD_ERR_OK) {
         $imageData = file_get_contents($_FILES['hinh_anh']['tmp_name']);
@@ -28,14 +28,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ten_mon'], $_POST['ph
     }
 }
 
+// Cập nhật món
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'], $_POST['ten_mon'], $_POST['phan_loai'], $_POST['gia'])) {
     $id = intval($_POST['id']);
     $ten = trim($_POST['ten_mon']);
     $mo_ta = trim($_POST['mo_ta'] ?? '');
     $gia = trim($_POST['gia']);
-    $phan_loai = intval($_POST['phan_loai']); // Category ID
+    $phan_loai = intval($_POST['phan_loai']);
 
-    // Kiểm tra nếu có ảnh mới được tải lên
     $imageData = null;
     if (isset($_FILES['hinh_anh']) && $_FILES['hinh_anh']['error'] === UPLOAD_ERR_OK) {
         $imageData = file_get_contents($_FILES['hinh_anh']['tmp_name']);
@@ -60,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'], $_POST['ten_mon
     }
 }
 
+// Xóa món
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
     try {
@@ -72,169 +73,142 @@ if (isset($_GET['delete'])) {
     }
 }
 
+// Lấy dữ liệu menu
 $menus = pdo_query("SELECT m.*, c.name AS category_name FROM menu m LEFT JOIN category c ON m.phan_loai = c.id");
 
+// Lấy dữ liệu để sửa
+$editItem = null;
+if (isset($_GET['id'])) {
+    $editItem = pdo_query_one("SELECT * FROM menu WHERE id = ?", intval($_GET['id']));
+}
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Menu</title>
+<script src="https://cdn.ckeditor.com/4.25.1-lts/full/ckeditor.js"></script>
+
+
+    <style>
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
+        .modal-content { background: #fff; margin: 5% auto; padding: 20px; border-radius: 8px; width: 500px; position: relative; }
+        input, select, textarea { width: 100%; padding: 8px; margin: 5px 0 12px; border: 1px solid #ccc; border-radius: 4px; }
+        input[type="submit"] { background: #28a745; color: #fff; border: none; cursor: pointer; }
+        input[type="submit"]:hover { background: #218838; }
+        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 24px; color: #aaa; cursor: pointer; }
+        .close-btn:hover { color: #000; }
+        #openFormBtn { margin-bottom: 20px; padding: 10px 20px; background: #007bff; color: white; border-radius: 4px; border: none; cursor: pointer; }
+        .thumbnail { width: 120px; height: 120px; object-fit: cover; }
+    </style>
 </head>
 <body>
-    <h1>Quản Lý Menu</h1>
 
-    <!-- Nút mở popup -->
-    <button id="openFormBtn">➕ Thêm Món Mới</button>
+<h1>Quản Lý Menu</h1>
+<button id="openFormBtn">➕ Thêm Món Mới</button>
 
-    <!-- Popup Form -->
-    <div id="popupForm" class="modal">
-        <div class="modal-content">
-            <h2>Thêm Món Mới</h2>
-            <form method="POST" enctype="multipart/form-data">
-                <label for="ten_mon">Tên Món:</label>
-                <input type="text" id="ten_mon" name="ten_mon" required>
+<!-- Form Thêm Mới hoặc Chỉnh Sửa -->
+<div id="popupForm" class="modal" style="<?= $editItem ? 'display:block' : '' ?>">
+    <div class="modal-content">
+        <span class="close-btn" id="closeModalBtn">&times;</span>
+        <h2><?= $editItem ? 'Chỉnh Sửa Món Ăn' : 'Thêm Món Mới' ?></h2>
+        <form method="POST" enctype="multipart/form-data">
+            <?php if ($editItem): ?>
+                <input type="hidden" name="id" value="<?= $editItem['id'] ?>">
+            <?php endif; ?>
 
-                <label for="mo_ta">Mô Tả:</label>
-                <textarea id="mo_ta" name="mo_ta"></textarea>
+            <label for="ten_mon">Tên Món:</label>
+            <input type="text" id="ten_mon" name="ten_mon" required value="<?= $editItem['ten_mon'] ?? '' ?>">
 
-                <label for="gia">Giá:</label>
-                <input type="text" id="gia" name="gia" required>
+            <label for="mo_ta">Mô Tả:</label>
+            <textarea id="mo_ta" name="mo_ta"><?= $editItem['mo_ta'] ?? '' ?></textarea>
 
-                <label for="phan_loai">Danh Mục:</label>
-                <select name="phan_loai" id="phan_loai" required>
-                    <?php
-                    $categories = pdo_query("SELECT * FROM category");
-                    foreach ($categories as $category) {
-                        echo "<option value='{$category['id']}'>{$category['name']}</option>";
-                    }
-                    ?>
-                </select>
+            <label for="gia">Giá:</label>
+            <input type="text" id="gia" name="gia" required value="<?= $editItem['gia'] ?? '' ?>">
 
-                <label for="hinh_anh">Hình Ảnh:</label>
-                <input type="file" name="hinh_anh" id="hinh_anh">
+            <label for="phan_loai">Danh Mục:</label>
+            <select name="phan_loai" id="phan_loai" required>
+                <?php
+                $categories = pdo_query("SELECT * FROM category");
+                foreach ($categories as $category) {
+                    $selected = ($editItem && $editItem['phan_loai'] == $category['id']) ? "selected" : "";
+                    echo "<option value='{$category['id']}' $selected>{$category['name']}</option>";
+                }
+                ?>
+            </select>
 
-                <input type="submit" value="Thêm Món">
-            </form>
-        </div>
+            <label for="hinh_anh">Hình Ảnh:</label>
+            <input type="file" name="hinh_anh" id="hinh_anh">
+            <?php if ($editItem && !empty($editItem['hinh_anh'])): ?>
+                <p>Ảnh hiện tại:</p>
+                <img src="data:image/jpeg;base64,<?= base64_encode($editItem['hinh_anh']) ?>" class="thumbnail">
+            <?php endif; ?>
+
+            <input type="submit" value="<?= $editItem ? 'Cập Nhật Món' : 'Thêm Món' ?>">
+        </form>
     </div>
+</div>
 
-    <!-- Danh sách món ăn -->
-    <h2>Danh Sách Món Ăn</h2>
-    <table border="1">
-        <thead>
+<!-- Danh sách món ăn -->
+<h2>Danh Sách Món Ăn</h2>
+<table border="1" cellpadding="10">
+    <thead>
+        <tr>
+            <th>Tên Món</th>
+            <th>Mô Tả</th>
+            <th>Giá</th>
+            <th>Danh Mục</th>
+            <th>Hình Ảnh</th>
+            <th>Thao Tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($menus as $menu): ?>
             <tr>
-                <th>Tên Món</th>
-                <th>Mô Tả</th>
-                <th>Giá</th>
-                <th>Danh Mục</th>
-                <th>Hình Ảnh</th>
-                <th>Thao Tác</th>
+                <td><?= htmlspecialchars($menu['ten_mon']) ?></td>
+                <td><?= htmlspecialchars($menu['mo_ta']) ?></td>
+                <td><?= number_format($menu['gia'], 0) ?> VND</td>
+                <td><?= htmlspecialchars($menu['category_name']) ?></td>
+                <td>
+                    <?php if (!empty($menu['hinh_anh'])): ?>
+                        <img src="data:image/jpeg;base64,<?= base64_encode($menu['hinh_anh']) ?>" class="thumbnail">
+                    <?php else: ?>
+                        Không có ảnh
+                    <?php endif; ?>
+                </td>
+                <td>
+                    <a href="indexAdmin.php?act=menu&id=<?= $menu['id'] ?>">Chỉnh Sửa</a> |
+                    <a href="indexAdmin.php?act=menu&delete=<?= $menu['id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa món ăn này không?')">Xóa</a>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($menus as $menu): ?>
-                <tr>
-                    <td><?= htmlspecialchars($menu['ten_mon']) ?></td>
-                    <td><?= htmlspecialchars($menu['mo_ta']) ?></td>
-                    <td><?= number_format($menu['gia'], 2) ?> VND</td>
-                    <td><?= htmlspecialchars($menu['category_name']) ?></td>
-                    <td><img src="data:image/jpeg;base64,<?= base64_encode($menu['hinh_anh']) ?>" alt="image" width="100"></td>
-                    <td>
-                        <a href="indexAdmin.php?act=menu&id=<?= $menu['id'] ?>">Chỉnh Sửa</a> |
-                        <a href="indexAdmin.php?act=menu&delete=<?= $menu['id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa món ăn này không?')">Xóa</a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+        <?php endforeach; ?>
+    </tbody>
+</table>
 
-    <!-- CSS cho popup -->
-    <style>
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0; top: 0;
-            width: 100%; height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-        .modal-content {
-            background-color: #fff;
-            margin: 5% auto;
-            padding: 20px;
-            border-radius: 8px;
-            width: 400px;
-            position: relative;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        }
-        .close {
-            color: #aaa;
-            position: absolute;
-            top: 10px; right: 15px;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        .modal-content input[type="text"],
-        .modal-content textarea,
-        .modal-content select,
-        .modal-content input[type="file"] {
-            width: 100%;
-            padding: 8px;
-            margin: 6px 0 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .modal-content input[type="submit"] {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .modal-content input[type="submit"]:hover {
-            background-color: #218838;
-        }
-        #openFormBtn {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin-bottom: 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        #openFormBtn:hover {
-            background-color: #0056b3;
-        }
-    </style>
-
-    <!-- JavaScript để điều khiển popup -->
-   <script>
+<!-- JS xử lý modal và CKEditor -->
+<script>
     const modal = document.getElementById("popupForm");
     const btn = document.getElementById("openFormBtn");
-    const closeBtn = document.getElementById("closeBtn");
+    const closeBtn = document.getElementById("closeModalBtn");
 
-    btn.onclick = function() {
+    btn.onclick = function () {
         modal.style.display = "block";
     }
-
-    closeBtn.onclick = function() {
+    closeBtn.onclick = function () {
         modal.style.display = "none";
+        window.location.href = "indexAdmin.php?act=menu"; // Reset URL nếu đang ở chế độ edit
     }
-
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            window.location.href = "indexAdmin.php?act=menu";
         }
     }
+
+    // Kích hoạt CKEditor
+    CKEDITOR.replace('mo_ta');
 </script>
 
 </body>
-
 </html>

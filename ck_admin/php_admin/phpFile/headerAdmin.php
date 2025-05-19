@@ -29,9 +29,9 @@
               <!--end top-->
             <div class="sidebar">
 
-                <a href="indexAdmin.php?act=tailieuAdmin">
+                <a href="indexAdmin.php?act=nhanvien">
                     <span class="material-symbols-outlined"> account_circle</span>
-                    <h3>Tài liệu</h3>
+                    <h3>Nhân Viên</h3>
                 </a>
                 
                 <a href="indexAdmin.php?act=taikhoan">
@@ -39,7 +39,7 @@
                     <h3>Tài Khoản</h3>
                 </a>
 
-                <a href="indexAdmin.php?act=lienheAdmin">
+                <a href="indexAdmin.php?act=donhang">
                     <span class="material-symbols-outlined"> receipt</span>
                     <h3>Đơn Hàng
                     </h3>
