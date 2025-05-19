@@ -10,6 +10,7 @@ if ($result->num_rows > 0) {
         $items[] = $row;
     }
 }
+include '../phpFile/header.php';
 ?>
 
 <!DOCTYPE html>
@@ -136,3 +137,6 @@ if ($result->num_rows > 0) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
 </body>
 </html>
+<?php 
+include '../phpFile/footer.php';
+?>

@@ -6,20 +6,1000 @@
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <link
-            href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css"
-            rel="stylesheet">
-        <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-            integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" /><link
+    <link
             rel="stylesheet" type="text/css"
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
         <link rel="stylesheet" type="text/css"
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
         <link href="../Layout/css/bootstrap.css" rel="stylesheet">
-        <link href="layout/css/mainpage.css" rel="stylesheet">
 
+    </head>
+<style>
+@font-face {
+    font-family: "Londrina Solid";
+    src: url(../font/LondrinaSolid-Regular.ttf);
+}
+.body{
+    font-family: "Londrina Solid", sans-serif;}
+.visually-hidden{
+    display:none;
+}
+    header {
+        position: fixed;  /* Giữ header cố định */
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000; /* Đảm bảo header nằm trên các phần tử khác */
+        transition: top 0.3s ease-in-out;
+        display: flex;
+        gap: 50px;
+        font-family: "Londrina Solid", sans-serif;
+        padding: 10px 20px; /* Đảm bảo padding cho header */
+        box-sizing: border-box;
+    }
+    
+    .header-banner {
+        background-color: #f3b53b;
+        width: 100%;
+        height: 130px;
+        display: flex;
+        align-items: center;
+        transition: top 0.3s ease-in-out;
+        justify-content: space-between; /* Đảm bảo căn giữa các phần tử */
+    }
+    
+    .header-heading {
+        flex-grow: 1;
+        display: flex;
+        margin-top: 20px;
+        font-family: "Londrina Solid", sans-serif;  
+        width: 300px;
+        height: 50px;
+        text-decoration: none;
+        word-break: break-word;
+        align-items: center;
+        margin-left: 30px;
+        display: inline-block;
+        position:absolute;
+        font-size: 24px; /* Giữ kích thước chữ cho tiêu đề */
+        min-width: 150px;
+        min-width:150px;
+    }
+    @media screen and (max-width:540px){
+        .header-heading{
+            bottom:30px;
+        }
+       
+
+    }
+    .header-heading svg {
+        max-width: 100%;  
+        height: auto;     
+        width: auto;     
+        max-height: 50px; 
+    }
+    @media (max-width:768px){
+.header-heading{
+    top: 5vw;
+
+}}
+@media (max-width:500px){
+    .header-heading{
+        top:10vw;
+    }
+
+    }
+    .header-container {
+        flex-grow: 1;
+        font-size: 10px;
+        display: flex;
+        justify-content: flex-end; /* Đẩy toàn bộ nội dung về bên phải */
+        align-items: center;
+        flex-wrap: nowrap;
+        font-family: "Londrina Solid", sans-serif;
+        padding: 10px;
+    }
+    
+    .button-banner {
+        flex-grow: 1;
+        position: relative; 
+        margin-left: auto; 
+        color: hsla(195.6, 92.59259259%, 21.17647059%, 1);
+        padding: 0.2rem 0.8rem;
+        top:30px;
+        border-radius: 2rem;
+        right:500px;
+        text-decoration: none;
+        font-family: "Londrina Solid", sans-serif;
+        gap: 2rem;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .navbar{
+        width:100%;
+        height:60px;
+        max-width:1200px;
+        margin:0 auto;
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+   
+    
+.a{
+margin:30px;
+font-family: "Londrina Solid", sans-serif;
+}
+.header__awning {
+display: block !important;
+
+width: 100%;
+height: 20px;
+position: relative;
+background-image: url(../PicAndVid/img/awning_path.png);
+}
+.header__awning-top{
+position: fixed; /* Cố định awning cùng header */
+top: 125px; /* Ngay dưới header-banner */
+left: 0;
+width: 100%;
+height: 20px;
+background-image: url(../PicAndVid/img/awning_path.png);
+z-index: 999; /* Đảm bảo hiển thị dưới header */
+transition: top 0.3s ease-in-out;
+}
+
+.circle-card {
+width: 150px;
+height: 150px;
+font-family: "Londrina Solid", sans-serif;
+background: white;
+border-radius: 50%;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+padding: 20px;
+}
+
+.circle-card img {
+width: 60px;
+font-family: "Londrina Solid", sans-serif;
+height: 60px;
+border-radius: 50%;
+object-fit: cover;
+margin-bottom: 10px;
+}
+
+.circle-card h3 {
+margin: 5px 0;
+font-family: "Londrina Solid", sans-serif;
+font-size: 16px;
+}
+
+.circle-card p {
+margin: 0;
+font-family: "Londrina Solid", sans-serif;
+font-size: 12px;
+color: gray;
+}
+.body{
+background-color: #fbf6dc;
+font-family: "Londrina Solid", sans-serif;
+}
+
+
+
+.task-bar{
+font-family: "Londrina Solid", sans-serif;
+
+
+}
+
+@media (max-width:345px){
+  
+}
+.header-icon-1{
+    margin-top:-23px;
+}
+.header-icon-2{
+font-family: "Londrina Solid", sans-serif;
+cursor: pointer;
+margin-top:-23px;
+
+}
+.header-item-container ul li a{
+    position:relative;
+    float:center;
+
+
+    display: block;
+    gap: 3vw;
+    flex-direction: row;
+
+
+
+}
+#menu-bar{
+    display: none;
+}
+header label{
+    position: relative;
+    font-size:20px;
+    color:hsla(195.6, 92.59259259%, 21.17647059%, 1);
+    cursor:pointer;
+     display:none;
+    margin-left:30vw;
+}
+@media  (max-width:991px){
+    .header-item-container{
+
+    }
+    header label{
+
+        display:initial;}
+    header .navbar .label{
+        
+        position:absolute;
+        left:0;
+        right:0;
+        border-top:1px solid rgba(0,0,0.1);
+
+    }
+}
+
+    
+
+@media  (max-width:800px){
+ header label{
+    display:flex;
+    position: relative;
+    font-size:20px;
+    color:hsla(195.6, 92.59259259%, 21.17647059%, 1);
+    cursor:pointer;
+    left:10vw;
+    top:0vw; }
+}
+
+.header-icon-2{
+   right:150px;
+   position:relative; 
+}
+.header-icon-1{
+ right:130px;
+ position:relative;
+}
+.menu-container {
+    display:flex;
+  position: relative;
+  left:40rem;
+  bottom:2rem;
+}
+#menu-bar:checked ~.navbar{
+    display:initial;
+}
+.header-item-container {
+    display: flex;
+    position:relative;
+    margin-left: 50px;
+    gap: 5px;
+    flex-direction: row; /* Xếp các item theo hàng ngang */
+
+  transition: max-height 0.3s ease-in-out;
+}
+
+.button-banner {
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+
+
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  top:15px;
+  position: absolute;
+
+}
+@media screen and (max-width:376px){
+    .header-item-container {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      }
+   .menu-toggle{
+    margin-right:-35vw;
+    margin-top:-2vw;
+   }
+    
+}
+@media screen and (max-width: 769px) {
+  .header-item-container {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .header-item-container.show {
+    display: flex;
+  }
+}
+.navbar .menu-toggle-btn{
+    color:black;
+    font-size: 1.5rem;
+    cursor:pointer;
+    display:none
+}
+@media (max-width:992px){
+    .header-item-container{
+        display:none
+    }
+    .menu-toggle-btn{
+        display:block;
+    }
+  
+}
+li{
+    list-style:none;
+}
+a{
+    text-decoration:none;
+    color:#fff;
+    font-size:1rem;
+}
+a:hover{
+    color:orange
+}
+.title h2 {
+line-height: 1;
+padding-top: .25em;
+font-family: "Londrina Solid", sans-serif;
+padding-bottom: .25em;
+color: #3c3c3c;
+font-size: 4rem;
+}
+.hiring{
+    width:100vw;
+    height:1000px;
+}
+.slider {
+width: 100%;
+margin: auto;
+top: -9px;
+font-family: "Londrina Solid", sans-serif;
+}
+.slider-video {
+height: 100%;
+width: 100%;
+font-family: "Londrina Solid", sans-serif;
+}
+.slick-slide img {
+width: 2000px;
+font-family: "Londrina Solid", sans-serif;
+height:1000px;
+}    
+.l-wrapper {
+display: flex;
+max-width: 1100px;
+font-family: "Londrina Solid", sans-serif;
+margin: auto;
+align-items: center;
+gap:100px;
+justify-content: space-between;
+}
+
+.image-container img {
+max-width: 100%;
+height: auto;
+font-family: "Londrina Solid", sans-serif;
+border-radius: 10px;
+}
+
+.content-container {
+max-width: 500px;
+font-family: "Londrina Solid", sans-serif;
+color: #3c3c3c;
+}
+
+
+.map-container {
+font-family: "Londrina Solid", sans-serif;
+width: 100%;
+height: 150px;
+}
+
+.map-container iframe {
+width: 100%;
+font-family: "Londrina Solid", sans-serif;
+height: 100%;
+border: 0;
+}
+
+a {
+color: white;
+font-family: "Londrina Solid", sans-serif;
+text-decoration: underline;
+}
+
+a:hover {
+font-family: "Londrina Solid", sans-serif;
+color: #fcd32c;
+}
+
+
+.hidden-section{
+opacity:0;
+transform:translateY(50px);
+transition:all 1s ease-in-out;
+}
+.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+
+.content-container h2 {
+font-family: "Londrina Solid", sans-serif;
+font-size: 2.5rem;
+color: #3c3c3c;
+margin-bottom: 10px;
+}
+
+.subheader {
+font-family: "Londrina Solid", sans-serif;
+text-transform: uppercase;
+font-size: 1rem;
+font-weight: bold;
+color: #7b5d44;
+display: flex;
+align-items: center;
+}
+
+.subheader img {
+font-family: "Londrina Solid", sans-serif;
+margin-left: 10px;
+}
+
+
+.content-container p {
+font-size: 1rem;
+font-family: "Londrina Solid", sans-serif;
+line-height: 1.5;
+color: #555;
+}
+
+.button a {
+font-family: "Londrina Solid", sans-serif;
+display: inline-block;
+background-color: #e86229;
+color: white;
+padding: 10px 20px;
+border-radius: 5px;
+text-decoration: none;
+font-weight: bold;
+margin-top: 15px;
+}
+
+.button a:hover {
+font-family: "Londrina Solid", sans-serif;
+background-color: #d1501a;
+}
+.popup-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 1000;
+  }
+  .popup-box button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .popup-box button:hover {
+    background-color: #0056b3;
+  }
+.row-footer {
+font-family: "Londrina Solid", sans-serif;
+display: -ms-flexbox;
+display: flex;
+-ms-flex-wrap: wrap;
+flex-wrap: wrap;
+margin-right: -15px;
+margin-left: -15px;
+}*/
+.banner {
+font-family: "Londrina Solid", sans-serif;
+background-color: #f3b53b;
+justify-content:center;
+max-width:80%;
+
+
+
+clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 0% 100%);
+}
+.button-job{
+    font-family: "Londrina Solid", sans-serif;
+    display: inline-block;
+    background-color: #e86229;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-left:45vw;
+    }
+    
+    .button-job:hover {
+    font-family: "Londrina Solid", sans-serif;
+    background-color: #d1501a;
+    }
+    /*.row {
+    font-family: "Londrina Solid", sans-serif;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    }*/
+.banner-right {
+position: fixed;
+right: -100%; /* Ẩn hoàn toàn bên phải */
+size:30%;
+top: 60%;
+transform: translateY(-50%) skewX(-10deg); /* Tạo hiệu ứng nghiêng như hình thang */
+width: 400px; /* Điều chỉnh kích thước */
+transition: right 1s cubic-bezier(0.25, 1.5, 0.5, 1), transform 1s cubic-bezier(0.25, 1.5, 0.5, 1);
+z-index: 1000;
+border-radius: 20px;
+    background: #f3b53b;
+padding: 20px;
+box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.banner-right.show {
+right: 10px;
+transform: translateY(-50%) skewX(0); 
+}
+@media (max-width: 768px) {
+    .banner-right-mob {
+        position: fixed;
+        right: -100%; 
+        size:5%;
+        top: 60%;
+        transform: translateY(-50%) skewX(-10deg); 
+        width: 70vw;
+        height:50vw;
+        transition: right 1s cubic-bezier(0.25, 1.5, 0.5, 1), transform 1s cubic-bezier(0.25, 1.5, 0.5, 1);
+        z-index: 1000;
+        border-radius: 20px;
+            background: #f3b53b;
+        padding: 20px;
+        
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);    }
+    }
+
+.banner-content {
+font-family: "Londrina Solid", sans-serif;
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-wrap: wrap;
+width: 100%;
+padding: 10px;
+}
+
+.banner img {
+font-family: "Londrina Solid", sans-serif;
+max-width: 120px;
+padding: 10px;
+}
+
+.banner-text {
+font-family: "Londrina Solid", sans-serif;
+flex: 1;
+text-align: left;
+padding: 10px;
+}
+
+.banner h2 {
+font-family: "Londrina Solid", sans-serif;
+margin: 0;
+font-size: 24px;
+font-weight: bold;
+}
+
+.banner p {
+font-family: "Londrina Solid", sans-serif;
+font-size: 16px;
+margin: 10px 0;
+}
+
+.cta {
+font-family: "Londrina Solid", sans-serif;
+padding: 10px;
+}
+
+.cta a {
+font-family: "Londrina Solid", sans-serif;
+text-decoration: none;
+background-color: white;
+color: black;
+padding: 8px 15px;
+border-radius: 5px;
+font-weight: bold;
+font-size: 14px;
+border: 2px solid black;
+}
+
+.cta a:hover {
+font-family: "Londrina Solid", sans-serif;
+background-color: black;
+color: white;
+}
+body    {
+font-family: "Londrina Solid", sans-serif;
+background-color: #f4f4f4;
+margin: 0;
+padding: 0;
+}
+
+h2 {
+text-align: center;
+color: #e6007e;
+font-size: 28px;
+font-family: "Londrina Solid", sans-serif;
+margin: 20px 0;
+}
+
+.card-listing {
+font-family: "Londrina Solid", sans-serif;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 20px;
+padding: 20px;
+}
+
+/*.card {
+font-family: "Londri na Solid", sans-serif;
+width: 300px;
+background: #fff;
+border-radius: 8px;
+overflow: hidden;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+transition: transform 0.3s ease-in-out;
+}*/
+.image-thumbnail{
+object-fit: cover
+}
+.hidden-section1{
+opacity: 0;
+transform: translateX(100px); /* Đẩy sang phải */
+transition: all 0.8s ease-in-out;
+}
+/* Container chứa các logo */
+.collab-logo-container {
+    display: flex;
+    flex-direction: row; /* Xếp theo hàng ngang */
+    justify-content: center; /* Căn giữa logo */
+    align-items: center; /* Canh giữa theo chiều dọc */
+    gap: 20px; /* Khoảng cách giữa các logo */
+    flex-wrap: wrap; /* Đảm bảo logo không bị tràn khi thu nhỏ */
+    padding: 20px 0; /* Thêm khoảng cách nếu cần */
+}
+
+.collab-logo {
+    max-width: 100px; /* Giới hạn kích thước logo */
+    height: auto;
+    transition: transform 0.5s ease-in-out;
+}
+
+.collab-logo:hover {
+    transform: rotate(360deg);
+}
+
+
+.hidden-section1.show {
+opacity: 1;
+transform: translateX(0); /* Trả về vị trí cũ */
+}
+
+.card:hover {
+font-family: "Londrina Solid", sans-serif;
+transform: translateY(-5px);
+}
+
+.card__media {
+font-family: "Londrina Solid", sans-serif;
+position: relative;
+height: 200px;
+background-size: cover;
+background-position: center;
+transition: filter 0.3s ease-in-out;
+}
+
+/* Darken image on hover */
+.card:hover .card__media {
+font-family: "Londrina Solid", sans-serif;
+filter: brightness(80%);
+}
+
+.card__heading {
+font-size: 18px;
+font-family: "Londrina Solid", sans-serif;
+color: #e6007e;
+text-align: center;
+padding: 15px;
+font-weight: bold;
+}
+
+.card span {
+font-family: "Londrina Solid", sans-serif;
+display: block;
+text-align: center;
+color: #666;
+padding-bottom: 15px;
+font-size: 14px;
+text-decoration: none;
+}
+.header__icons {
+display: flex;
+align-items: center;
+justify-content: flex-end; /* Đẩy nội dung sang phải */
+gap: 10px; /* Khoảng cách giữa các icon */
+max-width: 300px; /* Giới hạn chiều rộng */
+}
+
+.header__icon {
+width: 24px; /* Giảm kích thước icon */
+height: 24px;
+}
+
+.header__icon svg {
+width: 100%;
+height: 100%;
+}
+
+.header__phl-icon {
+width: 50px; /* Điều chỉnh logo nhỏ hơn */
+height: auto;
+}
+
+@media (max-width: 768px) {
+.body {
+    max-width: 200px; 
+}
+}
+.clipped-box {
+font-family: "Londrina Solid", sans-serif;
+width: 50%;
+height: 300px;
+background-color:  #88f8e2;
+clip-path: polygon(0 0, calc(100% - 25px) 24px, 100% calc(100% - 38px), 0% 100%);
+margin-left:400px;
+
+}
+.logo-container{
+position:relative;
+}
+.logo-job{
+height:80px;
+bottom: 20px; /* Điều chỉnh vị trí theo ý muốn */
+left: 20px; 
+bottom:750px;
+
+position: absolute;
+}
+
+
+/* Footer style */
+.footer {
+    background-repeat: no-repeat;
+    background-size: 150% 150%;
+    background-position: center;
+    overflow-x: hidden;
+    position: relative;
+    padding: 10vw 0; /* Tăng khoảng cách trên và dưới theo viewport width */
+}
+
+.footer__container {
+    padding-inline: 3vw; /* Tăng padding ở hai bên theo vw */
+    padding-top: 3vw;    /* Padding trên tương đương với 6% chiều rộng cửa sổ */
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.footer__content {
+    flex: 2;
+    display: flex;
+    
+    flex-wrap: wrap;
+    flex-direction: row; /* Hiển thị các phần tử theo hàng trên màn hình lớn */
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Cấu trúc hàng .row */
+.row-footer {
+    gap: 5vw; /* Giảm khoảng cách giữa các cột theo vw */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Cột .col-3 */
+.col-3 {
+    flex: 1;
+    min-width: 15vw; /* Mỗi cột có chiều rộng tối thiểu bằng 15% chiều rộng cửa sổ */
+    padding: 1vw;   /* Padding cho mỗi cột theo vw */
+}
+
+/* Cấu hình phần address */
+.address {
+    font-size: 3vw;   /* Kích thước chữ theo vw */
+    line-height: 4vw; /* Khoảng cách dòng theo vw */
+}
+
+/* Footer top */
+.footer__top {
+    display: flex;
+    background-image: url(../PicAndVid/img/img_bg_footer.png);
+    background-size: 100% 100%;
+    padding: 5vw; /* Padding ở footer top theo vw */
+}
+
+/* Media Queries - Responsive */
+@media (max-width: 768px) {
+    /* Khi màn hình nhỏ hơn 768px */
+    .footer__container {
+        padding-inline: 4vw; /* Giảm padding khi màn hình nhỏ */
+        padding-top: 5vw;
+    }
+
+    .footer__content {
+        align-items: flex-start; /* Căn chỉnh các header về cùng một mức */
+
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .row .row-footer {
+        gap: 4vw; /* Giảm khoảng cách giữa các cột */
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .col-3 {
+        min-width: 20vw; /* Mỗi cột chiếm 90% chiều rộng của màn hình */
+        padding: 2vw;
+    }
+
+    .address {
+        text-align: center;
+    }
+
+    .footer__top {
+        padding: 4vw;
+    }
+    .collab-logo-container {
+        display: flex;
+        justify-content: space-between; /* Căn đều các logo */
+        align-items: center; /* Căn giữa các logo theo chiều dọc */
+        flex-wrap: wrap; /* Cho phép các logo xuống dòng nếu màn hình nhỏ */
+        gap: 15px; /* Khoảng cách giữa các logo */
+    }
+    
+}
+
+@media (max-width: 480px) {
+    .footer__container {
+        padding-inline: 3vw; 
+    }
+
+    .footer__top {
+        padding: 3vw; 
+    }
+    .collab-logo-container {
+        display: flex;
+        justify-content: space-between; /* Căn đều các logo */
+        align-items: center; /* Căn giữa các logo theo chiều dọc */
+        flex-wrap: wrap; /* Cho phép các logo xuống dòng nếu màn hình nhỏ */
+        gap: 5px; /* Khoảng cách giữa các logo */
+    }
+    
+}
+
+.content{
+    padding-bottom:100 px;
+}#searchLocation{
+    width:700px;
+    height: 80px;
+    bottom: 20px; /* Điều chỉnh vị trí theo ý muốn */
+    left: 13px;  
+    top:2925px;
+    position: absolute;
+ }    
+ .content1{
+    position: absolute;
+    top:-750px;
+    margin-left: 15px; /* Điều chỉnh khoảng cách lề trái */
+
+    font-size: 18px; /* Tùy chỉnh kích thước chữ */
+    font-weight: bold;
+
+ }
+ .content2{
+    position: absolute;
+    top:-670px;
+    margin-left: 15px; /* Điều chỉnh khoảng cách lề trái */
+
+    font-size: 15px; /* Tùy chỉnh kích thước chữ */
+    font-weight: bold;
+
+ }
+ #searchLocationSubmit{
+    width: 100px;
+    height: 50px;
+    font-family: "Londrina Solid", sans-serif;
+    background-color: #e86229;
+    color: white;
+    border-radius: 5px;
+    top:-20vw;
+    left: 14vw;
+    font-weight: bold;
+    border: none;
+    position: absolute;
+    transform: translateX(-50%);
+    cursor: pointer;
+
+}
+
+#searchLocationSubmit:hover {
+    font-family: "Londrina Solid", sans-serif;
+    background-color: #d1501a;}
+    @media (min-width: 500px) and (max-width: 700px) {
+    }    .header-heading{
+        margin-top:5px;
+    }
+
+    
+</style>
     </head>
 
     <body style="background-color: #fbf6dc;">
@@ -158,7 +1138,7 @@
                             <li><a class="button-banner"
                                     href="../html/tuyen_dung_1.html">Careers</a></li>
                             <li><a class="button-banner"
-                                    href="../html/about_us.html">About
+                                    href="../phpfile/aboutus.php">About
                                     Us</a></li>
                         </ul>
 

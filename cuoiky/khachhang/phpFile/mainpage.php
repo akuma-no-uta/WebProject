@@ -1,21 +1,793 @@
-<main>
-                <div>
-                    <div class="slider">
-                        <div><video autoplay class="slider-video"><source
-                                    src="Layout/PicAndVid/vid/cookvid.mp4"></src></video></div>
-                    <div><img src="layout\PicAndVid\img\istockphoto-1451425205-1024x1024.jpg"
-                            style="width:100%; height: 830px;"
-                            alt="Slide 2"></div>
-                    <div><img
-                            src="layout\PicAndVid\img\106947904-1632763959731-ALL_PRODUCTS_ok.jpg"
-                            style="width:100%; height: 830px;"
-                            alt="Slide 3"></div>
-                    <div><img
-                            src="Layout/PicAndVid/img/istockphoto-1167975402-612x612.jpg"
-                            style="width:100%; height:830px "
-                            alt="Slide 4"></div>
-                </div>
+<style>
+    @font-face {
+    font-family: "Londrina Solid";
+    src: url(../font/LondrinaSolid-Regular.ttf);
+}
+.body{
+    font-family: "Londrina Solid", sans-serif;}
+.visually-hidden{
+    display:none;
+}
 
+    @media screen and (max-width:540px){
+        .header-heading{
+            bottom:30px;
+        }
+    @media (max-width:768px){
+.header-heading{
+    top: 5vw;
+
+}}
+@media (max-width:500px){
+    .header-heading{
+        top:10vw;
+    }
+
+    }
+    
+    .button-banner {
+        flex-grow: 1;
+        position: relative; 
+        margin-left: auto; 
+        color: hsla(195.6, 92.59259259%, 21.17647059%, 1);
+        padding: 0.2rem 0.8rem;
+        top:30px;
+        border-radius: 2rem;
+        right:500px;
+        text-decoration: none;
+        font-family: "Londrina Solid", sans-serif;
+        gap: 2rem;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .navbar{
+        width:100%;
+        height:60px;
+        max-width:1200px;
+        margin:0 auto;
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+   
+    
+.a{
+margin:30px;
+font-family: "Londrina Solid", sans-serif;
+}
+
+.circle-card {
+width: 150px;
+height: 150px;
+font-family: "Londrina Solid", sans-serif;
+background: white;
+border-radius: 50%;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+padding: 20px;
+}
+
+.circle-card img {
+width: 60px;
+font-family: "Londrina Solid", sans-serif;
+height: 60px;
+border-radius: 50%;
+object-fit: cover;
+margin-bottom: 10px;
+}
+
+.circle-card h3 {
+margin: 5px 0;
+font-family: "Londrina Solid", sans-serif;
+font-size: 16px;
+}
+
+.circle-card p {
+margin: 0;
+font-family: "Londrina Solid", sans-serif;
+font-size: 12px;
+color: gray;
+}
+.body{
+background-color: #fbf6dc;
+font-family: "Londrina Solid", sans-serif;
+}
+
+
+
+.task-bar{
+font-family: "Londrina Solid", sans-serif;
+
+
+}
+
+@media (max-width:345px){
+  
+}
+.header-icon-1{
+    margin-top:-23px;
+}
+.header-icon-2{
+font-family: "Londrina Solid", sans-serif;
+cursor: pointer;
+margin-top:-23px;
+
+}
+.header-item-container ul li a{
+    position:relative;
+    float:center;
+
+
+    display: block;
+    gap: 3vw;
+    flex-direction: row;
+
+
+
+}
+#menu-bar{
+    display: none;
+}
+header label{
+    position: relative;
+    font-size:20px;
+    color:hsla(195.6, 92.59259259%, 21.17647059%, 1);
+    cursor:pointer;
+     display:none;
+    margin-left:30vw;
+}
+@media  (max-width:991px){
+    .header-item-container{
+
+    }
+    header label{
+
+        display:initial;}
+    header .navbar .label{
+        
+        position:absolute;
+        left:0;
+        right:0;
+        border-top:1px solid rgba(0,0,0.1);
+
+    }
+}
+@media  (max-width:800px){
+ header label{
+    display:flex;
+    position: relative;
+    font-size:20px;
+    color:hsla(195.6, 92.59259259%, 21.17647059%, 1);
+    cursor:pointer;
+    left:10vw;
+    top:0vw; }
+}
+
+
+.menu-container {
+    display:flex;
+  position: relative;
+  left:40rem;
+  bottom:2rem;
+}
+#menu-bar:checked ~.navbar{
+    display:initial;
+}
+.button-banner {
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+
+
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  top:15px;
+  position: absolute;
+
+}
+@media screen and (max-width:376px){
+    .header-item-container {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      }
+   .menu-toggle{
+    margin-right:-35vw;
+    margin-top:-2vw;
+   }
+    
+}
+@media screen and (max-width: 769px) {
+  .header-item-container {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+.navbar .menu-toggle-btn{
+    color:black;
+    font-size: 1.5rem;
+    cursor:pointer;
+    display:none
+}
+@media (max-width:992px){
+    .header-item-container{
+        display:none
+    }
+    .menu-toggle-btn{
+        display:block;
+    }
+  
+}
+li{
+    list-style:none;
+}
+a{
+    text-decoration:none;
+    color:#fff;
+    font-size:1rem;
+}
+a:hover{
+    color:orange
+}
+.title h2 {
+line-height: 1;
+padding-top: .25em;
+font-family: "Londrina Solid", sans-serif;
+padding-bottom: .25em;
+color: #3c3c3c;
+font-size: 4rem;
+}
+.hiring{
+    width:100vw;
+    height:1000px;
+}
+.slider {
+width: 100%;
+margin: auto;
+top: -9px;
+font-family: "Londrina Solid", sans-serif;
+}
+
+.slider-video {
+height: 100%;
+width: 100%;
+font-family: "Londrina Solid", sans-serif;
+}
+.slick-slide img {
+  width: 500px;
+  height: 500px;
+  font-family: "Londrina Solid", sans-serif;
+}
+.l-wrapper {
+display: flex;
+max-width: 1100px;
+font-family: "Londrina Solid", sans-serif;
+margin: auto;
+align-items: center;
+gap:100px;
+justify-content: space-between;
+}
+
+.image-container img {
+max-width: 100%;
+height: auto;
+font-family: "Londrina Solid", sans-serif;
+border-radius: 10px;
+}
+
+.content-container {
+max-width: 500px;
+font-family: "Londrina Solid", sans-serif;
+color: #3c3c3c;
+}
+
+
+.map-container {
+font-family: "Londrina Solid", sans-serif;
+width: 100%;
+height: 150px;
+}
+
+.map-container iframe {
+width: 100%;
+font-family: "Londrina Solid", sans-serif;
+height: 100%;
+border: 0;
+}
+
+a {
+color: white;
+font-family: "Londrina Solid", sans-serif;
+text-decoration: underline;
+}
+
+a:hover {
+font-family: "Londrina Solid", sans-serif;
+color: #fcd32c;
+}
+
+
+.hidden-section{
+opacity:0;
+transform:translateY(50px);
+transition:all 1s ease-in-out;
+}
+.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+
+.content-container h2 {
+font-family: "Londrina Solid", sans-serif;
+font-size: 2.5rem;
+color: #3c3c3c;
+margin-bottom: 10px;
+}
+
+.subheader {
+font-family: "Londrina Solid", sans-serif;
+text-transform: uppercase;
+font-size: 1rem;
+font-weight: bold;
+color: #7b5d44;
+display: flex;
+align-items: center;
+}
+
+.subheader img {
+font-family: "Londrina Solid", sans-serif;
+margin-left: 10px;
+}
+
+
+.content-container p {
+font-size: 1rem;
+font-family: "Londrina Solid", sans-serif;
+line-height: 1.5;
+color: #555;
+}
+
+.button a {
+font-family: "Londrina Solid", sans-serif;
+display: inline-block;
+background-color: #e86229;
+color: white;
+padding: 10px 20px;
+border-radius: 5px;
+text-decoration: none;
+font-weight: bold;
+margin-top: 15px;
+}
+
+.button a:hover {
+font-family: "Londrina Solid", sans-serif;
+background-color: #d1501a;
+}
+.popup-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 1000;
+  }
+  .popup-box button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .popup-box button:hover {
+    background-color: #0056b3;
+  }
+.row-footer {
+font-family: "Londrina Solid", sans-serif;
+display: -ms-flexbox;
+display: flex;
+-ms-flex-wrap: wrap;
+flex-wrap: wrap;
+margin-right: -15px;
+margin-left: -15px;
+}*/
+.banner {
+font-family: "Londrina Solid", sans-serif;
+background-color: #f3b53b;
+justify-content:center;
+max-width:80%;
+
+
+
+clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 0% 100%);
+}
+.button-job{
+    font-family: "Londrina Solid", sans-serif;
+    display: inline-block;
+    background-color: #e86229;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-left:45vw;
+    }
+    
+    .button-job:hover {
+    font-family: "Londrina Solid", sans-serif;
+    background-color: #d1501a;
+    }
+    /*.row {
+    font-family: "Londrina Solid", sans-serif;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    }*/
+.banner-right {
+position: fixed;
+right: -100%; /* Ẩn hoàn toàn bên phải */
+size:30%;
+top: 60%;
+transform: translateY(-50%) skewX(-10deg); /* Tạo hiệu ứng nghiêng như hình thang */
+width: 400px; /* Điều chỉnh kích thước */
+transition: right 1s cubic-bezier(0.25, 1.5, 0.5, 1), transform 1s cubic-bezier(0.25, 1.5, 0.5, 1);
+z-index: 1000;
+border-radius: 20px;
+    background: #f3b53b;
+padding: 20px;
+box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.banner-right.show {
+right: 10px;
+transform: translateY(-50%) skewX(0); 
+}
+@media (max-width: 768px) {
+    .banner-right-mob {
+        position: fixed;
+        right: -100%; 
+        size:5%;
+        top: 60%;
+        transform: translateY(-50%) skewX(-10deg); 
+        width: 70vw;
+        height:50vw;
+        transition: right 1s cubic-bezier(0.25, 1.5, 0.5, 1), transform 1s cubic-bezier(0.25, 1.5, 0.5, 1);
+        z-index: 1000;
+        border-radius: 20px;
+            background: #f3b53b;
+        padding: 20px;
+        
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);    }
+    }
+
+.banner-content {
+font-family: "Londrina Solid", sans-serif;
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-wrap: wrap;
+width: 100%;
+padding: 10px;
+}
+
+.banner img {
+font-family: "Londrina Solid", sans-serif;
+max-width: 120px;
+padding: 10px;
+}
+
+.banner-text {
+font-family: "Londrina Solid", sans-serif;
+flex: 1;
+text-align: left;
+padding: 10px;
+}
+
+.banner h2 {
+font-family: "Londrina Solid", sans-serif;
+margin: 0;
+font-size: 24px;
+font-weight: bold;
+}
+
+.banner p {
+font-family: "Londrina Solid", sans-serif;
+font-size: 16px;
+margin: 10px 0;
+}
+
+.cta {
+font-family: "Londrina Solid", sans-serif;
+padding: 10px;
+}
+
+.cta a {
+font-family: "Londrina Solid", sans-serif;
+text-decoration: none;
+background-color: white;
+color: black;
+padding: 8px 15px;
+border-radius: 5px;
+font-weight: bold;
+font-size: 14px;
+border: 2px solid black;
+}
+
+.cta a:hover {
+font-family: "Londrina Solid", sans-serif;
+background-color: black;
+color: white;
+}
+body    {
+font-family: "Londrina Solid", sans-serif;
+background-color: #f4f4f4;
+margin: 0;
+padding: 0;
+}
+
+h2 {
+text-align: center;
+color: #e6007e;
+font-size: 28px;
+font-family: "Londrina Solid", sans-serif;
+margin: 20px 0;
+}
+
+.card-listing {
+font-family: "Londrina Solid", sans-serif;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 20px;
+padding: 20px;
+}
+
+/*.card {
+font-family: "Londri na Solid", sans-serif;
+width: 300px;
+background: #fff;
+border-radius: 8px;
+overflow: hidden;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+transition: transform 0.3s ease-in-out;
+}*/
+.image-thumbnail{
+object-fit: cover
+}
+.hidden-section1{
+opacity: 0;
+transform: translateX(100px); /* Đẩy sang phải */
+transition: all 0.8s ease-in-out;
+}
+/* Container chứa các logo */
+.collab-logo-container {
+    display: flex;
+    flex-direction: row; /* Xếp theo hàng ngang */
+    justify-content: center; /* Căn giữa logo */
+    align-items: center; /* Canh giữa theo chiều dọc */
+    gap: 20px; /* Khoảng cách giữa các logo */
+    flex-wrap: wrap; /* Đảm bảo logo không bị tràn khi thu nhỏ */
+    padding: 20px 0; /* Thêm khoảng cách nếu cần */
+}
+
+.collab-logo {
+    max-width: 100px; /* Giới hạn kích thước logo */
+    height: auto;
+    transition: transform 0.5s ease-in-out;
+}
+
+.collab-logo:hover {
+    transform: rotate(360deg);
+}
+
+
+.hidden-section1.show {
+opacity: 1;
+transform: translateX(0); /* Trả về vị trí cũ */
+}
+
+.card:hover {
+font-family: "Londrina Solid", sans-serif;
+transform: translateY(-5px);
+}
+
+.card__media {
+font-family: "Londrina Solid", sans-serif;
+position: relative;
+height: 200px;
+background-size: cover;
+background-position: center;
+transition: filter 0.3s ease-in-out;
+}
+
+/* Darken image on hover */
+.card:hover .card__media {
+font-family: "Londrina Solid", sans-serif;
+filter: brightness(80%);
+}
+
+.card__heading {
+font-size: 18px;
+font-family: "Londrina Solid", sans-serif;
+color: #e6007e;
+text-align: center;
+padding: 15px;
+font-weight: bold;
+}
+
+.card span {
+font-family: "Londrina Solid", sans-serif;
+display: block;
+text-align: center;
+color: #666;
+padding-bottom: 15px;
+font-size: 14px;
+text-decoration: none;
+}
+
+
+.header__phl-icon {
+width: 50px; /* Điều chỉnh logo nhỏ hơn */
+height: auto;
+}
+
+@media (max-width: 768px) {
+.body {
+    max-width: 200px; 
+}
+}
+.clipped-box {
+font-family: "Londrina Solid", sans-serif;
+width: 50%;
+height: 300px;
+background-color:  #88f8e2;
+clip-path: polygon(0 0, calc(100% - 25px) 24px, 100% calc(100% - 38px), 0% 100%);
+margin-left:400px;
+
+}
+.logo-container{
+position:relative;
+}
+.logo-job{
+height:80px;
+bottom: 20px; /* Điều chỉnh vị trí theo ý muốn */
+left: 20px; 
+bottom:750px;
+
+position: absolute;
+}
+
+
+    .collab-logo-container {
+        display: flex;
+        justify-content: space-between; /* Căn đều các logo */
+        align-items: center; /* Căn giữa các logo theo chiều dọc */
+        flex-wrap: wrap; /* Cho phép các logo xuống dòng nếu màn hình nhỏ */
+        gap: 15px; /* Khoảng cách giữa các logo */
+    }
+    
+}
+
+@media (max-width: 480px) {
+    .footer__container {
+        padding-inline: 3vw; 
+    }
+
+    .footer__top {
+        padding: 3vw; 
+    }
+    .collab-logo-container {
+        display: flex;
+        justify-content: space-between; /* Căn đều các logo */
+        align-items: center; /* Căn giữa các logo theo chiều dọc */
+        flex-wrap: wrap; /* Cho phép các logo xuống dòng nếu màn hình nhỏ */
+        gap: 5px; /* Khoảng cách giữa các logo */
+    }
+    
+}
+
+.content{
+    padding-bottom:100 px;
+}#searchLocation{
+    width:700px;
+    height: 80px;
+    bottom: 20px; /* Điều chỉnh vị trí theo ý muốn */
+    left: 13px;  
+    top:2925px;
+    position: absolute;
+ }    
+ .content1{
+    position: absolute;
+    top:-750px;
+    margin-left: 15px; /* Điều chỉnh khoảng cách lề trái */
+
+    font-size: 18px; /* Tùy chỉnh kích thước chữ */
+    font-weight: bold;
+
+ }
+ .content2{
+    position: absolute;
+    top:-670px;
+    margin-left: 15px; /* Điều chỉnh khoảng cách lề trái */
+
+    font-size: 15px; /* Tùy chỉnh kích thước chữ */
+    font-weight: bold;
+
+ }
+ #searchLocationSubmit{
+    width: 100px;
+    height: 50px;
+    font-family: "Londrina Solid", sans-serif;
+    background-color: #e86229;
+    color: white;
+    border-radius: 5px;
+    top:-20vw;
+    left: 14vw;
+    font-weight: bold;
+    border: none;
+    position: absolute;
+    transform: translateX(-50%);
+    cursor: pointer;
+
+}
+
+#searchLocationSubmit:hover {
+    font-family: "Londrina Solid", sans-serif;
+    background-color: #d1501a;}
+    @media (min-width: 500px) and (max-width: 700px) {
+    }    .header-heading{
+        margin-top:5px;
+    }
+
+    
+    
+</style>
+<main>
+                    <div>
+                        <div class="slider-container">
+        <div class="slider">
+            <div class="slide"><video autoplay muted loop class="slider-video"><source src="../PicAndVid/vid/cookvid.mp4" type="video/mp4"></video></div>
+            <div class="slide"><img src="../PicAndVid/img/istockphoto-1451425205-1024x1024.jpg" alt="Slide 2"></div>
+            <div class="slide"><img src="../PicAndVid/img/106947904-1632763959731-ALL_PRODUCTS_ok.jpg" alt="Slide 3"></div>
+            <div class="slide"><img src="../PicAndVid/img/istockphoto-1167975402-612x612.jpg" alt="Slide 4"></div>
+        </div>
+    </div>
             </div>
 
             <section
@@ -23,13 +795,13 @@
                 <div class="l-wrapper">
                     <div class="image-container">
                         <img width="880" height="550"
-                            src="../Layout/PicAndVid/img/MOTYO-Enrique-Olvera-Pujol-.jpg"
+                            src="../PicAndVid/img/MOTYO-Enrique-Olvera-Pujol-.jpg"
                             class="attachment-content-row size-content-row"
                             alt="Guacamole" decoding="async"
                             fetchpriority="high"> </div>
                     <div class="content-container">
                         <h2><span class="subheader">About Wax Bodega<img
-                                    src="layout/PicAndVid/img/subheader-embellishment.svg"
+                                    src="../PicAndVid/img/subheader-embellishment.svg"
                                     alt style></span><div
                                 style="text-align: start;">Food Is His
                                 Passion</div></h2><p></p><p>He believe that good
@@ -58,7 +830,7 @@
                         <h2><span class="subheader">Cooking As An Art<div
                                     class="hidden-section"><img
                                         class="hidden-section"
-                                        src="layout/PicAndVid/img/subheader-embellishment.svg"
+                                        src="../PicAndVid/img/subheader-embellishment.svg"
                                         alt></div></span><div
                                 style="text-align: start;">Experience Our
                                 Passion</div></h2>
@@ -73,7 +845,7 @@
                     </div>
                     <div class="image-container">
                         <img width="880" height="550"
-                            src="layout/PicAndVid/img/Untitled-design-25-880x550.png"
+                            src="../PicAndVid/img/Untitled-design-25-880x550.png"
                             class="attachment-content-row size-content-row"
                             alt="Delicious Food" decoding="async"
                             fetchpriority="high">
@@ -94,7 +866,7 @@
                         : ?>
                         <img style="margin-left: 40px;"
                             class="img-fluid px-4 py-3"
-                            src="layout\PicAndVid\img\BorderRewardsLogo.webp"
+                            src="../PicAndVid/img/BorderRewardsLogo.webp"
                             alt="Border Rewards: On The Border's Loyalty Program">
                         <div class="banner-headers px-2">
                             <h2 class="mb-0"> $2 OFF QUESO EVERY DAY!</h2>
@@ -138,7 +910,7 @@
                         style="text-decoration: none; color: inherit;">
                         <div class="card__media">
                             <div class="card__image image-thumbnail" style="
-                                    background-image: url('layout/PicAndVid/img/92988Puesto_x_An-s_Gelato_Cones_Courtesy_of_An-s_Gelato_1_1.jpg');
+                                    background-image: url('../PicAndVid/img/92988Puesto_x_An-s_Gelato_Cones_Courtesy_of_An-s_Gelato_1_1.jpg');
                                     background-size: cover;
                                     background-position: center;
                                     height: 200px;
@@ -162,7 +934,7 @@
                         style="text-decoration: none; color: inherit;">
                         <div class="card__media">
                             <div class="card__image image-thumbnail" style="
-                                    background-image: url('layout/PicAndVid/img/21297Enchiladas41_1_1.jpg');
+                                    background-image: url('../PicAndVid/img/21297Enchiladas41_1_1.jpg');
                                     background-size: cover;
                                     background-position: center;
                                     height: 200px;
@@ -187,7 +959,7 @@
                         style="text-decoration: none; color: inherit;">
                         <div class="card__media">
                             <div class="card__image image-thumbnail" style="
-                                    background-image: url('layout/PicAndVid/img/21297Enchiladas41_1_1.jpg');
+                                    background-image: url('../PicAndVid/img/21297Enchiladas41_1_1.jpg');
                                     background-size: cover;
                                     background-position: center;
                                     height: 200px;
@@ -229,7 +1001,7 @@
 </style>
         <div class="hidden-section">
             <img class="hiring"
-                src="layout\PicAndVid\img\M3-2021-Team-2-Hero-Tablet-1536x1120.webp"
+                src="../PicAndVid/img/M3-2021-Team-2-Hero-Tablet-1536x1120.webp"
                 data-events="resize ">
             <div class="logo-container">
                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -276,5 +1048,147 @@
             </div>
 
         </main>
+<script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
 
-    <div class="header__awning" style="transform: scaleY(-1);"></div>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+        <script>
+  $(document).ready(function () {
+    var video = document.getElementById("slide-video");
+
+    $(".slider").slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 10000,
+        dots: true,
+        arrows: true,
+        adaptiveHeight: true
+    });
+
+    if (video) {
+        video.onended = function () {
+            $(".slider").slick("slickNext");
+            $(".slider").slick("slickSetOption", "autoplay", true, true);
+        };
+    }
+});
+
+
+  
+    // Xử lý hiển thị nội dung khi cuộn cho nhiều phần tử
+    function checkScroll() {
+        const hiddenSections = document.querySelectorAll('.hidden-section'); // Chọn tất cả phần tử
+        const screenHeight = window.innerHeight / 1.2;
+  
+        hiddenSections.forEach(section => {
+            const sectionPosition = section.getBoundingClientRect().top;
+            if (sectionPosition < screenHeight) {
+                section.classList.add('show');
+                section.classList.remove('hide');
+            } else {
+                section.classList.remove('show');
+                section.classList.add('hide');
+            }
+        });
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+    const banner = document.querySelector(".banner-right");
+    const footer = document.querySelector("footer"); // Lấy footer để kiểm tra
+    const triggerPosition = banner.offsetTop - window.innerHeight / 2;
+
+    function handleScroll() {
+        const bannerRect = banner.getBoundingClientRect();
+        const footerRect = footer.getBoundingClientRect();
+
+        if (window.scrollY > triggerPosition && footerRect.top > window.innerHeight) {
+            banner.classList.add("show");
+        } else {
+            banner.classList.remove("show");
+        }
+    }
+
+    // Lắng nghe sự kiện cuộn với "requestAnimationFrame" để tối ưu hiệu suất
+    let ticking = false;
+    window.addEventListener("scroll", function () {
+        if (!ticking) {
+            window.requestAnimationFrame(function () {
+                handleScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+
+    handleScroll(); // Gọi 1 lần để kiểm tra khi tải trang
+});
+  
+    window.addEventListener('scroll', checkScroll);
+    checkScroll();
+    let lastScrollY = window.scrollY;
+        let timeout = null;
+
+        window.addEventListener("scroll", () => {
+            const header = document.getElementById("header");
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > lastScrollY) {
+                // Cuộn xuống thì ẩn header
+                header.classList.add("hidden");
+            } else {
+                // Cuộn lên thì hiển thị header
+                header.classList.remove("hidden");
+            }
+
+            lastScrollY = currentScrollY;
+
+            // Nếu không cuộn sau 1 giây, ẩn header
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                header.classList.add("hidden");
+            }, 1000);
+        });
+        let lastScrollTop = 0;
+const header = document.querySelector("header");
+const awning = document.querySelector(".header__awning-top");
+
+window.addEventListener("scroll", function () {
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScroll > lastScrollTop) {
+        header.style.top = "-150px"; 
+        awning.style.top = "-20px";  
+    } else {
+        header.style.top = "0";
+        awning.style.top = "130px"; 
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const menuContainer = document.querySelector(".header-item-container");
+
+    menuToggle.addEventListener("click", function () {
+        menuContainer.classList.toggle("show");
+    });
+
+});}
+);
+function toggleMenu() {
+    document.querySelector(".header-item-container").classList.toggle("active");
+    document.querySelector(".menu-toggle-btn").classList.toggle("active");
+}
+//nút x để tắt bảng popup
+document.getElementById("close-banner").addEventListener("click", function () {
+        document.getElementById("popup-banner").style.display = "none";
+    });
+</script>
