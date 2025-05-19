@@ -47,8 +47,122 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 }
+
 ?>
 <style>
+  /* CSS chung */
+  .user {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+  }
+  
+  .user_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .user_header span {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .user_search {
+    display: flex;
+    align-items: center;
+    background: #f5f7fa;
+    padding: 8px 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .user_search input {
+    border: none;
+    background: transparent;
+    margin-left: 10px;
+    outline: none;
+    width: 200px;
+  }
+  
+  /* CSS cho bảng - với đường kẻ rõ ràng */
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    border: 1px solid #e0e0e0;
+  }
+  
+  thead {
+    background: linear-gradient(135deg, #1976d2, #2196f3);
+    color: white;
+  }
+  
+  th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border-right: 1px solid rgba(255,255,255,0.2);
+  }
+  
+  th:last-child {
+    border-right: none;
+  }
+  
+  th:first-child {
+    border-top-left-radius: 12px;
+  }
+  
+  th:last-child {
+    border-top-right-radius: 12px;
+  }
+  
+  tbody tr {
+    transition: background 0.2s;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  tbody tr:hover {
+    background-color: #f1f8ff;
+  }
+  
+  td {
+    padding: 12px 15px;
+    border-right: 1px solid #e0e0e0;
+    color: #555;
+  }
+  
+  td:last-child {
+    border-right: none;
+  }
+  
+  td a {
+    color: #1976d2;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  td a:hover {
+    color: #0d47a1;
+    text-decoration: underline;
+  }
+  
+  /* CSS cho form thêm tài liệu */
   #addDocumentForm {
     display: none;
     max-width: 500px;
@@ -58,52 +172,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 1px solid #e0e0e0;
   }
-
+  
   #addDocumentForm h3 {
     text-align: center;
     margin-bottom: 20px;
     color: #333;
   }
-
+  
   #addDocumentForm form {
     display: flex;
     flex-direction: column;
     gap: 15px;
   }
-
+  
   #addDocumentForm label {
     font-size: 15px;
     color: #444;
     display: flex;
     flex-direction: column;
   }
-
+  
   #addDocumentForm input[type="text"],
   #addDocumentForm input[type="url"],
   #addDocumentForm textarea {
     padding: 10px 14px;
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 14px;
     transition: border-color 0.3s, box-shadow 0.3s;
+    background: #f9f9f9;
   }
-
+  
   #addDocumentForm input:focus,
   #addDocumentForm textarea:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 6px rgba(0, 123, 255, 0.2);
+    border-color: #1976d2;
+    box-shadow: 0 0 6px rgba(25, 118, 210, 0.2);
     outline: none;
+    background: white;
   }
-
+  
   #addDocumentForm textarea {
     resize: vertical;
     min-height: 80px;
   }
-
+  
   #addDocumentForm button[type="submit"] {
     padding: 12px;
-    background: #007bff;
+    background: #1976d2;
     color: white;
     border: none;
     font-weight: bold;
@@ -111,10 +228,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     cursor: pointer;
     transition: background 0.3s;
   }
-
+  
   #addDocumentForm button[type="submit"]:hover {
-    background: #0056b3;
+    background: #1565c0;
   }
+  .table-scroll-wrapper {
+  max-height: 400px; /* Chiều cao tối đa, bạn có thể chỉnh tùy ý */
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+
 </style>
 <div class="user">
     <div class="user_header">
@@ -140,7 +264,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <button type="submit">Thêm Tài Liệu</button>
 </form>
     </div>
-
+<div class="table-scroll-wrapper">
     <!-- Bảng Danh Sách Tài Liệu -->
     <table>
         <thead>
@@ -187,6 +311,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
         </tbody>
     </table>
+    </div>
 </div>
 <script>
     function searchTable() {

@@ -81,7 +81,7 @@ $conn->close();
         }
 
         button {
-            background-color: #4CAF50; /* Màu nền nút */
+            background-color:rgb(4, 103, 208); /* Màu nền nút */
             color: white; /* Màu chữ */
             padding: 12px 20px; /* Padding cho nút */
             border: none; /* Không viền */
@@ -94,7 +94,7 @@ $conn->close();
         }
 
         button:hover {
-            background-color: #45a049; /* Màu nền khi hover */
+            background-color:rgb(46, 170, 232); /* Màu nền khi hover */
             transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu khi hover */
         }
 
@@ -108,7 +108,7 @@ $conn->close();
             height: 20px;
             margin-right: 10px;
             appearance: none; /* Bỏ mặc định kiểu nút radio */
-            border: 2px solid #4CAF50; /* Màu viền */
+            border: 2px solidrgb(4, 103, 208); /* Màu viền */
             border-radius: 50%; /* Bo tròn thành hình tròn */
             outline: none;
             cursor: pointer;
@@ -116,12 +116,12 @@ $conn->close();
         }
 
         input[type="radio"]:checked {
-            background-color: #4CAF50; /* Màu nền khi được chọn */
-            border-color: #4CAF50; /* Đổi màu viền khi chọn */
+            background-color: rgb(46, 108, 232); /* Màu nền khi được chọn */
+            border-color: rgb(46, 114, 232); /* Đổi màu viền khi chọn */
         }
 
         input[type="radio"]:hover {
-            border-color: #45a049; /* Đổi màu viền khi hover */
+            border-color:rgb(93, 129, 166); /* Đổi màu viền khi hover */
         }
 
         /* CSS cho Toast */
@@ -146,12 +146,18 @@ $conn->close();
             visibility: visible;
             opacity: 1;
         }
+        
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Đánh giá Giảng viên</h2>
-        <form action="" method="POST">
+    <div class="container" style="width: 60%;
+    max-width: 700px;
+    padding: 30px;
+    border: 1px solid #cbd5e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    background-color: #fff;">
+        <form action="" method="POST" style="">
             <div class="form-group">
                 <label for="ho_ten">Họ và tên:</label>
                 <input type="text" id="ho_ten" name="ho_ten" required>
@@ -203,7 +209,6 @@ $conn->close();
             <button type="submit">Gửi đánh giá</button>
         </form>
     </div>
-
     <!-- Toast Message -->
     <div id="toast" class="toast"><?php echo $successMessage; ?></div>
 
