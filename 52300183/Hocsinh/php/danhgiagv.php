@@ -49,11 +49,6 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đánh giá Giảng viên</title>
     <style>
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-
         .form-group {
             margin-bottom: 20px;
         }
@@ -100,19 +95,7 @@ $conn->close();
 
         .rating-group {
             display: flex;
-            gap: 10px;
-        }
-
-        input[type="radio"] {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-            appearance: none; /* Bỏ mặc định kiểu nút radio */
-            border: 2px solidrgb(4, 103, 208); /* Màu viền */
-            border-radius: 50%; /* Bo tròn thành hình tròn */
-            outline: none;
-            cursor: pointer;
-            transition: background-color 0.3s, border-color 0.3s;
+             gap: 10px;
         }
 
         input[type="radio"]:checked {
@@ -146,18 +129,46 @@ $conn->close();
             visibility: visible;
             opacity: 1;
         }
-        
+         h2 {
+        font-size: 28px;
+        color: #2c3e50;
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+        border-bottom: 2px solid #0284c7;  
+        margin-top: 40px; 
+    }
+    .rating-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    color: #334155;
+}
+
+input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    appearance: none;
+    border: 2px solid rgb(4, 103, 208);
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    margin-bottom: 5px;
+}
     </style>
 </head>
-<body>
-    <div class="container" style="width: 60%;
+<body>  
+    <h2>Đánh Giá Chất Lượng</h2>
+    <div class="baidang" style="width: 60%;
     max-width: 700px;
     padding: 30px;
     border: 1px solid #cbd5e0;
     border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    background-color: #fff;">
-        <form action="" method="POST" style="">
+    background-color: #fff;
+    margin: 0 auto 25px;">
+        <form action="" method="POST">
             <div class="form-group">
                 <label for="ho_ten">Họ và tên:</label>
                 <input type="text" id="ho_ten" name="ho_ten" required>
@@ -167,37 +178,36 @@ $conn->close();
                 <label for="lop">Lớp:</label>
                 <input type="text" id="lop" name="lop" required>
             </div>
-
-            <div class="form-group">
+            <div class="form-group" >
                 <label>Chất lượng bài giảng (1-5):</label>
                 <div class="rating-group">
-                    <input type="radio" id="chat_luong_bai_giang_1" name="chat_luong_bai_giang" value="1" required> 1
-                    <input type="radio" id="chat_luong_bai_giang_2" name="chat_luong_bai_giang" value="2"> 2
-                    <input type="radio" id="chat_luong_bai_giang_3" name="chat_luong_bai_giang" value="3"> 3
-                    <input type="radio" id="chat_luong_bai_giang_4" name="chat_luong_bai_giang" value="4"> 4
-                    <input type="radio" id="chat_luong_bai_giang_5" name="chat_luong_bai_giang" value="5"> 5
+                    <input type="radio" id="chat_luong_bai_giang_1" name="chat_luong_bai_giang" value="1" required>.1
+                    <input type="radio" id="chat_luong_bai_giang_2" name="chat_luong_bai_giang" value="2" style="margin-left: 30px;"> .2
+                    <input type="radio" id="chat_luong_bai_giang_3" name="chat_luong_bai_giang" value="3" style="margin-left: 30px;"> .3
+                    <input type="radio" id="chat_luong_bai_giang_4" name="chat_luong_bai_giang" value="4" style="margin-left: 30px;"> .4
+                    <input type="radio" id="chat_luong_bai_giang_5" name="chat_luong_bai_giang" value="5" style="margin-left: 30px;"> .5
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Chất lượng bài tập (1-5):</label>
                 <div class="rating-group">
-                    <input type="radio" id="chat_luong_bai_tap_1" name="chat_luong_bai_tap" value="1" required> 1
-                    <input type="radio" id="chat_luong_bai_tap_2" name="chat_luong_bai_tap" value="2"> 2
-                    <input type="radio" id="chat_luong_bai_tap_3" name="chat_luong_bai_tap" value="3"> 3
-                    <input type="radio" id="chat_luong_bai_tap_4" name="chat_luong_bai_tap" value="4"> 4
-                    <input type="radio" id="chat_luong_bai_tap_5" name="chat_luong_bai_tap" value="5"> 5
+                    <input type="radio" id="chat_luong_bai_tap_1" name="chat_luong_bai_tap" value="1" required> .1
+                    <input type="radio" id="chat_luong_bai_tap_2" name="chat_luong_bai_tap" value="2"  style="margin-left: 30px;"> .2
+                    <input type="radio" id="chat_luong_bai_tap_3" name="chat_luong_bai_tap" value="3"  style="margin-left: 30px;"> .3
+                    <input type="radio" id="chat_luong_bai_tap_4" name="chat_luong_bai_tap" value="4"  style="margin-left: 30px;"> .4
+                    <input type="radio" id="chat_luong_bai_tap_5" name="chat_luong_bai_tap" value="5"  style="margin-left: 30px;"> .5
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Thái độ giảng viên (1-5):</label>
                 <div class="rating-group">
-                    <input type="radio" id="thai_do_giang_vien_1" name="thai_do_giang_vien" value="1" required> 1
-                    <input type="radio" id="thai_do_giang_vien_2" name="thai_do_giang_vien" value="2"> 2
-                    <input type="radio" id="thai_do_giang_vien_3" name="thai_do_giang_vien" value="3"> 3
-                    <input type="radio" id="thai_do_giang_vien_4" name="thai_do_giang_vien" value="4"> 4
-                    <input type="radio" id="thai_do_giang_vien_5" name="thai_do_giang_vien" value="5"> 5
+                    <input type="radio" id="thai_do_giang_vien_1" name="thai_do_giang_vien" value="1" required> .1
+                    <input type="radio" id="thai_do_giang_vien_2" name="thai_do_giang_vien" value="2" style="margin-left: 30px;"> .2
+                    <input type="radio" id="thai_do_giang_vien_3" name="thai_do_giang_vien" value="3" style="margin-left: 30px;"> .3
+                    <input type="radio" id="thai_do_giang_vien_4" name="thai_do_giang_vien" value="4" style="margin-left: 30px;"> .4
+                    <input type="radio" id="thai_do_giang_vien_5" name="thai_do_giang_vien" value="5" style="margin-left: 30px;"> .5
                 </div>
             </div>
 
