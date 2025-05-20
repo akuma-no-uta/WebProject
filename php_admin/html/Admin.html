@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Quản Lý Nhà Hàng</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f6f9;
+            padding: 30px;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        .charts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .chart-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📊 Tổng Quan Quản Lý Nhà Hàng</h1>
+
+    <div class="charts">
+
+        <div class="chart-card">
+            <h3>📦 Tình Trạng Đơn Hàng</h3>
+            <canvas id="orderChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+            <h3>🪑 Đặt Bàn & Món Ăn</h3>
+            <canvas id="summaryChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+            <h3>🍽️ Doanh Thu Món Ăn Theo Loại</h3>
+            <canvas id="foodTypeRevenueChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Biểu đồ 2: Tình trạng đơn hàng
+        const orderChart = new Chart(document.getElementById('orderChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Đã xử lý', 'Đang chờ', 'Đã hủy'],
+                datasets: [{
+                    data: [120, 30, 10],
+                    backgroundColor: ['#17a2b8', '#ffc107', '#dc3545'],
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Biểu đồ 3: Lượt đặt bàn và món ăn
+        const summaryChart = new Chart(document.getElementById('summaryChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Lượt đặt bàn', 'Tổng món ăn'],
+                datasets: [{
+                    data: [75, 45],
+                    backgroundColor: ['#6610f2', '#20c997'],
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Biểu đồ 4: Doanh thu món ăn theo loại
+        const foodTypeRevenueChart = new Chart(document.getElementById('foodTypeRevenueChart'), {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'Burritos',
+                    'Tacos',
+                    'Drinks',
+                    'Fruits',
+                    'Ice Cream',
+                    'Vietnamese Traditional Foods'
+                ],
+                datasets: [{
+                    data: [12000000, 10000000, 6000000, 4000000, 5000000, 15000000],
+                    backgroundColor: [
+                        '#ff6384',  // Burritos
+                        '#ffcd56',  // Tacos
+                        '#36a2eb',  // Drinks
+                        '#4bc0c0',  // Fruits
+                        '#9966ff',  // Ice Cream
+                        '#ff9f40'   // Vietnamese Traditional Foods
+                    ],
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const value = context.parsed;
+                                return `${context.label}: ${value.toLocaleString()} VNĐ`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
