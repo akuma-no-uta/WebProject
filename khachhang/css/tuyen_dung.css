@@ -1,0 +1,101 @@
+body{
+    background-color: #fbf6dc;
+}
+
+.input-group{
+    margin-left: 370px;
+    padding: 10px 40px 10px 10px;
+  }
+
+  .card{
+    margin-top: 25px;
+    background-color: #ecc06a;
+    border: 0cap;
+  }
+
+  .loading-spinner {
+    margin-top:50px;
+    display: none;
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 50%;
+    left:47%;
+    transform: translate(-50%, -50%);
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .job-container {
+    display: none;
+    margin-top: 20px;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .job-box {
+    width: 220px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .job-box-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+
+  .job-box button {
+    
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .job-box button:hover {
+    background-color: #0056b3;
+  }
+.card-img-top {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+    margin-right: 0;
+    width: 250px;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.form-control{
+    width: 300px;
+    height: 35px;
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    padding: 4px 8px;
+    outline: none;
+}
+
+.btn-search:hover {
+    background-color: #644913; /* Thay đổi màu nền khi hover */
+    transform: scale(1.02); /* Phóng to nút nhẹ */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tạo hiệu ứng đổ bóng */
+  }
+
+
