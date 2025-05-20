@@ -44,103 +44,134 @@ $nhanviens = pdo_query("SELECT * FROM nhanvien");
 
 <!-- Giao diện -->
 <style>
-    .form-container, table {
-        max-width: 1000px;
-        margin: 30px auto;
+     .modal {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+        background-color: #ffffff;
+        margin: 5% auto;
+        padding: 30px;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 600px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 0.3s ease-in-out;
         font-family: 'Segoe UI', sans-serif;
     }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        background: white;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    table th, table td {
-        padding: 12px;
-        border: 1px solid #ddd;
-        text-align: left;
-    }
-
-    table th {
-        background: #007bff;
-        color: white;
-    }
-
-    .form-container {
-        background: #f9f9f9;
-        padding: 20px;
-        border-radius: 10px;
-    }
-
-    .form-container h3 {
+    .modal-content h3 {
         text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #007bff;
     }
 
-    .form-container label {
+    .modal-content label {
         display: block;
-        margin: 10px 0 5px;
+        margin-bottom: 15px;
+        font-weight: 500;
+        color: #333;
     }
 
-    .form-container input, .form-container select {
+    .modal-content input,
+    .modal-content select {
         width: 100%;
         padding: 10px;
         border-radius: 6px;
         border: 1px solid #ccc;
+        margin-top: 5px;
+        box-sizing: border-box;
+        transition: border-color 0.2s;
     }
 
-    .form-container button {
-        margin-top: 15px;
-        padding: 10px 20px;
+    .modal-content input:focus,
+    .modal-content select:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    .modal-content button {
+        display: block;
+        width: 100%;
+        padding: 12px;
         background: #007bff;
         color: white;
         border: none;
-        border-radius: 6px;
+        border-radius: 8px;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .modal-content button:hover {
+        background-color: #0056b3;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
         cursor: pointer;
     }
 
-    .form-container button:hover {
-        background: #0056b3;
+    .close:hover,
+    .close:focus {
+        color: #000;
     }
 
-    .action-buttons a {
-        margin-right: 10px;
-        color: #007bff;
-        text-decoration: none;
-    }
-
-    .action-buttons a:hover {
-        text-decoration: underline;
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
     }
 </style>
 
-<div class="form-container">
-    <h3>Thêm Nhân Viên</h3>
-    <form method="post">
-        <label>Họ: <input type="text" name="ho" required></label>
-        <label>Tên: <input type="text" name="ten" required></label>
-        <label>Ngày sinh: <input type="date" name="ngaysinh" required></label>
-        <label>Giới tính:
-            <select name="gioitinh" required>
-                <option value="Nam">Nam</option>
-                <option value="Nữ">Nữ</option>
-                <option value="Khác">Khác</option>
-            </select>
-        </label>
-        <label>Số điện thoại: <input type="text" name="sdt" required></label>
-        <label>Email: <input type="email" name="email" required></label>
-        <label>Địa chỉ: <input type="text" name="diachi" required></label>
-        <label>Chức vụ: <input type="text" name="chucvu" required></label>
-        <label>Hình thức làm việc:
-            <select name="hinhthuc" required>
-                <option value="Full-time">Full-time</option>
-                <option value="Part-time">Part-time</option>
-            </select>
-        </label>
-        <button type="submit" name="addNhanvien">Thêm Nhân Viên</button>
-    </form>
+<!-- Nút mở popup -->
+<div class="form-container" style="text-align:center;">
+    <button onclick="openModal()">+ Thêm Nhân Viên</button>
 </div>
+
+<!-- Modal popup -->
+<div id="modalForm" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3>Thêm Nhân Viên</h3>
+        <form method="post">
+            <label>Họ: <input type="text" name="ho" required></label>
+            <label>Tên: <input type="text" name="ten" required></label>
+            <label>Ngày sinh: <input type="date" name="ngaysinh" required></label>
+            <label>Giới tính:
+                <select name="gioitinh" required>
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
+                    <option value="Khác">Khác</option>
+                </select>
+            </label>
+            <label>Số điện thoại: <input type="text" name="sdt" required></label>
+            <label>Email: <input type="email" name="email" required></label>
+            <label>Địa chỉ: <input type="text" name="diachi" required></label>
+            <label>Chức vụ: <input type="text" name="chucvu" required></label>
+            <label>Hình thức làm việc:
+                <select name="hinhthuc" required>
+                    <option value="Full-time">Full-time</option>
+                    <option value="Part-time">Part-time</option>
+                </select>
+            </label>
+            <button type="submit" name="addNhanvien">Thêm Nhân Viên</button>
+        </form>
+    </div>
+</div>
+
 
 <table>
     <thead>
@@ -177,3 +208,22 @@ $nhanviens = pdo_query("SELECT * FROM nhanvien");
         <?php endforeach; ?>
     </tbody>
 </table>
+
+<script>
+    function openModal() {
+        document.getElementById("modalForm").style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById("modalForm").style.display = "none";
+    }
+
+    // Đóng modal nếu click ra ngoài nội dung
+    window.onclick = function(event) {
+        let modal = document.getElementById("modalForm");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
