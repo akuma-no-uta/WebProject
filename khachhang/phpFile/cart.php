@@ -11,11 +11,12 @@ if ($result->num_rows > 0) {
     }
 }
 include '../phpFile/header.php';
+
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" >
+<head>:
   <meta charset="UTF-8">
   <title>Food Cart</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +24,7 @@ include '../phpFile/header.php';
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css"/>
 </head>
-<body>
+<body style="font-family:Londrina Solid, sans-serif;">
 
 <section class="h-100 h-custom" style="margin-top: 90px;">
   <div class="container py-5 h-100">
@@ -44,7 +45,6 @@ include '../phpFile/header.php';
                   <?php
                     // Danh sách sản phẩm mẫu
                     $items = [
-                      ["image" => "img5.webp", "name" => "Cotton T-shirt", "price" => 44.00],
                       ["image" => "img6.webp", "name" => "Cotton T-shirt", "price" => 44.00],
                       ["image" => "img7.webp", "name" => "Cotton T-shirt", "price" => 44.00],
                     ];
@@ -57,7 +57,7 @@ include '../phpFile/header.php';
                            class="img-fluid rounded-3" alt="<?= $item['name'] ?>">
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-3">
-                      <h6 class="text-muted">Shirt</h6>
+                      <h6 class="text-muted">name</h6>
                       <h6 class="mb-0"><?= $item['name'] ?></h6>
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-2 d-flex">

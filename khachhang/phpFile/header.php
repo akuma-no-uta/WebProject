@@ -11,7 +11,6 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
         <link rel="stylesheet" type="text/css"
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
-        <link href="cuoiky/khachhang/css/bootstrap.css" rel="stylesheet">
 
     </head>
 <style>
@@ -191,15 +190,6 @@ color: gray;
 background-color: #fbf6dc;
 font-family: "Londrina Solid", sans-serif;
 }
-
-
-
-.task-bar{
-font-family: "Londrina Solid", sans-serif;
-
-
-}
-
 @media (max-width:345px){
   
 }
@@ -832,9 +822,9 @@ position: absolute;
 </style>
     </head>
 
-    <body style="background-color: #fbf6dc;">
+    <body style="background-color: #fbf6dc;" style="font-family:Londrina Solid, sans-serif;">
         <header class="header-banner">
-            <div class="navbar">
+            <div class="navbar" style="box-shadow: none">
                 <h1 class="header-heading "><a href="<?= '/cuoiky/khachhang/index.php' ?>"
                         class="header-heading-link link link--text focus-inset"><div
                             class="header-heading-logo-wrapper">
@@ -966,7 +956,7 @@ position: absolute;
                             <li><a class="button-banner"
                                     href="../html/news.html">News</a></li>
                             <li><a class="button-banner"
-                                    href="../html/tuyen_dung_1.html">Careers</a></li>
+                                    href="/cuoiky/khachhang/phpFile/tuyendung.php">Careers</a></li>
                             <li><a class="button-banner"
                                     href="/cuoiky/khachhang/phpFile/aboutus.php">About
                                     Us</a></li>
@@ -979,7 +969,7 @@ position: absolute;
                             class="header__icons header-icns localization header-localization"
                             style="gap:50px; margin-bottom:-10px;margin-left:200px">
 
-                            <a href="index.php?act=dangky"
+                            <a href="/cuoiky/khachhang/phpFile/dangky.php"
                                 class="header-icon-1 header__icon header__icon--account link focus-inset small-hide">
                                 <svg style="width:30px;height:30px"
                                     xmlns="http://www.w3.org/2000/svg"

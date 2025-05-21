@@ -31,6 +31,8 @@ $menu_categories = [
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/mainpage.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+
     <style>
         .filling-slider-bottom-image {
             margin-left:5rem;
@@ -399,23 +401,47 @@ $menu_categories = [
         });
     });
 
-    // Cart functionality
-    document.addEventListener("DOMContentLoaded", function () {
-        let cartCount = 0;
-        const addToCartButtons = document.querySelectorAll(".btn-primary");
-        const cartCountElement = document.getElementById("cart-count");
-
-        addToCartButtons.forEach(button => {
-            button.addEventListener("click", function (event) {
-                event.preventDefault(); 
-                cartCount++;
-                if (cartCountElement) {
-                    cartCountElement.textContent = cartCount;
+    document.addEventListener("DOMContentLoaded", function() {
+        // Lấy giỏ hàng từ cookie hoặc tạo mới
+        let cart = Cookies.get('cart') ? JSON.parse(Cookies.get('cart')) : [];
+        updateCartCount();
+        
+        // Xử lý khi click nút thêm vào giỏ hàng
+        document.querySelectorAll('.btn-add-to-cart').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const card = this.closest('.card');
+                const itemId = card.querySelector('.card-title').textContent.trim();
+                const itemPrice = parseFloat(card.querySelector('.card-price').textContent.replace(/[^\d]/g, ''));
+                
+                // Tìm xem sản phẩm đã có trong giỏ chưa
+                const existingItem = cart.find(item => item.name === itemId);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        name: itemId,
+                        price: itemPrice,
+                        quantity: 1
+                    });
                 }
+                
+                // Lưu vào cookie
+                Cookies.set('cart', JSON.stringify(cart), { expires: 7 });
+                updateCartCount();
+                
+                // Hiển thị thông báo
+                alert('Đã thêm vào giỏ hàng!');
             });
         });
+        
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cart-count').textContent = count;
+        }
     });
-</script>
+    </script>
 </body>
 </html>
 
