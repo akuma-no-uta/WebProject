@@ -1,14 +1,14 @@
+
 <style>
     @font-face {
     font-family: "Londrina Solid";
-    src: url(../font/LondrinaSolid-Regular.ttf);
+    src: url(/cuoiky/khachhang/font/LondrinaSolid-Regular.ttf);
 }
 .body{
     font-family: "Londrina Solid", sans-serif;}
 .visually-hidden{
     display:none;
 }
-
     @media screen and (max-width:540px){
         .header-heading{
             bottom:30px;
@@ -16,15 +16,12 @@
     @media (max-width:768px){
 .header-heading{
     top: 5vw;
-
 }}
 @media (max-width:500px){
     .header-heading{
         top:10vw;
     }
-
     }
-    
     .button-banner {
         flex-grow: 1;
         position: relative; 
@@ -41,74 +38,19 @@
         display: flex;
         justify-content: center;
         align-items: flex-start;
-    }
-    .navbar{
-        width:100%;
-        height:60px;
-        max-width:1200px;
-        margin:0 auto;
-        display:flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-   
-    
+    }  
 .a{
 margin:30px;
 font-family: "Londrina Solid", sans-serif;
-}
-
-.circle-card {
-width: 150px;
-height: 150px;
-font-family: "Londrina Solid", sans-serif;
-background: white;
-border-radius: 50%;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-text-align: center;
-padding: 20px;
-}
-
-.circle-card img {
-width: 60px;
-font-family: "Londrina Solid", sans-serif;
-height: 60px;
-border-radius: 50%;
-object-fit: cover;
-margin-bottom: 10px;
-}
-
-.circle-card h3 {
-margin: 5px 0;
-font-family: "Londrina Solid", sans-serif;
-font-size: 16px;
-}
-
-.circle-card p {
-margin: 0;
-font-family: "Londrina Solid", sans-serif;
-font-size: 12px;
-color: gray;
 }
 .body{
 background-color: #fbf6dc;
 font-family: "Londrina Solid", sans-serif;
 }
-
-
-
 .task-bar{
 font-family: "Londrina Solid", sans-serif;
-
-
 }
-
 @media (max-width:345px){
-  
 }
 .header-icon-1{
     margin-top:-23px;
@@ -122,14 +64,9 @@ margin-top:-23px;
 .header-item-container ul li a{
     position:relative;
     float:center;
-
-
     display: block;
     gap: 3vw;
     flex-direction: row;
-
-
-
 }
 #menu-bar{
     display: none;
@@ -142,22 +79,6 @@ header label{
      display:none;
     margin-left:30vw;
 }
-@media  (max-width:991px){
-    .header-item-container{
-
-    }
-    header label{
-
-        display:initial;}
-    header .navbar .label{
-        
-        position:absolute;
-        left:0;
-        right:0;
-        border-top:1px solid rgba(0,0,0.1);
-
-    }
-}
 @media  (max-width:800px){
  header label{
     display:flex;
@@ -168,24 +89,12 @@ header label{
     left:10vw;
     top:0vw; }
 }
-
-
 .menu-container {
     display:flex;
   position: relative;
   left:40rem;
   bottom:2rem;
 }
-#menu-bar:checked ~.navbar{
-    display:initial;
-}
-.button-banner {
-  text-decoration: none;
-  transition: background 0.3s;
-}
-
-
-
 .menu-toggle {
   display: none;
   font-size: 24px;
@@ -226,12 +135,6 @@ header label{
   .menu-toggle {
     display: block;
   }
-}
-.navbar .menu-toggle-btn{
-    color:black;
-    font-size: 1.5rem;
-    cursor:pointer;
-    display:none
 }
 @media (max-width:992px){
     .header-item-container{
@@ -578,15 +481,6 @@ gap: 20px;
 padding: 20px;
 }
 
-/*.card {
-font-family: "Londri na Solid", sans-serif;
-width: 300px;
-background: #fff;
-border-radius: 8px;
-overflow: hidden;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-transition: transform 0.3s ease-in-out;
-}*/
 .image-thumbnail{
 object-fit: cover
 }
@@ -704,23 +598,6 @@ position: absolute;
     
 }
 
-@media (max-width: 480px) {
-    .footer__container {
-        padding-inline: 3vw; 
-    }
-
-    .footer__top {
-        padding: 3vw; 
-    }
-    .collab-logo-container {
-        display: flex;
-        justify-content: space-between; /* Căn đều các logo */
-        align-items: center; /* Căn giữa các logo theo chiều dọc */
-        flex-wrap: wrap; /* Cho phép các logo xuống dòng nếu màn hình nhỏ */
-        gap: 5px; /* Khoảng cách giữa các logo */
-    }
-    
-}
 
 .content{
     padding-bottom:100 px;
@@ -782,10 +659,10 @@ position: absolute;
                     <div>
                         <div class="slider-container">
         <div class="slider">
-            <div class="slide"><video autoplay muted loop class="slider-video"><source src="../PicAndVid/vid/cookvid.mp4" type="video/mp4"></video></div>
-            <div class="slide"><img src="../PicAndVid/img/istockphoto-1451425205-1024x1024.jpg" alt="Slide 2"></div>
-            <div class="slide"><img src="../PicAndVid/img/106947904-1632763959731-ALL_PRODUCTS_ok.jpg" alt="Slide 3"></div>
-            <div class="slide"><img src="../PicAndVid/img/istockphoto-1167975402-612x612.jpg" alt="Slide 4"></div>
+            <div class="slide"><video autoplay muted loop class="slider-video"><source src="/cuoiky/khachhang/PicAndVid/vid/cookvid.mp4" type="video/mp4"></video></div>
+            <div class="slide"><img src="/cuoiky/khachhang/PicAndVid/img/istockphoto-1451425205-1024x1024.jpg" alt="Slide 2"></div>
+            <div class="slide"><img src="/cuoiky/khachhang/PicAndVid/img/106947904-1632763959731-ALL_PRODUCTS_ok.jpg" alt="Slide 3"></div>
+            <div class="slide"><img src="/cuoiky/khachhang/PicAndVid/img/istockphoto-1167975402-612x612.jpg" alt="Slide 4"></div>
         </div>
     </div>
             </div>
@@ -795,13 +672,13 @@ position: absolute;
                 <div class="l-wrapper">
                     <div class="image-container">
                         <img width="880" height="550"
-                            src="../PicAndVid/img/MOTYO-Enrique-Olvera-Pujol-.jpg"
+                            src="/cuoiky/khachhang/PicAndVid/img/MOTYO-Enrique-Olvera-Pujol-.jpg"
                             class="attachment-content-row size-content-row"
                             alt="Guacamole" decoding="async"
                             fetchpriority="high"> </div>
                     <div class="content-container">
                         <h2><span class="subheader">About Wax Bodega<img
-                                    src="../PicAndVid/img/subheader-embellishment.svg"
+                                    src="/cuoiky/khachhang/PicAndVid/img/subheader-embellishment.svg"
                                     alt style></span><div
                                 style="text-align: start;">Food Is His
                                 Passion</div></h2><p></p><p>He believe that good
@@ -830,7 +707,7 @@ position: absolute;
                         <h2><span class="subheader">Cooking As An Art<div
                                     class="hidden-section"><img
                                         class="hidden-section"
-                                        src="../PicAndVid/img/subheader-embellishment.svg"
+                                        src="/cuoiky/khachhang/PicAndVid/img/subheader-embellishment.svg"
                                         alt></div></span><div
                                 style="text-align: start;">Experience Our
                                 Passion</div></h2>
@@ -845,7 +722,7 @@ position: absolute;
                     </div>
                     <div class="image-container">
                         <img width="880" height="550"
-                            src="../PicAndVid/img/Untitled-design-25-880x550.png"
+                            src="/cuoiky/khachhang/PicAndVid/img/Untitled-design-25-880x550.png"
                             class="attachment-content-row size-content-row"
                             alt="Delicious Food" decoding="async"
                             fetchpriority="high">
@@ -866,7 +743,7 @@ position: absolute;
                         : ?>
                         <img style="margin-left: 40px;"
                             class="img-fluid px-4 py-3"
-                            src="../PicAndVid/img/BorderRewardsLogo.webp"
+                            src="/cuoiky/khachhang/PicAndVid/img/BorderRewardsLogo.webp"
                             alt="Border Rewards: On The Border's Loyalty Program">
                         <div class="banner-headers px-2">
                             <h2 class="mb-0"> $2 OFF QUESO EVERY DAY!</h2>
@@ -910,7 +787,7 @@ position: absolute;
                         style="text-decoration: none; color: inherit;">
                         <div class="card__media">
                             <div class="card__image image-thumbnail" style="
-                                    background-image: url('../PicAndVid/img/92988Puesto_x_An-s_Gelato_Cones_Courtesy_of_An-s_Gelato_1_1.jpg');
+                                    background-image: url('/cuoiky/khachhang/PicAndVid/img/92988Puesto_x_An-s_Gelato_Cones_Courtesy_of_An-s_Gelato_1_1.jpg');
                                     background-size: cover;
                                     background-position: center;
                                     height: 200px;
@@ -934,7 +811,7 @@ position: absolute;
                         style="text-decoration: none; color: inherit;">
                         <div class="card__media">
                             <div class="card__image image-thumbnail" style="
-                                    background-image: url('../PicAndVid/img/21297Enchiladas41_1_1.jpg');
+                                    background-image: url('/cuoiky/khachhang/PicAndVid/img/21297Enchiladas41_1_1.jpg');
                                     background-size: cover;
                                     background-position: center;
                                     height: 200px;
@@ -959,7 +836,7 @@ position: absolute;
                         style="text-decoration: none; color: inherit;">
                         <div class="card__media">
                             <div class="card__image image-thumbnail" style="
-                                    background-image: url('../PicAndVid/img/21297Enchiladas41_1_1.jpg');
+                                    background-image: url('/cuoiky/khachhang/PicAndVid/img/21297Enchiladas41_1_1.jpg');
                                     background-size: cover;
                                     background-position: center;
                                     height: 200px;
@@ -1001,7 +878,7 @@ position: absolute;
 </style>
         <div class="hidden-section">
             <img class="hiring"
-                src="../PicAndVid/img/M3-2021-Team-2-Hero-Tablet-1536x1120.webp"
+                src="/cuoiky/khachhang/PicAndVid/img/M3-2021-Team-2-Hero-Tablet-1536x1120.webp"
                 data-events="resize ">
             <div class="logo-container">
                 <svg xmlns="http://www.w3.org/2000/svg"

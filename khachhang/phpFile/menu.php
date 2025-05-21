@@ -1,75 +1,414 @@
+<?php
+include '../phpFile/header.php';
+$host = "localhost";
+$user = "root";
+$password = ""; // or "123456" if you set one
+$dbname = "cuoiky";
 
+$conn = new mysqli($host, $user, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+// Menu categories mapping
+$menu_categories = [
+    1 => "BURRITOS",
+    2 => "Tacos",
+    3 => "Drinks",
+    4 => "Fruits",
+    5 => "Ice Cream",
+    6 => "Vietnamese Traditional Food"
+];
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/mainpage.css" rel="stylesheet">
+    <style>
+        .filling-slider-bottom-image {
+            margin-left:5rem;
+            width:500px;
+        }
+        .content-section {
+            border-radius:50px;
+            top:10rem;
+            box-sizing: border-box;
+            width: 842px;
+            max-width: 90%;
+            min-height: 420px;
+            margin: 0 auto;
+            padding: 25px 96px 0;
+            position: relative;
+            z-index: 4;
+        }
+        .has-background {
+            background-color:#FFE7AA;
+        }
+        .footer {
+            top:20rem;
+        }
+        .header__awning {
+            top:20rem;
+        }
+        .toggle-button button {
+            width: 30px;
+            height: 30px;
+            border: 2px solid black;
+            background-color: transparent;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+        .food-menu-item {
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 20px;
+        }
+        .card-title {
+            font-family: "Londrina Solid", sans-serif;
+        }
+        .card-text {
+            font-family: "Londrina Solid", sans-serif;
+        }
+.card {
+     position: relative;
+    width: 100%;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 20px;
+    aspect-ratio: 1/1.2; /* Điều chỉnh tỷ lệ cho phù hợp với nội dung dài */
+    display: flex;
+    flex-direction: column;
+}
+.card-description-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(244, 201, 92, 0.95);
+    color: #333;
+    padding: 20px;
+    font-size: 1rem;
+    font-family: "Londrina Solid", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+    border-radius: 10px 10px 0 0;
+    box-sizing: border-box;
+}
+.card-img-container {
+    position: relative;
+    width: 100%;
+    height: 60%;
+}
+.card:hover .card-description-hover {
+    opacity: 1;
+    visibility: visible;
+}
+.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.card-body {
+    height: 40%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title {
+    font-family: "Londrina Solid", sans-serif;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Giới hạn tối đa 2 dòng */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.4em; /* Đảm bảo đủ chỗ cho 2 dòng */
+}
+.card-description {
+    font-family: "Londrina Solid", sans-serif;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Giới hạn số dòng hiển thị */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    width: 100%; 
+    height: 100px;
+}
+
+.card-price {
+    font-weight: bold;
+    color: #e63946;
+    flex-grow: 2;
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+    .food-menu-item .col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    .card {
+        aspect-ratio: 1/1.3;
+    }
+    
+    .card-description {
+        -webkit-line-clamp: 2; /* Giảm số dòng trên mobile */
+    }
+}
+        .a:hover {
+            color:#FFE7AA;
+        }
+        @media (max-width: 768px) {
+            .filling-slider-bottom-image {
+                width:7rem;
+                margin-left: 2.9rem;
+            }
+            .food-menu-item .col {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+        #cart-icon-bubble {
+            position: relative; 
+            display: inline-block;
+        }
+        #cart-count {
+            position: absolute;
+            top: -5px;  
+            right: -5px;
+            background-color: red;  
+            color: white;  
+            font-size: 12px;
+            font-weight: bold;
+            width: 20px;  
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            border-radius: 50%;  
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
 <main>
-            <div class ="container login">
-                <input type="checkbox" style="display: none;" id ="flip">
-
-                <div class="cover">
-                    <div class="front">
-                        <img class ="frontImg" src ="../PicAndVid/img/Join-QDOBA-Rewards-Earn-Free-Queso-and-Chips.png">
-                    </div>
-                    <div class="back">
-                        <img class ="backImg" src="../PicAndVid/img/Join-QDOBA-Rewards-Earn-Free-Queso-and-Chips.png">
-                    </div>
-                </div>
-                <form action=" #">
-                    <div class ="form-content">
-                        
-                    <div class = "login-form">
-                        <div class ="title">Login</div>
-                        <div class  = "input-box">
-                            <i class ="fa fa-envelope"></i>
-                            <input type ="text" placeholder="Enter your email" required>
-                        </div>
-                        <div class  = "input-box">
-                            <i class ="fs fa-envelope"></i>
-                            <input type ="password" placeholder="Enter your password" required>
-                    </div>
-                    <div class = "text"><a href=# class ="text">Forgot Password</a></div>
-                    <div class  = "button input-box">
-                        <i class ="fa fa-envelope"></i>
-                        <input type ="submit" value ="Submit">
-                    </div>
-                    <div class ="text">Don't have an account ? <label for ="flip">Signup now</label></div>
-                    <div class ="text" style = "left:-30px">Or Login with</div>
-                    <div class ="log-option">
-                    <a href="https://www.facebook.com/login.php" ><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="#1877F2">
-    <path d="M22.675 0h-21.35C.595 0 0 .593 0 1.326v21.348C0 23.407.595 24 1.325 24H12.82v-9.294H9.692v-3.622h3.127V8.412c0-3.1 1.894-4.785 4.662-4.785 1.325 0 2.462.099 2.793.142v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.312h3.586l-.467 3.622h-3.119V24h6.116c.73 0 1.325-.593 1.325-1.326V1.326C24 .593 23.405 0 22.675 0z"/>
-</svg>
-</div>
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </a>      <a href="https://accounts.google.com/signin" class="google-login-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-                            <path fill="#4285F4" d="M23.49 12.27c2.69 0 5.1.97 7.02 2.56l5.21-5.21C32.16 6.3 28.1 4.5 23.49 4.5c-8.47 0-15.58 5.72-18.15 13.44l6.64 5.16c1.23-5.77 6.2-10.03 11.51-10.03z"/>
-                            <path fill="#34A853" d="M42.69 20.82H24v7.71h10.71c-.97 5.04-5.48 8.82-10.71 8.82-3.32 0-6.27-1.4-8.38-3.64l-6.64 5.17c3.66 4.34 9.09 7.05 15.02 7.05 8.64 0 16.02-5.79 17.86-13.47l.83-4.44z"/>
-                            <path fill="#FBBC05" d="M9.74 26.56c-.45-1.33-.7-2.75-.7-4.22s.25-2.89.7-4.22l-6.64-5.17c-1.36 2.71-2.1 5.79-2.1 9.39s.74 6.68 2.1 9.39l6.64-5.17z"/>
-                            <path fill="#EA4335" d="M23.49 43.5c4.61 0 8.67-1.52 11.81-4.09l-5.21-5.21c-1.64 1.1-3.67 1.74-5.91 1.74-5.31 0-10.28-4.26-11.51-10.03l-6.64 5.17c2.57 7.72 9.68 13.44 18.15 13.44z"/>
-                        </svg>
-                    </a>
-                              </div></div>
-                    <div class = "sign-up-form">
-                        <div class ="title">Sign up</div>
-                        <div class  = "input-box">
-                            <i class ="fas fa-envelope"></i>
-                            <input type ="text" placeholder="Enter your name" required>
-                        </div>
-                        <div class  = "input-box">
-                            <i class ="fas fa-envelope"></i>
-                            <input type ="text" placeholder="Enter your email" required>
-                        </div>
-                        <div class  = "input-box">
-                            <i class ="fa fa-envelope"></i>
-                            <input type ="password" placeholder="Enter your password" required>
-                    </div>
-                    <div class = "text" ><a href=# class ="text">Forgot Password</a></div>
-                    <div class  = "button input-box">
-                        <i class ="fas fa-envelope"></i>
-                        <input type ="submit" value ="Submit">
-                    </div>
-                    <div class ="text">Already have an account ? <label for ="flip">Login now</label>></div>
-
-                    </div>
-                    </div>
-                </form>
+    <div class="content-section has-background">
+        <!-- INTRODUCTION -->
+        <section class="component-row text-row">
+            <div class="text-content">
+                <h2><strong>Craving Boston's best Mexican Food? Build your perfect burrito, taco, quesadilla, bowl, or salad.</strong></h2>
+                <p>Once you've discovered your ideal combination of fresh ingredients that give you the warm and fuzzies, you'll have the benefit of knowing that on any given day when you need a hug, you can just call Anna's Taqueria for the Mexican food you love!</p>
             </div>
-            
-        </main>
+        </section>
+
+        <!-- DISPLAY MENU FROM DATABASE -->
+        <?php
+        foreach ($menu_categories as $phan_loai => $category_name) {
+            echo '<section class="component-row menu">
+                    <h3 class="accordion-title toggle-button"><button>+</button>' . $category_name . '</h3>
+                    <div class="toggle-content hide">
+                        <div class="food-menu-item row row-cols-1 row-cols-md-3 g-4">';
+
+            // Query for each category
+            $sql = "SELECT id, ten_mon, mo_ta, gia, hinh_anh FROM menu WHERE phan_loai = $phan_loai";
+            $result = $conn->query($sql);
+
+            if ($result && $result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $imageSrc = !empty($row['hinh_anh']) ? 
+                        'data:image/jpeg;base64,'.base64_encode($row['hinh_anh']) : 
+                        'https://via.placeholder.com/300x200';
+                    
+                  echo '<div class="col-md-4 col-sm-6 col-12 mb-4">
+        <div class="card h-100">
+            <div class="card-img-container">
+                <img src="'.$imageSrc.'" class="card-img-top" alt="'.htmlspecialchars($row['ten_mon']).'">
+                <div class="card-description-hover">
+                    ' . htmlspecialchars($row['mo_ta']) . '
+                </div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">' . htmlspecialchars($row['ten_mon']) . '</h5>
+                <div class="card-footer">
+                    <span class="card-price">' . number_format($row['gia'], 0) . ' VND</span>
+                    <a href="#" class="btn btn-primary rounded-circle">+</a>
+                </div>
+            </div>
+        </div>
+      </div>';
+                }
+            } else {
+                echo "<p>No items available for this category.</p>";
+            }
+
+            echo '      </div>
+                    </div>
+                  </section>';
+        }
+        ?>
+
+        <!-- ALLERGY NOTICE -->
+        <section class="component-row text-row">
+            <div class="text-content">
+                <p>Before placing your order, please inform your server if you or anyone in your party has a food allergy.</p>
+                <p>For specific information, <a style="text-decoration: none; color:blue" href="../PicAndVid/img/Allegy.png">see our allergen table.</a></p>
+                <hr>
+            </div>
+        </section>
+    </div>
+</main>
+  
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<script>
+    // Handle scroll effects
+    function checkScroll() {
+        const hiddenSections = document.querySelectorAll('.hidden-section');
+        const screenHeight = window.innerHeight / 1.2;
+  
+        hiddenSections.forEach(section => {
+            const sectionPosition = section.getBoundingClientRect().top;
+            if (sectionPosition < screenHeight) {
+                section.classList.add('show');
+                section.classList.remove('hide');
+            } else {
+                section.classList.remove('show');
+                section.classList.add('hide');
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const banner = document.querySelector(".banner-right");
+        const footer = document.querySelector("footer");
+        const triggerPosition = banner.offsetTop - window.innerHeight / 2;
+
+        function handleScroll() {
+            const bannerRect = banner.getBoundingClientRect();
+            const footerRect = footer.getBoundingClientRect();
+
+            if (window.scrollY > triggerPosition && footerRect.top > window.innerHeight) {
+                banner.classList.add("show");
+            } else {
+                banner.classList.remove("show");
+            }
+        }
+
+        let ticking = false;
+        window.addEventListener("scroll", function () {
+            if (!ticking) {
+                window.requestAnimationFrame(function () {
+                    handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        handleScroll();
+    });
+  
+    window.addEventListener('scroll', checkScroll);
+    checkScroll();
+
+    // Header scroll behavior
+    let lastScrollY = window.scrollY;
+    let timeout = null;
+
+    window.addEventListener("scroll", () => {
+        const header = document.getElementById("header");
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > lastScrollY) {
+            header.classList.add("hidden");
+        } else {
+            header.classList.remove("hidden");
+        }
+
+        lastScrollY = currentScrollY;
+
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            header.classList.add("hidden");
+        }, 1000);
+    });
+
+    // Accordion toggle functionality
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggleButtons = document.querySelectorAll(".toggle-button button");
+
+        toggleButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                const content = this.closest(".accordion-title").nextElementSibling;
+                content.classList.toggle("hide");
+                
+                if (content.classList.contains("hide")) {
+                    this.textContent = "+";
+                } else {
+                    this.textContent = "-";
+                }
+            });
+        });
+    });
+
+    // Cart functionality
+    document.addEventListener("DOMContentLoaded", function () {
+        let cartCount = 0;
+        const addToCartButtons = document.querySelectorAll(".btn-primary");
+        const cartCountElement = document.getElementById("cart-count");
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener("click", function (event) {
+                event.preventDefault(); 
+                cartCount++;
+                if (cartCountElement) {
+                    cartCountElement.textContent = cartCount;
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
+
+<?php 
+$conn->close();
+include '../phpFile/footer.php';
+?>

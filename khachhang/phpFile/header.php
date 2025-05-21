@@ -11,7 +11,7 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
         <link rel="stylesheet" type="text/css"
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
-        <link href="../Layout/css/bootstrap.css" rel="stylesheet">
+        <link href="cuoiky/khachhang/css/bootstrap.css" rel="stylesheet">
 
     </head>
 <style>
@@ -835,7 +835,7 @@ position: absolute;
     <body style="background-color: #fbf6dc;">
         <header class="header-banner">
             <div class="navbar">
-                <h1 class="header-heading "><a href="index.php"
+                <h1 class="header-heading "><a href="<?= '/cuoiky/khachhang/index.php' ?>"
                         class="header-heading-link link link--text focus-inset"><div
                             class="header-heading-logo-wrapper">
                             <div><svg viewBox="0 0 577 79"
@@ -960,15 +960,15 @@ position: absolute;
                         <ul class="menu-container">
 
                             <li> <a class="button-banner"
-                                    href="../phpFile/datban.php">Booking</a></li>
+                                    href="/cuoiky/khachhang/phpFile/datban.php">Booking</a></li>
                             <li> <a class="button-banner"
-                                    href="../html/Menu.html">Menu</a></li>
+                                    href="/cuoiky/khachhang/phpFile/menu.php">Menu</a></li>
                             <li><a class="button-banner"
                                     href="../html/news.html">News</a></li>
                             <li><a class="button-banner"
                                     href="../html/tuyen_dung_1.html">Careers</a></li>
                             <li><a class="button-banner"
-                                    href="../phpfile/aboutus.php">About
+                                    href="/cuoiky/khachhang/phpFile/aboutus.php">About
                                     Us</a></li>
                         </ul>
 
@@ -994,7 +994,7 @@ position: absolute;
                                 <span class="visually-hidden">Log in</span>
                             </a>
 
-                            <a href="cart.php"
+                            <a href="/cuoiky/khachhang/phpFile/cart.php"
                                 style="width:65px; height:65px; margin-bottom:-5px"
                                 class="header__icon header-icon-2 header__icon--cart link focus-inset"
                                 id="cart-icon-bubble">

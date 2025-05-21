@@ -7,7 +7,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 40px 20px;
-    font-family: 'Arial', sans-serif;
+font-family: "Londrina Solid", sans-serif;
     font-weight: bold;
 }   
 
@@ -26,7 +26,6 @@
     color: #1c1c1c;
     text-decoration: none;
 }
-
 .footer a:hover {
     text-decoration: underline;
 }
