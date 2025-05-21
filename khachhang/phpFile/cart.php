@@ -23,8 +23,14 @@ include '../phpFile/header.php';
   <!-- Link đến Bootstrap, Font Awesome, MDB, hoặc các CDN khác -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Londrina Solid', sans-serif;
+  }
+</style>
 </head>
-<body style="font-family:Londrina Solid, sans-serif;">
+<body>
 
 <section class="h-100 h-custom" style="margin-top: 90px;">
   <div class="container py-5 h-100">
