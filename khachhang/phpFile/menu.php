@@ -240,8 +240,15 @@ $menu_categories = [
 </head>
 <body>
 <main>
+        
     <div class="content-section has-background">
         <!-- INTRODUCTION -->
+         <section id="cart-section" class="container mt-5">
+    <h4>🛒 Giỏ hàng của bạn</h4>
+    <div id="cart-items" class="list-group">
+        <!-- Các món sẽ được thêm vào đây bằng JavaScript -->
+    </div>
+</section>
         <section class="component-row text-row">
             <div class="text-content">
                 <h2><strong>Craving Boston's best Mexican Food? Build your perfect burrito, taco, quesadilla, bowl, or salad.</strong></h2>
@@ -401,46 +408,161 @@ $menu_categories = [
         });
     });
 
-    document.addEventListener("DOMContentLoaded", function() {
-        // Lấy giỏ hàng từ cookie hoặc tạo mới
-        let cart = Cookies.get('cart') ? JSON.parse(Cookies.get('cart')) : [];
-        updateCartCount();
-        
-        // Xử lý khi click nút thêm vào giỏ hàng
-        document.querySelectorAll('.btn-add-to-cart').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const card = this.closest('.card');
-                const itemId = card.querySelector('.card-title').textContent.trim();
-                const itemPrice = parseFloat(card.querySelector('.card-price').textContent.replace(/[^\d]/g, ''));
-                
-                // Tìm xem sản phẩm đã có trong giỏ chưa
-                const existingItem = cart.find(item => item.name === itemId);
-                
-                if (existingItem) {
-                    existingItem.quantity += 1;
-                } else {
-                    cart.push({
-                        name: itemId,
-                        price: itemPrice,
-                        quantity: 1
-                    });
-                }
-                
-                // Lưu vào cookie
-                Cookies.set('cart', JSON.stringify(cart), { expires: 7 });
-                updateCartCount();
-                
-                // Hiển thị thông báo
-                alert('Đã thêm vào giỏ hàng!');
-            });
+   document.addEventListener("DOMContentLoaded", function() {
+    let cart = Cookies.get('cart') ? JSON.parse(Cookies.get('cart')) : [];
+
+    updateCartCount();
+    renderCartItems();
+
+    document.querySelectorAll('.btn-add-to-cart').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const card = this.closest('.card');
+            const itemId = card.querySelector('.card-title').textContent.trim();
+            const itemPrice = parseFloat(card.querySelector('.card-price').textContent.replace(/[^\d]/g, ''));
+
+            const existingItem = cart.find(item => item.name === itemId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: itemId,
+                    price: itemPrice,
+                    quantity: 1
+                });
+            }
+
+            Cookies.set('cart', JSON.stringify(cart), { expires: 7 });
+            updateCartCount();
+            renderCartItems();
+
+            alert('Đã thêm vào giỏ hàng!');
         });
-        
-        function updateCartCount() {
-            const count = cart.reduce((total, item) => total + item.quantity, 0);
-            document.getElementById('cart-count').textContent = count;
-        }
     });
+
+    function updateCartCount() {
+        const count = cart.reduce((total, item) => total + item.quantity, 0);
+        const cartCount = document.getElementById('cart-count');
+        if (cartCount) cartCount.textContent = count;
+    }
+
+    function renderCartItems() {
+        const cartContainer = document.getElementById('cart-items');
+        cartContainer.innerHTML = ''; // Xóa cũ trước khi render mới
+
+        if (cart.length === 0) {
+            cartContainer.innerHTML = '<p class="text-muted">Chưa có sản phẩm nào trong giỏ hàng.</p>';
+            return;
+        }
+
+        cart.forEach(item => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'list-group-item d-flex justify-content-between align-items-center';
+
+            itemDiv.innerHTML = `
+                <span><strong>${item.name}</strong> x ${item.quantity}</span>
+                <span>${(item.price * item.quantity).toLocaleString()} VND</span>
+            `;
+
+            cartContainer.appendChild(itemDiv);
+        });
+    }
+});
+document.addEventListener("DOMContentLoaded", function() {
+    let cart = Cookies.get('cart') ? JSON.parse(Cookies.get('cart')) : [];
+
+    updateCartCount();
+    renderCartItems();
+
+    document.querySelectorAll('.btn-add-to-cart').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const card = this.closest('.card');
+            const itemName = card.querySelector('.card-title').textContent.trim();
+            const itemPrice = parseFloat(card.querySelector('.card-price').textContent.replace(/[^\d]/g, ''));
+            const itemImage = card.querySelector('.card-img-top').src;
+
+            const existingItem = cart.find(item => item.name === itemName);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: itemName,
+                    price: itemPrice,
+                    quantity: 1,
+                    image: itemImage
+                });
+            }
+
+            Cookies.set('cart', JSON.stringify(cart), { expires: 7 });
+            updateCartCount();
+            renderCartItems();
+
+            // Hiển thị thông báo nhẹ nhàng thay vì alert
+            showToast('Đã thêm vào giỏ hàng!');
+        });
+    });
+
+    function updateCartCount() {
+        const count = cart.reduce((total, item) => total + item.quantity, 0);
+        const cartCount = document.getElementById('cart-count');
+        if (cartCount) cartCount.textContent = count;
+    }
+
+    function renderCartItems() {
+        const cartContainer = document.getElementById('cart-items');
+        cartContainer.innerHTML = '';
+
+        if (cart.length === 0) {
+            cartContainer.innerHTML = '<p class="text-muted">Chưa có sản phẩm nào trong giỏ hàng.</p>';
+            return;
+        }
+
+        let total = 0;
+        cart.forEach(item => {
+            total += item.price * item.quantity;
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'list-group-item d-flex justify-content-between align-items-center';
+
+            itemDiv.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <img src="${item.image}" width="50" height="50" class="rounded me-3" alt="${item.name}">
+                    <span><strong>${item.name}</strong> x ${item.quantity}</span>
+                </div>
+                <span>${(item.price * item.quantity).toLocaleString()} VND</span>
+            `;
+
+            cartContainer.appendChild(itemDiv);
+        });
+
+        // Thêm tổng cộng
+        const totalDiv = document.createElement('div');
+        totalDiv.className = 'list-group-item d-flex justify-content-between align-items-center fw-bold';
+        totalDiv.innerHTML = `<span>Tổng cộng:</span><span>${total.toLocaleString()} VND</span>`;
+        cartContainer.appendChild(totalDiv);
+    }
+
+    function showToast(message) {
+        const toast = document.createElement('div');
+        toast.className = 'position-fixed bottom-0 end-0 p-3';
+        toast.style.zIndex = '11';
+        toast.innerHTML = `
+            <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto">Thông báo</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    ${message}
+                </div>
+            </div>
+        `;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
+});
     </script>
 </body>
 </html>
