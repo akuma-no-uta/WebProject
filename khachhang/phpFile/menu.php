@@ -235,7 +235,43 @@ $menu_categories = [
     font-size: 1rem;     /* Giảm kích thước chữ */
     margin-left: 10px;   /* Thêm khoảng cách với giá */
     margin-bottom: 1.5rem;
+}#cart-section {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    width: 300px;
+    max-height: 80vh;
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    padding: 15px;
+    z-index: 9999;
+    border-radius: 8px;
 }
+
+#cart-section h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#cart-items .list-group-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+@media (max-width: 768px) {
+    #cart-section {
+        position: static;
+        width: 100%;
+        max-height: none;
+        box-shadow: none;
+        border: none;
+        padding: 10px 0;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -312,7 +348,7 @@ $menu_categories = [
         </section>
     </div>
 </main>
-  
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

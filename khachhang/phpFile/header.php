@@ -133,11 +133,10 @@ font-family: "Londrina Solid", sans-serif;
 }
 .header__awning {
 display: block !important;
-
 width: 100%;
 height: 20px;
 position: relative;
-background-image: url(../PicAndVid/img/awning_path.png);
+background-image: url(/cuoiky/khachhang/PicAndVid/img/awning_path.png);
 }
 .header__awning-top{
 position: fixed; /* Cố định awning cùng header */
@@ -145,7 +144,7 @@ top: 125px; /* Ngay dưới header-banner */
 left: 0;
 width: 100%;
 height: 20px;
-background-image: url(../PicAndVid/img/awning_path.png);
+background-image: url(/cuoiky/khachhang/PicAndVid/img/awning_path.png);
 z-index: 999; /* Đảm bảo hiển thị dưới header */
 transition: top 0.3s ease-in-out;
 }
@@ -954,7 +953,7 @@ position: absolute;
                             <li> <a class="button-banner"
                                     href="/cuoiky/khachhang/phpFile/menu.php">Menu</a></li>
                             <li><a class="button-banner"
-                                    href="../html/news.html">News</a></li>
+                                    href="/cuoiky/khachhang/phpFile/baidang.php">News</a></li>
                             <li><a class="button-banner"
                                     href="/cuoiky/khachhang/phpFile/tuyendung.php">Careers</a></li>
                             <li><a class="button-banner"
@@ -1004,4 +1003,4 @@ position: absolute;
                     </div>
                 </div>
             </header>
-            <div class="header__awning-top" style="z-index: 10000;"></div>
+<div class="header__awning-top" style="z-index: 10000;"></div>
