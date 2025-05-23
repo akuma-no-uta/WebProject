@@ -483,121 +483,51 @@ $menu_categories = [
         if (cartCount) cartCount.textContent = count;
     }
 
-    function renderCartItems() {
-        const cartContainer = document.getElementById('cart-items');
-        cartContainer.innerHTML = ''; // Xóa cũ trước khi render mới
+  function renderCartItems() {
+    const cartContainer = document.getElementById('cart-items');
+    cartContainer.innerHTML = '';
 
-        if (cart.length === 0) {
-            cartContainer.innerHTML = '<p class="text-muted">Chưa có sản phẩm nào trong giỏ hàng.</p>';
-            return;
-        }
-
-        cart.forEach(item => {
-            const itemDiv = document.createElement('div');
-            itemDiv.className = 'list-group-item d-flex justify-content-between align-items-center';
-
-            itemDiv.innerHTML = `
-                <span><strong>${item.name}</strong> x ${item.quantity}</span>
-                <span>${(item.price * item.quantity).toLocaleString()} VND</span>
-            `;
-
-            cartContainer.appendChild(itemDiv);
-        });
+    if (cart.length === 0) {
+        cartContainer.innerHTML = '<p class="text-muted">Chưa có sản phẩm nào trong giỏ hàng.</p>';
+        return;
     }
-});
-document.addEventListener("DOMContentLoaded", function() {
-    let cart = Cookies.get('cart') ? JSON.parse(Cookies.get('cart')) : [];
 
-    updateCartCount();
-    renderCartItems();
+    let total = 0;
+    cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'list-group-item d-flex justify-content-between align-items-center';
 
-    document.querySelectorAll('.btn-add-to-cart').forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            const card = this.closest('.card');
-            const itemName = card.querySelector('.card-title').textContent.trim();
-            const itemPrice = parseFloat(card.querySelector('.card-price').textContent.replace(/[^\d]/g, ''));
-            const itemImage = card.querySelector('.card-img-top').src;
+        itemDiv.innerHTML = `
+            <div class="d-flex align-items-center">
+                <img src="${item.image}" width="50" height="50" class="rounded me-3" alt="${item.name}">
+                <span><strong>${item.name}</strong> x ${item.quantity}</span>
+            </div>
+            <span>${(item.price * item.quantity).toLocaleString()} VND</span>
+            <button class="btn btn-danger btn-remove" data-index="${index}">Xóa</button>
+        `;
 
-            const existingItem = cart.find(item => item.name === itemName);
-
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    name: itemName,
-                    price: itemPrice,
-                    quantity: 1,
-                    image: itemImage
-                });
-            }
-
-            Cookies.set('cart', JSON.stringify(cart), { expires: 7 });
-            updateCartCount();
-            renderCartItems();
-
-            // Hiển thị thông báo nhẹ nhàng thay vì alert
-            showToast('Đã thêm vào giỏ hàng!');
-        });
+        cartContainer.appendChild(itemDiv);
     });
 
-    function updateCartCount() {
-        const count = cart.reduce((total, item) => total + item.quantity, 0);
-        const cartCount = document.getElementById('cart-count');
-        if (cartCount) cartCount.textContent = count;
-    }
+    // Thêm tổng cộng
+    const totalDiv = document.createElement('div');
+    totalDiv.className = 'list-group-item d-flex justify-content-between align-items-center fw-bold';
+    totalDiv.innerHTML = `<span>Tổng cộng:</span><span>${total.toLocaleString()} VND</span>`;
+    cartContainer.appendChild(totalDiv);
 
-    function renderCartItems() {
-        const cartContainer = document.getElementById('cart-items');
-        cartContainer.innerHTML = '';
-
-        if (cart.length === 0) {
-            cartContainer.innerHTML = '<p class="text-muted">Chưa có sản phẩm nào trong giỏ hàng.</p>';
-            return;
-        }
-
-        let total = 0;
-        cart.forEach(item => {
-            total += item.price * item.quantity;
-            const itemDiv = document.createElement('div');
-            itemDiv.className = 'list-group-item d-flex justify-content-between align-items-center';
-
-            itemDiv.innerHTML = `
-                <div class="d-flex align-items-center">
-                    <img src="${item.image}" width="50" height="50" class="rounded me-3" alt="${item.name}">
-                    <span><strong>${item.name}</strong> x ${item.quantity}</span>
-                </div>
-                <span>${(item.price * item.quantity).toLocaleString()} VND</span>
-            `;
-
-            cartContainer.appendChild(itemDiv);
+    // Thêm sự kiện xóa cho các nút xóa
+    document.querySelectorAll('.btn-remove').forEach(button => {
+        button.addEventListener('click', function() {
+            const index = this.getAttribute('data-index');
+            cart.splice(index, 1); // Xóa món ăn khỏi giỏ hàng
+            Cookies.set('cart', JSON.stringify(cart), { expires: 7 }); // Cập nhật cookie
+            updateCartCount(); // Cập nhật số lượng giỏ hàng
+            renderCartItems(); // Render lại giỏ hàng
         });
+    });
+}
 
-        // Thêm tổng cộng
-        const totalDiv = document.createElement('div');
-        totalDiv.className = 'list-group-item d-flex justify-content-between align-items-center fw-bold';
-        totalDiv.innerHTML = `<span>Tổng cộng:</span><span>${total.toLocaleString()} VND</span>`;
-        cartContainer.appendChild(totalDiv);
-    }
-
-    function showToast(message) {
-        const toast = document.createElement('div');
-        toast.className = 'position-fixed bottom-0 end-0 p-3';
-        toast.style.zIndex = '11';
-        toast.innerHTML = `
-            <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header">
-                    <strong class="me-auto">Thông báo</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                    ${message}
-                </div>
-            </div>
-        `;
-        document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 3000);
-    }
 });
     </script>
 </body>
